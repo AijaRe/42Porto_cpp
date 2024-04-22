@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:16:46 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/20 14:06:14 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/22 19:48:33 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 class PhoneBook{
     private:
         Contact _contacts[8];
+        int     _index;
     public:
         PhoneBook(void);
         ~PhoneBook(void);
