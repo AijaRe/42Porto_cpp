@@ -3,22 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:37:39 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/22 20:10:41 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/24 19:27:45 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
 #include "PhoneBook.hpp"
+
 
 int main(){
     
     PhoneBook       phb;
     std::string    input;
 
-    std::cout << "Welcome to My Awesome PhoneBook.." << std::endl;
+    std::cout << "+----------+----------+----------+----------+" << std::endl;
+	std::cout << "|     Welcome to My Awesome PhoneBook...    |" << std::endl;
+	std::cout << "+----------+----------+----------+----------+" << std::endl;
     
     do {
         std::cout << "Choose an option > ADD - SEARCH - EXIT " << std::endl;

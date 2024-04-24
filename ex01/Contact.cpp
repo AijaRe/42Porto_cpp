@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 12:38:42 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/22 20:00:21 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/24 19:24:43 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,44 @@ Contact::~Contact(){
     return ;
 }
 
-bool Contact::isEmpty() const {
-    return _firstName.empty() && _lastName.empty() && _nickname.empty() && _phoneNb.empty() && _secret.empty();
+void Contact::setFirstName(std::string firstName){
+    this->_firstName = firstName;
 }
-void Contact::setContactInfo(const std::string& firstName, const std::string& lastName, const std::string& nickname, const std::string& phoneNb, const std::string& secret) {
-    _firstName = firstName;
-    _lastName = lastName;
-    _nickname = nickname;
-    _phoneNb = phoneNb;
-    _secret = secret;
+
+void Contact::setLastName(std::string lastName){
+    this->_lastName = lastName;
 }
+
+void Contact::setNickname(std::string nickname){
+    this->_nickname = nickname;
+}
+
+void Contact::setPhoneNb(std::string phoneNb){
+    this->_phoneNb = phoneNb;
+}
+
+void Contact::setSecret(std::string secret){
+    this->_secret = secret;
+}
+
+const std::string Contact::getFirstName(void) const{
+    return this->_firstName;
+}
+
+const std::string Contact::getLastName(void) const{
+    return this->_lastName;
+}
+
+const std::string Contact::getNickname(void) const{
+    return this->_nickname;
+}
+
+const std::string Contact::getPhoneNb(void) const{
+    return this->_phoneNb;
+}
+
+const std::string Contact::getSecret(void) const{
+    return this->_secret;
+}
+
+
