@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:16:32 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/25 12:37:57 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/25 15:16:40 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static bool  is_valid_number(std::string& number){
     return true; 
 }
 
-void PhoneBook::addContact(const std::string& firstName, const std::string& lastName, const std::string& nickname, const std::string& phoneNb, const std::string& secret){
+void PhoneBook::setContactData(const std::string& firstName, const std::string& lastName, const std::string& nickname, const std::string& phoneNb, const std::string& secret){
     int i = this->_index;
     
     this->_contacts[i].setFirstName(firstName);
@@ -49,7 +49,7 @@ void PhoneBook::addContact(const std::string& firstName, const std::string& last
         this->_nbContacts++;
 }
 
-void PhoneBook::readContact() const{
+void PhoneBook::addContact(){
     std::string firstName, lastName, nickname, phoneNb, secret;
 
     do {
@@ -73,7 +73,7 @@ void PhoneBook::readContact() const{
     if (std::cin.eof()){
         exit(130);
     }
-    addContact(firstName, lastName, nickname, phoneNb, secret);
+    setContactData(firstName, lastName, nickname, phoneNb, secret);
 }
 
 std::string truncate_data(std::string data){
@@ -117,17 +117,16 @@ void PhoneBook::displayContact(int i) const{
 
 void PhoneBook::search(){ 
     displayPhoneBook();
+    std::cout << "Contact numbers: " << this->_nbContacts << std::endl;
     int i;
     do {
         std::cout << "Insert index: ";
         std::cin >> i;
         if (std::cin.eof())
             exit(130);
-        if (std::cin.fail() || i < 1 || i > this->_nbContacts){
+        else if (std::cin.fail() || i < 1 || i > this->_nbContacts){
             std::cout << "Invalid index" << std::endl;
-            //std::cin.clear();
         }
-        displayContact(i - 1);
     } while (i < 1 || i > this->_nbContacts);
-    
+    displayContact(i - 1);
 }
