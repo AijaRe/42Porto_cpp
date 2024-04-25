@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:37:39 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/24 19:27:45 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/25 11:56:42 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ int main(){
             phb.search();
         else if (input == "EXIT")
             break;
-        if (std::cin.eof()) // ctrl + D
-            return 0;
+        else if (std::cin.eof()) // ctrl + D
+            exit(130);
+        else
+            std::cout << "Invalid command." << std::endl;
     } while (input != "EXIT");
     std::cout << "Closing PhoneBook..." << std::endl;
     return 0;
