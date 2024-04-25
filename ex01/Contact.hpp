@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 12:38:58 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/25 11:16:49 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/25 15:32:56 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <cstdlib> //exit
+#include <csignal> // For signal handling
 #include <string>
 #include <iomanip>
 

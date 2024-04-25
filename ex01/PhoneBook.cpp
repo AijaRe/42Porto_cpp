@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:16:32 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/25 15:16:40 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/25 15:30:09 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static bool  is_valid_number(std::string& number){
     return true; 
 }
 
-void PhoneBook::setContactData(const std::string& firstName, const std::string& lastName, const std::string& nickname, const std::string& phoneNb, const std::string& secret){
+void PhoneBook::setContactData(const std::string& firstName, const std::string& lastName, \
+    const std::string& nickname, const std::string& phoneNb, const std::string& secret){
     int i = this->_index;
     
     this->_contacts[i].setFirstName(firstName);
@@ -115,7 +116,7 @@ void PhoneBook::displayContact(int i) const{
     std::cout << "Darkest Secret: " << this->_contacts[i].getSecret() << std::endl;
 }
 
-void PhoneBook::search(){ 
+void PhoneBook::search() const{ 
     displayPhoneBook();
     std::cout << "Contact numbers: " << this->_nbContacts << std::endl;
     int i;

@@ -6,17 +6,22 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:37:39 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/25 11:56:42 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/25 15:48:19 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-
+void signalHandler( int signum ) {
+   std::cout << "Interrupt signal (" << signum << ") received.\n";
+   exit(signum);  
+}
 
 int main(){
     
     PhoneBook       phb;
     std::string    input;
+
+    signal(SIGQUIT, signalHandler);  // ctrl + \
 
     std::cout << "+----------+----------+----------+----------+" << std::endl;
 	std::cout << "|     Welcome to My Awesome PhoneBook...    |" << std::endl;
