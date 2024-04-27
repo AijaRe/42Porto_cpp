@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:19:39 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/25 16:49:23 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/27 12:47:04 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,14 @@ int	Account::getNbWithdrawals(void){
 }
 
 void	Account::_displayTimestamp( void ){
-	
+	char timestamp[50];
+	// Get current time
+    time_t currentTime = time(NULL);
+    // Convert time to struct tm
+    struct tm *localTime = localtime(&currentTime);
+	//Format time as string
+	std::strftime(timestamp, sizeof(timestamp), "[%Y%m%d_%H%M%S] ", localTime);
+	std::cout << timestamp;
 }
 
 void	Account::displayAccountsInfos( void ){
