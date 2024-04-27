@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:16:46 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/25 15:25:27 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/27 10:52:59 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define PHONEBOOK_HPP
 
 #include "Contact.hpp"
-#include <cctype> //isdigit
+#include <cctype> //std::isdigit
+#include <limits> //std::numeric_limits
+#include <sstream> //std::stoi
 
 class PhoneBook{
     private:

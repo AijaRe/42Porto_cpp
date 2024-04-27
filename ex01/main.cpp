@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:37:39 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/25 15:48:19 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/27 09:37:28 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(){
     PhoneBook       phb;
     std::string    input;
 
-    signal(SIGQUIT, signalHandler);  // ctrl + \
+    signal(SIGQUIT, signalHandler);  /* ctrl + \ */
 
     std::cout << "+----------+----------+----------+----------+" << std::endl;
 	std::cout << "|     Welcome to My Awesome PhoneBook...    |" << std::endl;
@@ -29,7 +29,7 @@ int main(){
     
     do {
         std::cout << "Choose an option > ADD - SEARCH - EXIT " << std::endl;
-        std::cin >> input;
+        std::getline(std::cin, input);
         if (input == "ADD")
             phb.addContact();
         else if (input == "SEARCH")
