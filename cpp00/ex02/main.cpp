@@ -6,4 +6,6 @@ int main(){
 	Account::displayAccountsInfos();
 	Account b(200);
 	Account::displayAccountsInfos();
+	a.makeDeposit(1000);
+	a.displayStatus();
 }

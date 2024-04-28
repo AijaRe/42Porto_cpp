@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:19:39 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/28 19:08:42 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/28 19:24:28 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ Account::Account(void){
 
 Account::Account(int initial_deposit){
 	_displayTimestamp();
-	_accountIndex = _nbAccounts;
-	_amount = initial_deposit;
+	this->_accountIndex = _nbAccounts;
+	this->_amount = initial_deposit;
 	_totalAmount += initial_deposit;
-	_nbDeposits = 0;
-	_nbWithdrawals = 0;
+	this->_nbDeposits = 0;
+	this->_nbWithdrawals = 0;
 	_nbAccounts++;
 	std::cout << "index:" << _accountIndex << ";";
 	std::cout << "amount:" << _amount << ";";
@@ -80,10 +80,22 @@ void	Account::displayAccountsInfos( void ){
 	std::cout << "withdrawals:" << _totalNbWithdrawals << std::endl;
 }
 
-/* void	Account::makeDeposit( int deposit ){
+void	Account::makeDeposit( int deposit ){
+	int p_amount = this->_amount;
+	this->_amount += deposit;
+	_totalAmount += deposit;
+	this->_nbDeposits++;
+	_totalNbDeposits++;
+
+	_displayTimestamp();
+	std::cout << "index:" << _accountIndex << ";";
+	std::cout << "p_amount:" << p_amount << ";";
+	std::cout << "deposit:" << deposit << ";";
+	std::cout << "amount:" << _amount << ";";
+	std::cout << "nb_deposits:" << _nbDeposits << std::endl;
 }
 
-bool	Account::makeWithdrawal( int withdrawal ){
+/*bool	Account::makeWithdrawal( int withdrawal ){
 } */
 
 int		Account::checkAmount( void ) const{
