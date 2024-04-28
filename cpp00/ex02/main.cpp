@@ -8,4 +8,6 @@ int main(){
 	Account::displayAccountsInfos();
 	a.makeDeposit(1000);
 	a.displayStatus();
+	a.makeWithdrawal(500);
+	a.displayStatus();
 }
