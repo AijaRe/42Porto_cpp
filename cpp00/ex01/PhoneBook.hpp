@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:16:46 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/27 10:52:59 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/28 18:50:07 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef PHONEBOOK_H
+# define PHONEBOOK_H
 
 #include "Contact.hpp"
 #include <cctype> //std::isdigit

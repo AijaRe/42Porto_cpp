@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 12:38:58 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/25 15:32:56 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/28 18:52:02 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#ifndef CONTACT_H
+# define CONTACT_H
 
 #include <iostream>
 #include <cstdlib> //exit
-#include <csignal> // For signal handling
-#include <string>
-#include <iomanip>
+#include <csignal> //signal handling
+#include <string> //find_first_not_of
+#include <iomanip> //setw
 
 class Contact{
     private:
