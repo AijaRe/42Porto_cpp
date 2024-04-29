@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+         #
+#    By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/19 19:57:33 by arepsa            #+#    #+#              #
-#    Updated: 2024/04/28 18:53:19 by arepsa           ###   ########.fr        #
+#    Updated: 2024/04/29 18:36:18 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ RM = rm -rf
 CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -fsanitize=address
 
 NAME 		= account
-FILES 		= Account main
+FILES 		= Account tests
 SRC 		= $(addsuffix .cpp, $(FILES))
 OBJ 		= $(addsuffix .o, $(FILES))
 

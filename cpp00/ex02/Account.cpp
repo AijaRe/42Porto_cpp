@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:19:39 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/28 19:36:42 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/29 18:50:10 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,10 @@ Account::Account(void){
 	return;
 }
 
-Account::Account(int initial_deposit){
+Account::Account(int initial_deposit) : _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0){
 	_displayTimestamp();
 	this->_accountIndex = _nbAccounts;
-	this->_amount = initial_deposit;
 	_totalAmount += initial_deposit;
-	this->_nbDeposits = 0;
-	this->_nbWithdrawals = 0;
 	_nbAccounts++;
 	std::cout << "index:" << _accountIndex << ";";
 	std::cout << "amount:" << _amount << ";";
@@ -125,4 +122,3 @@ void	Account::displayStatus( void ) const{
 	std::cout << "deposits:" << _nbDeposits << ";";
 	std::cout << "withdrawals:" << _nbWithdrawals << std::endl;
 }
-	
