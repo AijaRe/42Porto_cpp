@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:16:32 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/27 11:54:00 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/04/29 18:32:58 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,17 @@ void PhoneBook::setContactData(const std::string& firstName, const std::string& 
 
 void PhoneBook::addContact(){
 	std::string firstName, lastName, nickname, phoneNb, secret;
+	bool allFieldsSet = false;
 
 	do {
-		std::cout << "Your name: ";
+		std::cout << "First name: ";
 		if (!(std::getline(std::cin, firstName))) break;
-		std::cout << "Your last name: ";
+		std::cout << "Last name: ";
 		if (!(std::getline(std::cin, lastName))) break;
-		std::cout << "Your nickname: ";
+		std::cout << "Nickname: ";
 		if (!(std::getline(std::cin, nickname))) break;
 		do {
-			std::cout << "Your phone number: ";
+			std::cout << "Phone number: ";
 			if (!(std::getline(std::cin, phoneNb))) break;
 			if (is_valid_number(phoneNb))
 				break;
@@ -71,7 +72,13 @@ void PhoneBook::addContact(){
 		} while (!is_valid_number(phoneNb));
 		std::cout << "Tell me your darkest secret: ";
 		if (!(std::getline(std::cin, secret))) break;
-	} while (firstName.empty() || lastName.empty() || nickname.empty() || phoneNb.empty() || secret.empty());
+		if (firstName.empty() || lastName.empty() || nickname.empty() || phoneNb.empty() || secret.empty()) {
+			std::cout << "Contact not saved because one or more fields were empty. Try again!" << std::endl;
+		}
+		else {
+			allFieldsSet = true;
+		}
+	} while (!allFieldsSet);
 
 	if (std::cin.eof()){
 		exit(130);
@@ -92,11 +99,6 @@ void    PhoneBook::displayPhoneBook() const{
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
 	std::cout << "|   Index  |First Name| Last Name| Nickname |" << std::endl;
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
-	if (this->_nbContacts == 0)
-	{
-		std::cout << "No contacts saved yet." << std::endl;
-		return;
-	}
 	for (int i = 0; i < this->_nbContacts; i++)
 	{
 		std::cout << '|' << std::right << std::setw(10) << i + 1 << '|' \
@@ -119,8 +121,13 @@ void PhoneBook::displayContact(int i) const{
 }
 
 void PhoneBook::search() const{ 
+	if (this->_nbContacts == 0)
+	{
+		std::cout << "No contacts saved yet." << std::endl;
+		return;
+	}
+	
 	displayPhoneBook();
-	std::cout << "Contact numbers: " << this->_nbContacts << std::endl;
 	std::string input;
 	int i = 0;
 	do {
