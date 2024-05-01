@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:16:32 by arepsa            #+#    #+#             */
-/*   Updated: 2024/05/01 12:20:29 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/05/01 12:48:31 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static bool  is_valid_number(std::string& number){
 }
 
 //trim whitespace from both ends of the string
-std::string trimWhitespace(const std::string& str) {
-	const std::string whitespace = " /n/t";
+static std::string trimWhitespace(const std::string& str) {
+	const std::string whitespace = " \n\t";
     size_t first = str.find_first_not_of(whitespace);
     if (std::string::npos == first) {
         return "";

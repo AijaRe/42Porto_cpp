@@ -6,11 +6,12 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:37:39 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/27 09:37:28 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/05/01 12:59:53 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+
 void signalHandler( int signum ) {
    std::cout << "Interrupt signal (" << signum << ") received.\n";
    exit(signum);  
