@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:16:32 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/29 18:32:58 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/05/01 12:20:29 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,22 @@ static bool  is_valid_number(std::string& number){
 	if (number.length() < 3 || number.length() > 20)
 		return false;
 	for (size_t i = 0; i < number.length(); i++) {
-		if (number[i] == ' ') {
-			continue;
-		}
 		if (!std::isdigit(number[i])) {
 			return false; 
 		}
 	}
 	return true; 
+}
+
+//trim whitespace from both ends of the string
+std::string trimWhitespace(const std::string& str) {
+	const std::string whitespace = " /n/t";
+    size_t first = str.find_first_not_of(whitespace);
+    if (std::string::npos == first) {
+        return "";
+    }
+    size_t last = str.find_last_not_of(whitespace);
+    return str.substr(first, (last - first + 1));
 }
 
 void PhoneBook::setContactData(const std::string& firstName, const std::string& lastName, \
@@ -59,10 +67,13 @@ void PhoneBook::addContact(){
 	do {
 		std::cout << "First name: ";
 		if (!(std::getline(std::cin, firstName))) break;
+		firstName = trimWhitespace(firstName);
 		std::cout << "Last name: ";
 		if (!(std::getline(std::cin, lastName))) break;
+		lastName = trimWhitespace(lastName);
 		std::cout << "Nickname: ";
 		if (!(std::getline(std::cin, nickname))) break;
+		nickname = trimWhitespace(nickname);
 		do {
 			std::cout << "Phone number: ";
 			if (!(std::getline(std::cin, phoneNb))) break;
@@ -72,6 +83,7 @@ void PhoneBook::addContact(){
 		} while (!is_valid_number(phoneNb));
 		std::cout << "Tell me your darkest secret: ";
 		if (!(std::getline(std::cin, secret))) break;
+		secret = trimWhitespace(secret);
 		if (firstName.empty() || lastName.empty() || nickname.empty() || phoneNb.empty() || secret.empty()) {
 			std::cout << "Contact not saved because one or more fields were empty. Try again!" << std::endl;
 		}
