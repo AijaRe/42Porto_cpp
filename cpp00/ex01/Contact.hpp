@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 12:38:58 by arepsa            #+#    #+#             */
-/*   Updated: 2024/04/28 18:52:02 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/05/01 13:27:30 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ class Contact{
     public:
         Contact();
         ~Contact();
-        void setFirstName(std::string firstName);
-        void setLastName(std::string lastName);
-        void setNickname(std::string nickname);
-        void setPhoneNb(std::string phoneNb);
-        void setSecret(std::string secret);
-        const std::string getFirstName(void) const;
-        const std::string getLastName(void) const;
-        const std::string getNickname(void) const;
-        const std::string getPhoneNb(void) const;
-        const std::string getSecret(void) const;
+        void    setFirstName(std::string firstName);
+        void    setLastName(std::string lastName);
+        void    setNickname(std::string nickname);
+        void    setPhoneNb(std::string phoneNb);
+        void    setSecret(std::string secret);
+        const   std::string getFirstName(void) const;
+        const   std::string getLastName(void) const;
+        const   std::string getNickname(void) const;
+        const   std::string getPhoneNb(void) const;
+        const   std::string getSecret(void) const;
 };
 
 #endif

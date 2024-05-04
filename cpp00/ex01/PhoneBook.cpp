@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 11:16:32 by arepsa            #+#    #+#             */
-/*   Updated: 2024/05/01 12:48:31 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/05/01 13:29:55 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ PhoneBook::~PhoneBook(void){
 	return ;
 }
 
-static bool  is_valid_number(std::string& number){
+//only digits and between 3 and 20 long 
+static bool	is_valid_number(std::string& number){
 	if (number.length() < 3 || number.length() > 20)
 		return false;
 	for (size_t i = 0; i < number.length(); i++) {
@@ -34,7 +35,7 @@ static bool  is_valid_number(std::string& number){
 }
 
 //trim whitespace from both ends of the string
-static std::string trimWhitespace(const std::string& str) {
+static std::string	trimWhitespace(const std::string& str) {
 	const std::string whitespace = " \n\t";
     size_t first = str.find_first_not_of(whitespace);
     if (std::string::npos == first) {
@@ -44,7 +45,7 @@ static std::string trimWhitespace(const std::string& str) {
     return str.substr(first, (last - first + 1));
 }
 
-void PhoneBook::setContactData(const std::string& firstName, const std::string& lastName, \
+void	PhoneBook::setContactData(const std::string& firstName, const std::string& lastName, \
 	const std::string& nickname, const std::string& phoneNb, const std::string& secret){
 	int i = this->_index;
 	
@@ -56,11 +57,11 @@ void PhoneBook::setContactData(const std::string& firstName, const std::string& 
 	
 	this->_index = (i + 1) % 8;
 
-	if (this->_nbContacts < 8)
-		this->_nbContacts++;
+	if (_nbContacts < 8)
+		_nbContacts++;
 }
 
-void PhoneBook::addContact(){
+void	PhoneBook::addContact(){
 	std::string firstName, lastName, nickname, phoneNb, secret;
 	bool allFieldsSet = false;
 
@@ -120,7 +121,7 @@ void    PhoneBook::displayPhoneBook() const{
 	}
 }
 
-void PhoneBook::displayContact(int i) const{
+void	PhoneBook::displayContact(int i) const{
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
 	std::cout << "|   Contact information for selected index  |" << std::endl;
 	std::cout << "+----------+----------+----------+----------+" << std::endl;
@@ -132,7 +133,7 @@ void PhoneBook::displayContact(int i) const{
 	std::cout << "Darkest Secret: " << this->_contacts[i].getSecret() << std::endl;
 }
 
-void PhoneBook::search() const{ 
+void	PhoneBook::search() const{ 
 	if (this->_nbContacts == 0)
 	{
 		std::cout << "No contacts saved yet." << std::endl;
