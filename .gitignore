@@ -1,5 +1,7 @@
 *.out
 *.o
+.vscode
 megaphone
 phonebook
 zombie
+zombieHorde

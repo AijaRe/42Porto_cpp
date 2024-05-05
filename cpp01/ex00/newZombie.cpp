@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 12:40:55 by arepsa            #+#    #+#             */
-/*   Updated: 2024/05/04 17:00:58 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/05/05 17:48:12 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 Zombie* newZombie(std:: string name){
     Zombie *newZombie = NULL;
     
-    newZombie = new Zombie();
+    newZombie = new Zombie(name);
     if (!newZombie)
         std::cout << "Zombie memory allocation failed." << std::endl;
-    newZombie->setName(name);
     return newZombie;
 }

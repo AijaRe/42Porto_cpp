@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 12:39:08 by arepsa            #+#    #+#             */
-/*   Updated: 2024/05/05 17:50:10 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/05/05 18:28:51 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@ class Zombie
 {
     private:
         std::string name;
+        int index;
 
     public:
         Zombie(void);
-        Zombie(std::string name);
         ~Zombie(void);
+        void    setName(std::string name);
+        void    setIndex(int index);
         void    announce(void);
 };
-Zombie* newZombie(std:: string name);
-void    randomChump(std::string name);
+Zombie* zombieHorde( int N, std::string name );
 
 #endif // ZOMBIE_HPP
