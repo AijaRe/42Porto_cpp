@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/04 12:38:45 by arepsa            #+#    #+#              #
-#    Updated: 2024/05/11 09:57:03 by arepsa           ###   ########.fr        #
+#    Created: 2024/05/11 12:37:39 by arepsa            #+#    #+#              #
+#    Updated: 2024/05/11 12:37:54 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ RM = rm -rf
 
 CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -fsanitize=address
 
-NAME 		= zombie
-FILES 		= main Zombie newZombie randomChump
+NAME 		= harl
+FILES 		= main
 SRC 		= $(addsuffix .cpp, $(FILES))
 OBJ 		= $(addsuffix .o, $(FILES))
 

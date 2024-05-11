@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/07 18:57:59 by arepsa            #+#    #+#             */
-/*   Updated: 2024/05/09 18:25:35 by arepsa           ###   ########.fr       */
+/*   Created: 2024/05/11 12:39:56 by arepsa            #+#    #+#             */
+/*   Updated: 2024/05/11 12:50:30 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "Harl.hpp"
 
-Weapon::Weapon(void) {
-    return ;
+Harl::Harl( void ) {
+    std::cout << "Harl default constructor called." << std::endl;
 }
 
-Weapon::Weapon(std::string type) : _type(type) {
-    return ;  
+Harl::~Harl( void ) {
+    std::cout << "Harl destructor called." << std::endl;
 }
 
-Weapon::~Weapon(void) {
-    return ;
-}
-
-void    Weapon::setType(std::string type){
-    this->_type = type;
-}
-
-const std::string&  Weapon::getType(void) const {
-    return this->_type;
-}

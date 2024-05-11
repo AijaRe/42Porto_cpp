@@ -21,9 +21,9 @@ class $className {
 private:
     // Private members
 public:
-    $className();
+    $className(void);
     $className(const $className & src);
-    ~$className();
+    ~$className(void);
     $className & operator=(const $className & src);
 };
 
@@ -33,7 +33,7 @@ EOF
 cat > "$cppFileName" <<EOF
 #include "$className.hpp"
 
-$className::$className() {
+$className::$className(void) {
     std::cout << "$className default constructor called." << std::endl;
 }
 
@@ -42,7 +42,7 @@ $className::$className(const $className & src) {
     *this = src;
 }
 
-$className::~$className() {
+$className::~$className(void) {
     std::cout << "$className destructor called." << std::endl;
 }
 

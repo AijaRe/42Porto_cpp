@@ -14,6 +14,11 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
+/* 
+** HumanA takes the Weapon in its constructor, HumanB doesn’t.
+** HumanA will always be armed (can use reference to a weapon). 
+** HumanB may not always have a Weapon (needs pointer to a weapon).
+*/
 int	main(void){
 	{
 		Weapon club = Weapon("crude spiked club");

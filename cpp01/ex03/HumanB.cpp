@@ -2,11 +2,11 @@
 #include "Weapon.hpp"
 
 HumanB::HumanB(std::string name) : _name(name), _weapon(NULL) {
-    std::cout << "HumanB default constructor called." << std::endl;
+    return ;
 }
 
 HumanB::~HumanB(void) {
-    std::cout << "HumanB destructor called." << std::endl;
+    return ;
 }
 
 void    HumanB::setWeapon(Weapon& weapon){
