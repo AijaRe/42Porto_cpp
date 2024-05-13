@@ -6,7 +6,7 @@
 #    By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/11 12:37:39 by arepsa            #+#    #+#              #
-#    Updated: 2024/05/11 12:37:54 by arepsa           ###   ########.fr        #
+#    Updated: 2024/05/13 20:35:54 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ RM = rm -rf
 CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -fsanitize=address
 
 NAME 		= harl
-FILES 		= main
+FILES 		= main Harl
 SRC 		= $(addsuffix .cpp, $(FILES))
 OBJ 		= $(addsuffix .o, $(FILES))
 
