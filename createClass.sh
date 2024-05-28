@@ -21,10 +21,10 @@ class $className {
 private:
     // Private members
 public:
-    $className(void);
-    $className(const $className & src);
-    ~$className(void);
-    $className & operator=(const $className & src);
+    $className( void );
+    $className( const $className &src );
+    ~$className( void );
+    $className & operator=( const $className &src );
 };
 
 #endif // ${className^^}_HPP
@@ -33,20 +33,20 @@ EOF
 cat > "$cppFileName" <<EOF
 #include "$className.hpp"
 
-$className::$className(void) {
+$className::$className( void ) {
     std::cout << "$className default constructor called." << std::endl;
 }
 
-$className::$className(const $className & src) {
+$className::$className( const $className &src ) {
     std::cout << "$className copy constructor called." << std::endl;
     *this = src;
 }
 
-$className::~$className(void) {
+$className::~$className( void ) {
     std::cout << "$className destructor called." << std::endl;
 }
 
-$className & $className::operator=(const $className & src) {
+$className & $className::operator=( const $className &src ) {
     if (this != &src) {
         // Implement assignment
     }

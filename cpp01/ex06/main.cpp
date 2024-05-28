@@ -12,35 +12,17 @@
 
 #include "Harl.hpp"
 
-void	basic_tests ( void ) {
-	Harl harl;
-	std::cout << "DEBUG level: " << std::endl;
-	harl.complain("DEBUG");
-	std::cout << "INFO level: " << std::endl;
-	harl.complain("INFO");
-	std::cout << "WARNING level: " << std::endl;
-	harl.complain("WARNING");
-	std::cout << "ERROR level: " << std::endl;
-	harl.complain("ERROR");
-}
-
-void	user_test ( char* argv){
-	Harl harl;
-	std::string level = argv;
-	for (size_t i = 0; i < level.length(); i++)
-		level[i] = toupper(level[i]);
-	harl.complain(level);
-}
-
 int		main( int argc, char** argv ) {
-	if (argc == 1){
-		std::cout << "Basic tests.\nYou can try specific test with ./harl <complaint_level>" << std::endl;
-		basic_tests();
+	if (argc == 2){
+		Harl harl;
+
+		std::string level = argv[1];
+		for (size_t i = 0; i < level.length(); i++)
+			level[i] = toupper(level[i]);
+		harl.filter(level);
 	}
-	else if (argc == 2)
-		user_test (argv[1]);
 	else
-		std::cout << "Too many arguments.\nCorrect usage: ./harl" << std::endl;
+		std::cout << "Wrong number of arguments\nCorrect usage: ./harl <complaint_level>" << std::endl;
 
 	return 0;
 }

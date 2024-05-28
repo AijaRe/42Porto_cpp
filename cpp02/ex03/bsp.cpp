@@ -12,7 +12,9 @@
 
 #include "Point.hpp"
 
-// Function to calculate cross product of vectors AB and AP
+/*
+** Function to calculate cross product of vectors AB and AP 
+*/
 static Fixed crossProduct(const Point &A, const Point &B, const Point &P) {
     Fixed ABx = B.getX() - A.getX();
     Fixed ABy = B.getY() - A.getY();
@@ -21,31 +23,11 @@ static Fixed crossProduct(const Point &A, const Point &B, const Point &P) {
     return ABx * APy - ABy * APx;
 }
 
-/* // Function to calculate dot product of vectors AB and AP
-static Fixed dotProduct(const Point &A, const Point &B, const Point &P) {
-    Fixed ABx = B.getX() - A.getX();
-    Fixed ABy = B.getY() - A.getY();
-    Fixed APx = P.getX() - A.getX();
-    Fixed APy = P.getY() - A.getY();
-    return ABx * APx + ABy * APy;
-} */
-
-/* static bool    is_vertex(Point const &a, Point const &b, Point const &c, Point const &p)
-{
-    bool    ap = (a.getX() == p.getX() && a.getY() == p.getY());
-    bool    bp = (b.getX() == p.getX() && b.getY() == p.getY());
-    bool    cp = (c.getX() == p.getX() && c.getY() == p.getY());
-    
-    if (ap || bp || cp){
-        std::cout << "IS VERTEX" << std::endl;
-        return true;
-    }
-    return false;
-} */
-
 /* 
 ** For each edge, check if the cross product is zero (indicating collinearity - three points on the same line) 
-** and if the point lies within the bounds of the edge (line segment) using the dot product.
+** and if the point lies within the bounds of the line segment using the dot product.
+** Positive dot product - vectors are the same direction
+** dot product of same length vectors == square length of a vector
 */
 static bool    is_on_edge( Fixed const &cp,  Point const &A, Point const &B, Point const &point ){
     // Check if cross product is zero, indicating collinearity
@@ -59,15 +41,18 @@ static bool    is_on_edge( Fixed const &cp,  Point const &A, Point const &B, Poi
         // Calculate dot product of AP and AB
         Fixed dotProduct = APx * ABx + APy * ABy;
 
-        // Check if point lies within the line segment AB
+        // Check if point lies within the line segment AB 
         if (dotProduct >= Fixed(0) && dotProduct <= ABx * ABx + ABy * ABy) {
-            return true; // Point lies on line segment AB
+            return true;
         }
     }
     return false; // Point is not on the edge
 }
 
-
+/*
+** cross product is either positive or negative, depending on the plane
+** all cross products with the same signs mean the planes overlap
+*/
 bool bsp( Point const a, Point const b, Point const c, Point const point){
 	Fixed cp1 = crossProduct(a, b, point);
     Fixed cp2 = crossProduct(b, c, point);
