@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/02 16:13:40 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/02 16:13:41 by arepsa           ###   ########.fr       */
+/*   Created: 2024/06/02 16:14:04 by arepsa            #+#    #+#             */
+/*   Updated: 2024/06/02 16:14:14 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-#define FRAGTRAP_HPP
+#ifndef DIAMONDTRAP_HPP
+#define DIAMONDTRAP_HPP
 
 #include <iostream>
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-class FragTrap : public ClapTrap{
+class DiamondTrap : public ScavTrap, public FragTrap{
 private:
-    // Private members
+    std::string _name;
 public:
-    FragTrap( void );
-    FragTrap( std::string name );
-    FragTrap( const FragTrap &src );
-    ~FragTrap( void );
-    FragTrap & operator=( const FragTrap &src );
+    DiamondTrap( void );
+    DiamondTrap( std::string name );
+    DiamondTrap( const DiamondTrap &src );
+    ~DiamondTrap( void );
+    DiamondTrap & operator=( const DiamondTrap &src );
 
-    void    highFivesGuys( void );
+    void    whoAmI( void );
 };
 
-std::ostream	&operator<<( std::ostream &out, const FragTrap &rhs);
-
-#endif // FRAGTRAP_HPP
+#endif // DIAMONDTRAP_HPP
