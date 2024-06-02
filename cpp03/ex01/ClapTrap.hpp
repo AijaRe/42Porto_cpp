@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 21:23:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/05/31 17:55:42 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/01 14:48:17 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 
 class ClapTrap {
-private:
+protected:
     std::string _name;
     unsigned int _hitPoints;
     unsigned int _energyPoints;

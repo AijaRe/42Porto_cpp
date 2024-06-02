@@ -11,41 +11,36 @@
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int	main ( void ) {
-	ClapTrap a("Asa");
-    ClapTrap b("Bob");
-    ClapTrap c = b;
+    ScavTrap z("Zaz");
+    std::cout << "-----AFTER INITIALIZING SCAVTRAP Z-----" << std::endl;
+    std::cout << z << std::endl;
 
-    std::cout << "AFTER INITIALIZING" << std::endl;
-    std::cout << a << std::endl;
-    std::cout << b << std::endl;
-    std::cout << c << std::endl;
+    std::cout << "-------COPY CONSTRUCTOR CHECK-------" << std::endl;
+    ScavTrap x(z);
+    std::cout << x << std::endl;
 
-    a.setAttackDamage(5);
-    a.attack("Bob");
-    b.takeDamage(5);
-    std::cout << "AFTER 1st ATTACK" << std::endl;
-    std::cout << a << std::endl;
-    std::cout << b << std::endl;
+    std::cout << "----ASSIGNMENT OPERATOR OVERLOAD CHECK----" << std::endl;
+    ScavTrap y;
+    std::cout << y << std::endl;
+    y = z;
+    std::cout << y << std::endl;
 
-    b.beRepaired(1);
-    std::cout << "b AFTER REPAIR" << std::endl;
-    std::cout << b << std::endl;
+    std::cout << "---------BASIC METHOD CHECK---------" << std::endl;
+    ScavTrap w("Wow");
+    w.attack("Zaz");
+    z.takeDamage(20);
+    std::cout << "AFTER ATTACK" << std::endl;
+    std::cout << w << std::endl;
+    std::cout << z << std::endl;
 
-    a.setAttackDamage(6);
-    a.attack("Bob");
-    b.takeDamage(6);
-    std::cout << "AFTER 2ND ATTACK (Bob should have 0 hit points)" << std::endl;
-    std::cout << a << std::endl;
-    std::cout << b << std::endl;
+    z.beRepaired(5);
+    std::cout << "z AFTER REPAIR" << std::endl;
+    std::cout << z << std::endl;
 
-    a.setAttackDamage(2);
-    a.attack("Bob");
-    b.takeDamage(2);
-    std::cout << "AFTER 3rd ATTACK (attacking a dead man)" << std::endl;
-    std::cout << a << std::endl;
-    std::cout << b << std::endl;
+    z.guardGate();
 
     return 0;
 }
