@@ -23,8 +23,8 @@ int	main ( void ) {
     std::cout << c << std::endl;
 
     a.setAttackDamage(5);
-    a.attack("Bob");
-    b.takeDamage(5);
+    a.attack(b.getName());
+    b.takeDamage(a.getAttackDamage());
     std::cout << "AFTER 1st ATTACK" << std::endl;
     std::cout << a << std::endl;
     std::cout << b << std::endl;
@@ -34,15 +34,15 @@ int	main ( void ) {
     std::cout << b << std::endl;
 
     a.setAttackDamage(6);
-    a.attack("Bob");
-    b.takeDamage(6);
+    a.attack(b.getName());
+    b.takeDamage(a.getAttackDamage());
     std::cout << "AFTER 2ND ATTACK (Bob should have 0 hit points)" << std::endl;
     std::cout << a << std::endl;
     std::cout << b << std::endl;
 
     a.setAttackDamage(2);
-    a.attack("Bob");
-    b.takeDamage(2);
+    a.attack(b.getName());
+    b.takeDamage(a.getAttackDamage());
     std::cout << "AFTER 3rd ATTACK (attacking a dead man)" << std::endl;
     std::cout << a << std::endl;
     std::cout << b << std::endl;

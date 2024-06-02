@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/02 15:31:31 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/02 15:31:32 by arepsa           ###   ########.fr       */
+/*   Created: 2024/06/02 15:32:40 by arepsa            #+#    #+#             */
+/*   Updated: 2024/06/02 15:37:56 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ ScavTrap & ScavTrap::operator=( const ScavTrap &src ) {
     if (this != &src) {
         ClapTrap::operator=(src);
     }
-    std::cout << "Copy assignment operator overload called." << std::endl;
+    std::cout << "ScavTrap Copy assignment operator overload called." << std::endl;
     return *this;
 }
 
