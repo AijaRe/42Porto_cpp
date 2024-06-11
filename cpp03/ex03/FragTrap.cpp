@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:14:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/02 16:14:02 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/03 19:22:56 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ FragTrap & FragTrap::operator=( const FragTrap &src ) {
     return *this;
 }
 
-std::ostream	&operator<<( std::ostream &out, const FragTrap &rhs){
+std::ostream	&operator<<( std::ostream &out, const FragTrap &rhs ){
     out << "------------------------------------" << std::endl;
     out << "ScavTrap " << rhs.getName() << std::endl;
 	out << "Hit Points: " << rhs.getHitPoints() << std::endl;

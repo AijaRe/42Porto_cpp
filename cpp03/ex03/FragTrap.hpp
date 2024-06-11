@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:13:56 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/02 16:13:57 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/05 17:40:20 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,14 @@
 #include <iostream>
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap{
+/* 
+** "virtual" keyword solves the "diamond problem" for multimple inheritance
+** third level class that inherits from two classes with the same parent
+** ends up inheriting only one instance of first level class 
+** unless explicitly stated otherwise 
+** "diamond problem" - inherit from base class multiple times
+*/
+class FragTrap : virtual public ClapTrap{
 private:
     // Private members
 public:
@@ -29,6 +36,6 @@ public:
     void    highFivesGuys( void );
 };
 
-std::ostream	&operator<<( std::ostream &out, const FragTrap &rhs);
+std::ostream	&operator<<( std::ostream &out, const FragTrap &rhs );
 
 #endif // FRAGTRAP_HPP

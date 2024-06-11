@@ -10,30 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int	main ( void ) {
-    std::cout << "-----FRAGTRAP CONSTRUCTOR AND SPECIAL CAPACITY-----" << std::endl;
-    FragTrap f("Fif");
-    std::cout << f << std::endl;
-    f.highFivesGuys();
-
-    ScavTrap s("Sas");
-
-    s.attack(f.getName());
-    f.takeDamage(s.getAttackDamage());
-    std::cout << "----------AFTER 1ST ATTACK----------" << std::endl;
-    std::cout << f << std::endl;
-    std::cout << s << std::endl;
-
-    f.beRepaired(10);
-    f.attack(s.getName());
-    s.takeDamage(f.getAttackDamage());
-    std::cout << "----------AFTER 2ND ATTACK----------" << std::endl;
-    std::cout << f << std::endl;
-    std::cout << s << std::endl;
+    std::cout << "-----DIAMONDTRAP INIT-----" << std::endl;
+    DiamondTrap s("Shine");
+    s.whoAmI();
 
 
     return 0;

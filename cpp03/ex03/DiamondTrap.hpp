@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:14:04 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/02 16:14:14 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/03 19:47:32 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,12 @@ public:
     ~DiamondTrap( void );
     DiamondTrap & operator=( const DiamondTrap &src );
 
-    void    whoAmI( void );
+    void        whoAmI( void );
+    std::string getDiamondName( void );
+
+    using   ScavTrap::attack;
 };
+
+std::ostream	&operator<<(std::ostream & out, const DiamondTrap &rhs );
 
 #endif // DIAMONDTRAP_HPP
