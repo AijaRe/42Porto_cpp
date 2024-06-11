@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:13:56 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/05 17:40:20 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/11 20:02:10 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@
 ** "diamond problem" - inherit from base class multiple times
 */
 class FragTrap : virtual public ClapTrap{
-private:
-    // Private members
-public:
-    FragTrap( void );
-    FragTrap( std::string name );
-    FragTrap( const FragTrap &src );
-    ~FragTrap( void );
-    FragTrap & operator=( const FragTrap &src );
+    private:
+        // Private members
+    public:
+        FragTrap( void );
+        FragTrap( std::string name );
+        FragTrap( const FragTrap &src );
+        ~FragTrap( void );
+        FragTrap & operator=( const FragTrap &src );
 
-    void    highFivesGuys( void );
+        void    highFivesGuys( void );
 };
 
 std::ostream	&operator<<( std::ostream &out, const FragTrap &rhs );
