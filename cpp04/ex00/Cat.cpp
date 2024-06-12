@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 20:00:35 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/11 21:54:50 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/12 19:58:57 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ Cat::~Cat( void ) {
 }
 
 Cat & Cat::operator=( const Cat &src ) {
+    std::cout << "Cat assignment operator called." << std::endl;
     if (this != &src) {
         Animal::operator=(src);
     }

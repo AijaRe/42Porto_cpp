@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 20:00:29 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/11 21:56:51 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/12 20:07:18 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ Dog::~Dog( void ) {
 }
 
 Dog & Dog::operator=( const Dog &src ) {
+     std::cout << "Dog assignment operator called." << std::endl;
     if (this != &src) {
        Animal::operator=(src);
     }

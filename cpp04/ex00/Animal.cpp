@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 20:00:41 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/11 21:46:03 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/12 21:13:14 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ Animal::~Animal( void ) {
 }
 
 Animal & Animal::operator=( const Animal &src ) {
+    std::cout << "Animal assignment operator called." << std::endl;
     if (this != &src) {
         this->_type = src._type;
     }
@@ -40,5 +41,5 @@ std::string    Animal::getType( void ) const {
 }
 
 void    Animal::makeSound( void ) const {
-    std::cout << "mhmhummm... (random beastie sound)" << std::endl;
+    std::cout << "nomnommm... (random beastie sound)" << std::endl;
 }

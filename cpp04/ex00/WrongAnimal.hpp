@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 20:00:32 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/12 19:59:04 by arepsa           ###   ########.fr       */
+/*   Created: 2024/06/12 20:58:14 by arepsa            #+#    #+#             */
+/*   Updated: 2024/06/12 21:24:39 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
-#include "Animal.hpp"
 #include <iostream>
 
-class Cat : public Animal{
+class WrongAnimal {
     private:
-        // Private members
+        std::string _type;
     public:
-        Cat( void );
-        Cat( const Cat &src );
-        ~Cat( void );
-        Cat & operator=( const Cat &src );
+        WrongAnimal( void );
+        WrongAnimal( std::string type );
+        WrongAnimal( const WrongAnimal &src );
+        virtual ~WrongAnimal( void );
+        WrongAnimal & operator=( const WrongAnimal &src );
 
-        void    makeSound( void ) const;
+        std::string     getType( void ) const;
+        virtual void    makeSound( void ) const;
 };
 
-#endif // CAT_HPP
+#endif // WRONGANIMAL_HPP

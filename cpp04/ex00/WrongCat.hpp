@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 20:00:32 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/12 19:59:04 by arepsa           ###   ########.fr       */
+/*   Created: 2024/06/12 20:58:21 by arepsa            #+#    #+#             */
+/*   Updated: 2024/06/12 21:27:11 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 #include <iostream>
 
-class Cat : public Animal{
+class WrongCat : public WrongAnimal {
     private:
         // Private members
     public:
-        Cat( void );
-        Cat( const Cat &src );
-        ~Cat( void );
-        Cat & operator=( const Cat &src );
+        WrongCat( void );
+        WrongCat( const WrongCat &src );
+        ~WrongCat( void );
+        WrongCat & operator=( const WrongCat &src );
 
-        void    makeSound( void ) const;
+        void        makeSound( void ) const;
 };
 
-#endif // CAT_HPP
+#endif // WRONGCAT_HPP

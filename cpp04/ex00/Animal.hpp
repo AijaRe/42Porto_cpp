@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 20:00:38 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/11 21:58:24 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/12 19:56:40 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 #include <iostream>
 
+/* 
+** for polymorphism to work correctly the base class 
+** needs to have virtual destructor 
+** to override a function in child class, you need to mark
+** the same base class function as virtual
+*/
 class Animal {
     protected:
         std::string _type;
