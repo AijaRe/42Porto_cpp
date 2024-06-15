@@ -1,0 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/12 20:58:14 by arepsa            #+#    #+#             */
+/*   Updated: 2024/06/12 21:24:39 by arepsa           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
+
+#include <iostream>
+
+class WrongAnimal {
+    private:
+        std::string _type;
+    public:
+        WrongAnimal( void );
+        WrongAnimal( std::string type );
+        WrongAnimal( const WrongAnimal &src );
+        virtual ~WrongAnimal( void );
+        WrongAnimal & operator=( const WrongAnimal &src );
+
+        std::string     getType( void ) const;
+        virtual void    makeSound( void ) const;
+};
+
+#endif // WRONGANIMAL_HPP
