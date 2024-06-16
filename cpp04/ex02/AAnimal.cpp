@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 20:00:41 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/15 21:26:18 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/16 15:48:44 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ std::string    AAnimal::getType( void ) const {
     return this->_type;
 }
 
-void    AAnimal::makeSound( void ) const {
+/* void    AAnimal::makeSound( void ) const {
     std::cout << "nomnommm... (random beastie sound)" << std::endl;
-}
+} */

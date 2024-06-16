@@ -5,31 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 20:47:29 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/11 20:47:29 by arepsa           ###   ########.fr       */
+/*   Created: 2024/06/16 15:57:51 by arepsa            #+#    #+#             */
+/*   Updated: 2024/06/16 15:57:51 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AAnimal.hpp"
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
-#include "Brain.hpp"
+#include "AMateria.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "ICharacter.hpp"
+#include <iostream>
 
-int	main( void ) {
-	const AAnimal* dog = new Dog();
-	const AAnimal* cat = new Cat();
 
-	//not possible to instantiate AAnimal
-	//AAnimal beastie;
-	//AAnimal* beastie = new AAnimal();
+int main() {
+	std::cout << "-----TEST ICE CLONE METHOD-----" << std::endl;
+    AMateria* m1 = new Ice();
+    AMateria* m2 = m1->clone(); // clone m1 to create a separate instance
+    std::cout << "Type of m1: " << m1->getType() << std::endl;
+    std::cout << "Type of m2: " << m2->getType() << std::endl;
 
-	dog->makeSound();
-	cat->makeSound();
+    delete m1;
+    delete m2;
 
-	delete dog;
-	delete cat;
-	
-	return 0;
+    return 0;
 }
