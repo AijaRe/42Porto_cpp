@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:43:53 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/16 16:57:08 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/17 17:51:49 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 #define AMATERIA_HPP
 
 #include <iostream>
+
+/* 
+** Forward declaration of ICharacter
+** there is a class named ICharacter that will be defined later. 
+** use when two classes are referencing each other
+** faster than including a headerfile
+*/
+class ICharacter;
 
 class AMateria {
     protected:
@@ -27,7 +35,7 @@ class AMateria {
 
         std::string const & getType( void ) const; //Returns the materia type
         virtual AMateria* clone( void ) const = 0;
-        //virtual void use(ICharacter& target);
+        virtual void use( ICharacter& target );
 };
 
 #endif // AMATERIA_HPP

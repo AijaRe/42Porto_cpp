@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:44:06 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/16 17:02:10 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/17 17:21:29 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Cure : public AMateria  {
         Cure & operator=( const Cure &src );
         
         AMateria*   clone( void ) const;
+        void use( ICharacter& target );
 };
 
 #endif // CURE_HPP

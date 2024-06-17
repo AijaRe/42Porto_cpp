@@ -6,11 +6,12 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:44:09 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/16 17:01:41 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/17 17:56:16 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
+#include "ICharacter.hpp"
 
 Ice::Ice( void ) : AMateria("ice") {
     std::cout << "Ice default constructor called." << std::endl;
@@ -24,11 +25,13 @@ Ice::~Ice( void ) {
     std::cout << "Ice destructor called." << std::endl;
 }
 
+/* 
+** any materia's type is set on inicialization
+** and does not change throughout lifecycle 
+*/
 Ice & Ice::operator=( const Ice &src ) {
     std::cout << "Ice assignment operator called." << std::endl;
-    if (this != &src) {
-       this->_type = src._type;
-    }
+    (void)src;
     return *this;
 }
 
@@ -37,4 +40,8 @@ Ice & Ice::operator=( const Ice &src ) {
 */
 AMateria*    Ice::clone( void ) const {
     return new Ice(*this);
+}
+
+void    Ice::use( ICharacter& target ) {
+    std::cout << "* shoots and ice bolt at " << target.getName() << " *" << std::endl;
 }

@@ -6,11 +6,12 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:44:03 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/16 17:03:04 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/17 17:56:03 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
+#include "ICharacter.hpp"
 
 Cure::Cure( void ) : AMateria("cure") {
     std::cout << "Cure default constructor called." << std::endl;
@@ -24,11 +25,13 @@ Cure::~Cure( void ) {
     std::cout << "Cure destructor called." << std::endl;
 }
 
+/* 
+** any materia's type is set on inicialization
+** and does not change throughout lifecycle 
+*/
 Cure & Cure::operator=( const Cure &src ) {
     std::cout << "Cure assignment operator called." << std::endl;
-    if (this != &src) {
-        this->_type = src._type;
-    }
+    (void)src;
     return *this;
 }
 
@@ -37,4 +40,8 @@ Cure & Cure::operator=( const Cure &src ) {
 */
 AMateria*    Cure::clone( void ) const {
     return new Cure(*this);
+}
+
+void    Cure::use( ICharacter& target ) {
+    std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }

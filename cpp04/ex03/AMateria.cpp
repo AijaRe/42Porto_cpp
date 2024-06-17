@@ -6,11 +6,12 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:43:50 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/16 16:43:49 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/17 17:54:12 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 AMateria::AMateria( void ) : _type("typeless") {
     std::cout << "AMateria default constructor called." << std::endl;
@@ -28,14 +29,21 @@ AMateria::~AMateria( void ) {
     std::cout << "AMateria destructor called." << std::endl;
 }
 
+/* 
+** While assigning a Materia to another,
+** copying the type doesn’t make sense. 
+** and since type is the only private attribute, do nothing.
+*/
 AMateria & AMateria::operator=( const AMateria &src ) {
     std::cout << "AMateria assignment operator called." << std::endl;
-    if(this != &src) {
-        this->_type = src._type;
-    }
+    (void)src;
     return *this;
 }
 
 std::string const & AMateria::getType( void ) const {
     return this->_type;
+}
+
+void    AMateria::use( ICharacter& target ) {
+    std::cout << "* " << this->_type << " used on " << target.getName() << " *" << std::endl;
 }
