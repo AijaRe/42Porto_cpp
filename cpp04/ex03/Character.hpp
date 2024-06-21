@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:43:59 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/17 19:07:50 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/20 19:52:02 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ class Character : public ICharacter {
     private:
         std::string _name;
         AMateria* _inventory[SLOTS];
+        AMateria** _droppedItems;
+        int _dropCount;
+        int _dropCapacity;
+        void    resizeDropArray( void );
     public:
         Character( void );
         Character( std::string name );
@@ -35,6 +39,9 @@ class Character : public ICharacter {
         void equip(AMateria* m);
         void unequip(int idx);
         void use(int idx, ICharacter& target);
+        AMateria* const * getInventory() const;
 };
+
+std::ostream	&operator<<( std::ostream &out, const Character &rhs);
 
 #endif // CHARACTER_HPP
