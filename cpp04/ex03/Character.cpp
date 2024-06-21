@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:43:56 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/20 20:14:14 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/21 16:54:53 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,25 @@ void    Character::equip( AMateria* m ) {
             this->_inventory[i] = m;
             std::cout << this->_name << " equiping " << m->getType() << std::endl;
             m = NULL; // ownership is transferred to _inventory
-            break ;
+            return ;
         }
     }
+    // Inventory is full, add to dropped items
+    if (m) {
+        resizeDropArray();
+        _droppedItems[_dropCount++] = m;
+        std::cout << this->_name << " slots full. Dropping " << m->getType() << std::endl;
+        m = NULL;
+    }   
 }
 
 void    Character::unequip( int idx ) {
     if (idx >= 0 && idx < SLOTS && this->_inventory[idx]) {
         if (this->_dropCount >= this->_dropCapacity) {
             resizeDropArray();
-             _droppedItems[_dropCount++] = _inventory[idx];
         }
+        _droppedItems[_dropCount++] = _inventory[idx];
+        std::cout << this->_name << " dropping " << _inventory[idx]->getType() << std::endl;
         this->_inventory[idx] = NULL;
     }
 }
@@ -126,7 +134,7 @@ void    Character::resizeDropArray( void ) {
     } else {
         _dropCapacity *= 2;
         AMateria** newArray = new AMateria*[_dropCapacity];
-        for (int i = 0; i < _dropCount; ++i) {
+        for (int i = 0; i < _dropCount; i++) {
             newArray[i] = _droppedItems[i];
         }
         delete[] _droppedItems;

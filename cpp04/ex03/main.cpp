@@ -45,11 +45,14 @@ int main() {
     std::cout << bob << std::endl;
     bob.equip(c3);
     bob.equip(c4);
-    //bob.equip(m3);
+    bob.equip(m3);
     std::cout << bob << std::endl;
     bob.unequip(2);
     std::cout << bob << std::endl;
 
-    delete m3;
+    Character ana("Ana");
+    ana.unequip(2);
+    std::cout << ana << std::endl;
+    //delete m3;
     return 0;
 }
