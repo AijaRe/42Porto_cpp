@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:43:59 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/21 16:38:13 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/21 17:56:35 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 #include <iostream>
 #include "ICharacter.hpp"
 
-#define SLOTS 4
+#define INVENTORY_SLOTS 4
 
 class AMateria;
 
 class Character : public ICharacter {
     private:
         std::string _name;
-        AMateria* _inventory[SLOTS];
+        AMateria* _inventory[INVENTORY_SLOTS];
         AMateria** _droppedItems;
         int _dropCount;
         int _dropCapacity;

@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:44:09 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/17 17:56:16 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/21 17:34:38 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ AMateria*    Ice::clone( void ) const {
 }
 
 void    Ice::use( ICharacter& target ) {
-    std::cout << "* shoots and ice bolt at " << target.getName() << " *" << std::endl;
+    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

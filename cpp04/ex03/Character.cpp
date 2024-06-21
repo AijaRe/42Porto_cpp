@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:43:56 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/21 16:54:53 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/21 17:57:18 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Character::Character( std::string name ) : _name(name), _inventory(), _droppedIt
 
 Character::Character( const Character &src ) : _name(src._name), _dropCount(src._dropCount), _dropCapacity(src._dropCapacity) {
     std::cout << "Character copy constructor called." << std::endl;
-    for (int i = 0; i < SLOTS; ++i) {
+    for (int i = 0; i < INVENTORY_SLOTS; ++i) {
         if (src._inventory[i])
             this->_inventory[i] = src._inventory[i]->clone();
         else
@@ -40,7 +40,7 @@ Character::Character( const Character &src ) : _name(src._name), _dropCount(src.
 
 Character::~Character( void ) {
     std::cout << "Character destructor called." << std::endl;
-    for (int i = 0; i < SLOTS; ++i) {
+    for (int i = 0; i < INVENTORY_SLOTS; ++i) {
         if (this->_inventory[i])
             delete this->_inventory[i];
     }
@@ -55,7 +55,7 @@ Character & Character::operator=( const Character &src ) {
     if (this != &src) {
         if (this->_name != src._name)
             this->_name = src._name;
-        for (int i = 0; i < SLOTS; ++i) {
+        for (int i = 0; i < INVENTORY_SLOTS; ++i) {
             if (this->_inventory[i])
                 delete this->_inventory[i];
             if (src._inventory[i])
@@ -83,7 +83,7 @@ std::string const & Character::getName( void ) const {
 }
 
 void    Character::equip( AMateria* m ) {
-    for (int i = 0; i < SLOTS; i++) {
+    for (int i = 0; i < INVENTORY_SLOTS; i++) {
         if(!this->_inventory[i]) {
             this->_inventory[i] = m;
             std::cout << this->_name << " equiping " << m->getType() << std::endl;
@@ -95,13 +95,13 @@ void    Character::equip( AMateria* m ) {
     if (m) {
         resizeDropArray();
         _droppedItems[_dropCount++] = m;
-        std::cout << this->_name << " slots full. Dropping " << m->getType() << std::endl;
+        std::cout << this->_name << " Slots full. Dropping " << m->getType() << std::endl;
         m = NULL;
     }   
 }
 
 void    Character::unequip( int idx ) {
-    if (idx >= 0 && idx < SLOTS && this->_inventory[idx]) {
+    if (idx >= 0 && idx < INVENTORY_SLOTS && this->_inventory[idx]) {
         if (this->_dropCount >= this->_dropCapacity) {
             resizeDropArray();
         }
@@ -112,7 +112,7 @@ void    Character::unequip( int idx ) {
 }
 
 void    Character::use( int idx, ICharacter& target ) {
-    if (idx >= 0 && idx < SLOTS && _inventory[idx]) {
+    if (idx >= 0 && idx < INVENTORY_SLOTS && _inventory[idx]) {
         _inventory[idx]->use(target);
         std::cout << "Using " << _inventory[idx]->getType();
         std::cout << " on " << target.getName() << std::endl;
@@ -145,7 +145,7 @@ void    Character::resizeDropArray( void ) {
 std::ostream	&operator<<( std::ostream &out, const Character &rhs){
     out << "------------------------------------" << std::endl;
     out << "Character " << rhs.getName() << std::endl;
-	for (int i = 0; i < SLOTS; ++i) {
+	for (int i = 0; i < INVENTORY_SLOTS; ++i) {
         if (rhs.getInventory()[i]) {
             out << "  Slot " << i << ": " << rhs.getInventory()[i]->getType() << "\n";
         } else {

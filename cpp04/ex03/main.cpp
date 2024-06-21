@@ -45,14 +45,27 @@ int main() {
     std::cout << bob << std::endl;
     bob.equip(c3);
     bob.equip(c4);
+    std::cout << "\n-----TEST EQUIPPING FULL SLOTS-----" << std::endl;
     bob.equip(m3);
     std::cout << bob << std::endl;
     bob.unequip(2);
     std::cout << bob << std::endl;
 
+    std::cout << "\n-----TEST UNEQUIP EMPTY SLOT-----" << std::endl;
     Character ana("Ana");
     ana.unequip(2);
     std::cout << ana << std::endl;
-    //delete m3;
+
+    std::cout << "\n-----TEST USE METHOD WITH EMPTY SLOT-----" << std::endl;
+    bob.use(2, ana);
+    std::cout << "\n-----TEST USE METHOD WITH MATERIA-----" << std::endl;
+    bob.use(1, ana);
+
+    std::cout << "\n-----TEST CHARACTER DEEP COPY-----" << std::endl;
+    std::cout << bob << std::endl;
+    ana = bob;
+    std::cout << ana << std::endl;
+
+    std::cout << "\n-----END OF TESTS, LET'S DESTROY...-----" << std::endl;
     return 0;
 }
