@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:43:59 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/21 17:56:35 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/07/30 17:41:51 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ class Character : public ICharacter {
         Character & operator=( const Character &src );
 
         std::string const & getName( void ) const;
-        void equip(AMateria* m);
-        void unequip(int idx);
-        void use(int idx, ICharacter& target);
-        AMateria* const * getInventory() const;
+        void equip( AMateria* m );
+        void unequip( int idx );
+        void use( int idx, ICharacter& target );
+        AMateria* const * getInventory( void ) const;
 };
 
 std::ostream	&operator<<( std::ostream &out, const Character &rhs);

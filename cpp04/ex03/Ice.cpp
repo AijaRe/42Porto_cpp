@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:44:09 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/21 17:34:38 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/06/24 16:17:29 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Ice & Ice::operator=( const Ice &src ) {
 }
 
 /* 
-** call Ice copy constructor
+** call Ice copy constructor with dereferenced current instance pointer
 */
 AMateria*    Ice::clone( void ) const {
     return new Ice(*this);

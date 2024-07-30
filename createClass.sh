@@ -47,6 +47,7 @@ $className::~$className( void ) {
 }
 
 $className & $className::operator=( const $className &src ) {
+    std::cout << "$className assignment operator called." << std::endl;
     if (this != &src) {
         // Implement assignment
     }

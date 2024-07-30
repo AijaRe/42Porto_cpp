@@ -15,15 +15,16 @@
 #include "Cure.hpp"
 #include "ICharacter.hpp"
 #include "Character.hpp"
+#include "MateriaSource.hpp"
 #include <iostream>
 
 
 int main() {
 	std::cout << "-----TEST ICE CLONE METHOD-----" << std::endl;
-    AMateria* m1 = new Ice();
-    AMateria* m2 = m1->clone(); // clone m1 to create a separate instance
-    std::cout << "Type of m1: " << m1->getType() << std::endl;
-    std::cout << "Type of m2: " << m2->getType() << std::endl;
+    AMateria* i1 = new Ice();
+    AMateria* i2 = i1->clone(); // clone m1 to create a separate instance
+    std::cout << "Type of m1: " << i1->getType() << std::endl;
+    std::cout << "Type of m2: " << i2->getType() << std::endl;
 
     std::cout << "\n-----TEST CURE ASSIGNMENT OPERATOR-----" << std::endl;
     Cure c1;
@@ -37,17 +38,17 @@ int main() {
     std::cout << "\n-----TEST CHARACTER METHODS-----" << std::endl;
     AMateria* c3 = new Cure();
     AMateria* c4 = new Cure();
-    AMateria* m3 = new Ice();
+    AMateria* i3 = new Ice();
     Character bob("Bob");
     std::cout << bob << std::endl;
-    bob.equip(m1);
-    bob.equip(m2);
+    bob.equip(i1);
+    bob.equip(i2);
     std::cout << bob << std::endl;
     bob.equip(c3);
     bob.equip(c4);
     std::cout << "\n-----TEST EQUIPPING FULL SLOTS-----" << std::endl;
-    bob.equip(m3);
-    std::cout << bob << std::endl;
+    bob.equip(i3);
+    std::cout << bob << std::endl; 
     bob.unequip(2);
     std::cout << bob << std::endl;
 
@@ -65,6 +66,16 @@ int main() {
     std::cout << bob << std::endl;
     ana = bob;
     std::cout << ana << std::endl;
+
+    std::cout << "\n--------TEST MATERIA SOURCE--------" << std::endl;
+    MateriaSource src;
+    src.learnMateria(new Ice());
+    src.learnMateria(new Cure());
+    AMateria* tmp;  
+    tmp = src.createMateria("ice");
+    tmp->use(bob);
+    tmp = src.createMateria("cure");
+    tmp->use(bob);
 
     std::cout << "\n-----END OF TESTS, LET'S DESTROY...-----" << std::endl;
     return 0;
