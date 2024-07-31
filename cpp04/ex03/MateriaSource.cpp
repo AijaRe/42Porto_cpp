@@ -33,19 +33,26 @@ MateriaSource & MateriaSource::operator=( const MateriaSource &src ) {
     return *this;
 }
 
+/* 
+** learn at most 4 materias, do nothing if slots are full
+*/
 void    MateriaSource::learnMateria( AMateria* m ) {
     for (int i = 0; i < LEARN_SLOTS; i++) {
         if (this->_slots[i] == NULL) {
             this->_slots[i] = m;
             std::cout << "Learning " << m->getType() << std::endl;
             m = NULL;
-            break;
+            return ;
         }
     }
-    if (m)
-        delete m;
+    std::cout << "No available slots, deleting the materia." << std::endl;
+    delete m;
 }
 
+/* 
+** returns AMateria clone
+** delete after using
+*/
 AMateria*   MateriaSource::createMateria( std::string const & type ){
     if (type == "cure" || type == "ice") {
         for (int i = 0; i < LEARN_SLOTS; i++) {

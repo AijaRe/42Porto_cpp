@@ -25,16 +25,7 @@ int main() {
     AMateria* i2 = i1->clone(); // clone m1 to create a separate instance
     std::cout << "Type of m1: " << i1->getType() << std::endl;
     std::cout << "Type of m2: " << i2->getType() << std::endl;
-
-    std::cout << "\n-----TEST CURE ASSIGNMENT OPERATOR-----" << std::endl;
-    Cure c1;
-    Cure c2;
-    std::cout << "Type of c1 before assignment: " << c1.getType() << std::endl; 
-    std::cout << "Type of c2 before assignment: " << c2.getType() << std::endl; 
-    c2 = c1; // Should not change the type of c2
-    std::cout << "Type of c1 after assignment: " << c1.getType() << std::endl; 
-    std::cout << "Type of c2 after assignment: " << c2.getType() << std::endl; 
-    
+ 
     std::cout << "\n-----TEST CHARACTER METHODS-----" << std::endl;
     AMateria* c3 = new Cure();
     AMateria* c4 = new Cure();
@@ -62,20 +53,24 @@ int main() {
     std::cout << "\n-----TEST USE METHOD WITH MATERIA-----" << std::endl;
     bob.use(1, ana);
 
-    std::cout << "\n-----TEST CHARACTER DEEP COPY-----" << std::endl;
+    std::cout << "\n-----TEST CHARACTER DEEP COPY -----" << std::endl;
     std::cout << bob << std::endl;
     ana = bob;
     std::cout << ana << std::endl;
 
     std::cout << "\n--------TEST MATERIA SOURCE--------" << std::endl;
     MateriaSource src;
+    Character zaz("Zaz");
     src.learnMateria(new Ice());
     src.learnMateria(new Cure());
     AMateria* tmp;  
     tmp = src.createMateria("ice");
-    tmp->use(bob);
+    zaz.equip(tmp);
     tmp = src.createMateria("cure");
-    tmp->use(bob);
+    zaz.equip(tmp);
+    std::cout << zaz << std::endl;
+    zaz.use(0, ana);
+    zaz.use(1, ana);
 
     std::cout << "\n-----END OF TESTS, LET'S DESTROY...-----" << std::endl;
     return 0;
