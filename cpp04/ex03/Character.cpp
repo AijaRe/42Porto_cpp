@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:43:56 by arepsa            #+#    #+#             */
-/*   Updated: 2024/07/31 18:06:44 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/07/31 22:13:35 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,9 @@ void    Character::unequip( int idx ) {
 
 void    Character::use( int idx, ICharacter& target ) {
     if (idx >= 0 && idx < INVENTORY_SLOTS && _inventory[idx]) {
-        _inventory[idx]->use(target);
-        std::cout << "Using " << _inventory[idx]->getType();
+        std::cout << this->getName() << " using " << _inventory[idx]->getType();
         std::cout << " on " << target.getName() << std::endl;
+        _inventory[idx]->use(target);
     }
 }
 
@@ -152,6 +152,6 @@ std::ostream	&operator<<( std::ostream &out, const Character &rhs){
             out << "  Slot " << i << ": Empty\n";
         }
     }
-	out << "------------------------------------" << std::flush;
+	out << "------------------------------------" << std::endl;
 	return out; 
 }
