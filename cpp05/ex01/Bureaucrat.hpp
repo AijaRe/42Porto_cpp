@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:14:29 by arepsa            #+#    #+#             */
-/*   Updated: 2024/08/16 19:07:38 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/08/16 19:42:27 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 
 # include <iostream>
 # include <string>
+# include "Form.hpp"
 
 class Bureaucrat
 {
 	private:
 		const std::string _name;
 		int _grade;
-		static const int LOWEST_GRADE = 150;
-		static const int HIGHEST_GRADE = 1;
 
 	public:
+		static const int LOWEST_GRADE = 150;
+		static const int HIGHEST_GRADE = 1;
 		// Constructors
 		Bureaucrat( void );
 		Bureaucrat( const Bureaucrat &copy );
@@ -32,6 +33,9 @@ class Bureaucrat
 		
 		// Destructor
 		~Bureaucrat( void );
+		
+		// Operators
+		Bureaucrat & operator=( const Bureaucrat &assign );
 		
 		// Exceptions
 		class GradeTooHighException : public std::exception {
@@ -44,16 +48,14 @@ class Bureaucrat
 				virtual const char* what( void ) const throw();
 		};
 		
-		// Operators
-		Bureaucrat & operator=( const Bureaucrat &assign );
-		
 		// Getters / Setters
 		const std::string getName( void ) const;
 		int getGrade( void ) const;
+		
+		// Member functions
 		void incrementGrade( void );
 		void decrementGrade( void );
-		
-		
+		void signForm( Form &form );
 };
 
 // Stream operators

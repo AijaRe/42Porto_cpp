@@ -22,7 +22,7 @@ class $className {
         // Private members
     public:
         $className( void );
-        $className( const $className &src );
+        $className( const $className &copy );
         ~$className( void );
         $className & operator=( const $className &src );
 };
@@ -37,9 +37,9 @@ $className::$className( void ) {
     std::cout << "$className default constructor called." << std::endl;
 }
 
-$className::$className( const $className &src ) {
+$className::$className( const $className &copy ) {
     std::cout << "$className copy constructor called." << std::endl;
-    *this = src;
+    *this = copy;
 }
 
 $className::~$className( void ) {
