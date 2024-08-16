@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:51:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/08/16 09:47:15 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/08/16 18:55:35 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,36 +88,26 @@ int	main( void ) {
 	catch (std::exception & e) {
 		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
 	}
+
+	printTitle("TEST BUREAUCRAT ASSIGNMENT OPERATOR");
+	try {
+		Bureaucrat b8("Original", 50);
+		std::cout << "Before assignment: " << std::endl;
+		std::cout << GREEN << ARROW << b8 << RESET;
+		Bureaucrat b9("Replacement", 100);
+		std::cout << GREEN << ARROW << b9 << RESET << std::endl;
+		b9 = b8;
+		std::cout << "After assignment: " << std::endl;
+		std::cout << GREEN << ARROW << b8 << RESET;
+		std::cout << GREEN << ARROW << b9 << RESET << std::endl;
+	}
+	catch (std::exception & e) {
+		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
+	}
 	
 	printTitle("TEST VALID INCREMENT GRADE");
 	try {
-		Bureaucrat b8("Incrementer", 50);
-		std::cout << "Before incrementing: " << std::endl;
-		std::cout << GREEN << ARROW << b8 << RESET << std::endl;
-		b8.incrementGrade();
-		std::cout << "After incrementing: " << std::endl;
-		std::cout << GREEN << ARROW << b8 << RESET << std::endl;
-	}
-	catch (std::exception & e) {
-		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
-	}
-
-	printTitle("TEST VALID DECREMENT GRADE");
-	try {
-		Bureaucrat b9("Decrementer", 50);
-		std::cout << "Before decrementing: " << std::endl;
-		std::cout << GREEN << ARROW << b9 << RESET << std::endl;
-		b9.decrementGrade();
-		std::cout << "After decrementing: " << std::endl;
-		std::cout << GREEN << ARROW << b9 << RESET << std::endl;
-	}
-	catch (std::exception & e) {
-		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
-	}
-	
-	printTitle("TEST GRADE TOO HIGH INCREMENT GRADE");
-	try {
-		Bureaucrat b10("Incrementer", 1);
+		Bureaucrat b10("Incrementer", 50);
 		std::cout << "Before incrementing: " << std::endl;
 		std::cout << GREEN << ARROW << b10 << RESET << std::endl;
 		b10.incrementGrade();
@@ -127,15 +117,41 @@ int	main( void ) {
 	catch (std::exception & e) {
 		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
 	}
-	
-	printTitle("TEST GRADE TOO LOW DECREMENT GRADE");
+
+	printTitle("TEST VALID DECREMENT GRADE");
 	try {
-		Bureaucrat b11("Decrementer", 150);
+		Bureaucrat b11("Decrementer", 50);
 		std::cout << "Before decrementing: " << std::endl;
 		std::cout << GREEN << ARROW << b11 << RESET << std::endl;
 		b11.decrementGrade();
 		std::cout << "After decrementing: " << std::endl;
 		std::cout << GREEN << ARROW << b11 << RESET << std::endl;
+	}
+	catch (std::exception & e) {
+		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
+	}
+	
+	printTitle("TEST GRADE TOO HIGH INCREMENT GRADE");
+	try {
+		Bureaucrat b12("Incrementer", 1);
+		std::cout << "Before incrementing: " << std::endl;
+		std::cout << GREEN << ARROW << b12 << RESET << std::endl;
+		b12.incrementGrade();
+		std::cout << "After incrementing: " << std::endl;
+		std::cout << GREEN << ARROW << b12 << RESET << std::endl;
+	}
+	catch (std::exception & e) {
+		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
+	}
+	
+	printTitle("TEST GRADE TOO LOW DECREMENT GRADE");
+	try {
+		Bureaucrat b13("Decrementer", 150);
+		std::cout << "Before decrementing: " << std::endl;
+		std::cout << GREEN << ARROW << b13 << RESET << std::endl;
+		b13.decrementGrade();
+		std::cout << "After decrementing: " << std::endl;
+		std::cout << GREEN << ARROW << b13 << RESET << std::endl;
 	}
 	catch (std::exception & e) {
 		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
