@@ -22,7 +22,7 @@
 int main() {
 	std::cout << "-------TEST ICE CLONE METHOD-------" << std::endl;
     AMateria* i1 = new Ice();
-    AMateria* i2 = i1->clone(); // clone m1 to create a separate instance
+    AMateria* i2 = i1->clone(); // clone materia to create a separate instance
     std::cout << "Type of i1: " << i1->getType() << std::endl;
     std::cout << "Type of i2: " << i2->getType() << std::endl;
  

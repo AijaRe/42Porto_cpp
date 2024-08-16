@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:14:29 by arepsa            #+#    #+#             */
-/*   Updated: 2024/08/03 16:24:50 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/08/16 08:56:32 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ class Bureaucrat
 	private:
 		const std::string _name;
 		int _grade;
+		static const int LOWEST_GRADE = 150;
+		static const int HIGHEST_GRADE = 1;
 
 	public:
 		// Constructors
@@ -31,12 +33,24 @@ class Bureaucrat
 		// Destructor
 		~Bureaucrat( void );
 		
+		class GradeTooHighException : public std::exception {
+			public:
+				virtual const char* what( void ) const throw();
+		};
+
+		class GradeTooLowException : public std::exception {
+			public:
+				virtual const char* what( void ) const throw();
+		};
+		
 		// Operators
 		Bureaucrat & operator=( const Bureaucrat &assign );
 		
 		// Getters / Setters
 		const std::string getName( void ) const;
 		int getGrade( void ) const;
+		void incrementGrade( void );
+		void decrementGrade( void );
 		
 		
 };
