@@ -6,26 +6,14 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:51:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/08/16 18:55:35 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/08/19 16:51:13 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
-
-#define RESET   "\033[0m"
-#define RED     "\033[31m"
-#define GREEN   "\033[32m"
-#define YELLOW  "\033[33m"
-#define BLUE    "\033[34m"
-#define MAGENTA "\033[35m"
-#define CYAN    "\033[36m"
-#define BOLD    "\033[1m"
-#define UNDERLINE "\033[4m"
-
-// Test separation lines with symbols
-#define LINE "|---------------------------------------------|"
-#define ARROW "=> "
+#include "Form.hpp"
+#include "main.hpp"
 
 void	printTitle(std::string title) {
 	std::cout << BOLD << CYAN;
@@ -36,124 +24,108 @@ void	printTitle(std::string title) {
 }
 
 int	main( void ) {
+	Bureaucrat ana("Ana The Best", 1);
+	Bureaucrat bob("Bob The Worst", 150);
+	Bureaucrat zaz("Zaz Sweet Middle", 75);
 	
-	printTitle("TEST VALID BUREAUCRAT CONSTRUCTION");
+	printTitle("TEST VALID FORM CREATION");
 	try {
-		Bureaucrat b1("Ana The Best", 1);
-		std::cout << GREEN << ARROW << b1 << RESET << std::endl;
+		Form validForm_100_5("validForm_100_5", 50, 5);
+		std::cout << GREEN << validForm_100_5 << RESET << std::endl;
 	}
-	catch (std::exception & e) {
-		 std::cout << RED << ARROW << "Exception: " << e.what() << RESET << std::endl;
+	catch (std::exception &e) {
+		 std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
 	}
+
+	printTitle("TEST FORM COPY CONSTRUCTOR");
 	try {
-		Bureaucrat b2("Bob The Worst", 150);
-		std::cout << GREEN << ARROW << b2 << RESET << std::endl;
-	}
-	catch (std::exception & e) {
-		std::cout << RED << ARROW << "Exception: " << e.what() << RESET << std::endl;
-	}
-	try {
-		Bureaucrat b3("Zaz Sweet Middle", 100);
-		std::cout << GREEN << ARROW << b3 << RESET << std::endl;
-	}
-	catch (std::exception & e) {
-		std::cout << RED << ARROW << "Exception: " << e.what() << RESET << std::endl;
+		Form validForm_50_5("validForm_50_5", 50, 5);
+		Form validForm_50_5_copy(validForm_50_5);
+		std::cout << GREEN << validForm_50_5_copy << RESET << std::endl;
+	} catch (std::exception &e) {
+		 std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
 	}
 	
-	printTitle("TEST GRADE TOO LOW BUREAUCRAT CONSTRUCTION");
+	printTitle("TEST FORM ASSIGNMENT OPERATOR");
 	try {
-		Bureaucrat b4("Faf Too Low", 151);
-		std::cout << GREEN << ARROW << b4 << RESET << std::endl;
-	}
-	catch (std::exception & e) {
+		Form validForm_50_5("validForm_50_5", 50, 5);
+		validForm_50_5.beSigned(ana);
+		std::cout << GREEN << validForm_50_5 << RESET << std::endl;
+		Form validForm_100_10_assign("validForm_100_10_assign", 100, 10);
+		validForm_100_10_assign = validForm_50_5;
+		std::cout << GREEN << validForm_100_10_assign << RESET << std::endl;
+	} catch (std::exception &e){
 		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
 	}
 	
-	printTitle("TEST GRADE TOO HIGH BUREAUCRAT CONSTRUCTION");
+	printTitle("TEST FORM GRADE TOO LOW CREATION");
 	try {
-		Bureaucrat b5("Lol Too High", 0);
-		std::cout << GREEN << ARROW << b5 << RESET << std::endl;
+		Form lowForm_151_5("lowForm_151_5", 151, 5);
+		std::cout << GREEN << ARROW << lowForm_151_5 << RESET << std::endl;
 	}
-	catch (std::exception & e) {
-		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
-	}
-	
-	printTitle("TEST BUREAUCRAT COPY CONSTRUCTOR");
-	try {
-		Bureaucrat b6("Copycat", 50);
-		std::cout << GREEN << ARROW << b6 << RESET;
-		Bureaucrat b7(b6);
-		std::cout << GREEN << ARROW << b7 << RESET << std::endl;
-	}
-	catch (std::exception & e) {
+	catch (std::exception &e) {
 		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
 	}
 
-	printTitle("TEST BUREAUCRAT ASSIGNMENT OPERATOR");
+	printTitle("TEST FORM GRADE TOO HIGH CREATION");
 	try {
-		Bureaucrat b8("Original", 50);
-		std::cout << "Before assignment: " << std::endl;
-		std::cout << GREEN << ARROW << b8 << RESET;
-		Bureaucrat b9("Replacement", 100);
-		std::cout << GREEN << ARROW << b9 << RESET << std::endl;
-		b9 = b8;
-		std::cout << "After assignment: " << std::endl;
-		std::cout << GREEN << ARROW << b8 << RESET;
-		std::cout << GREEN << ARROW << b9 << RESET << std::endl;
+		Form highForm_100_0("highForm_100_0", 100, 0);
+		std::cout << GREEN << highForm_100_0 << RESET << std::endl;
 	}
-	catch (std::exception & e) {
-		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
-	}
-	
-	printTitle("TEST VALID INCREMENT GRADE");
-	try {
-		Bureaucrat b10("Incrementer", 50);
-		std::cout << "Before incrementing: " << std::endl;
-		std::cout << GREEN << ARROW << b10 << RESET << std::endl;
-		b10.incrementGrade();
-		std::cout << "After incrementing: " << std::endl;
-		std::cout << GREEN << ARROW << b10 << RESET << std::endl;
-	}
-	catch (std::exception & e) {
+	catch (std::exception &e) {
 		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
 	}
 
-	printTitle("TEST VALID DECREMENT GRADE");
+	printTitle("TEST NEGATIVE FORM GRADE CREATION");
 	try {
-		Bureaucrat b11("Decrementer", 50);
-		std::cout << "Before decrementing: " << std::endl;
-		std::cout << GREEN << ARROW << b11 << RESET << std::endl;
-		b11.decrementGrade();
-		std::cout << "After decrementing: " << std::endl;
-		std::cout << GREEN << ARROW << b11 << RESET << std::endl;
+		Form negativeForm("negativeForm", 100, -15);
+		std::cout << GREEN << negativeForm << RESET << std::endl;
 	}
-	catch (std::exception & e) {
+	catch (std::exception &e) {
 		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
 	}
-	
-	printTitle("TEST GRADE TOO HIGH INCREMENT GRADE");
+
+	printTitle("TEST VALID FORM SIGNING");
 	try {
-		Bureaucrat b12("Incrementer", 1);
-		std::cout << "Before incrementing: " << std::endl;
-		std::cout << GREEN << ARROW << b12 << RESET << std::endl;
-		b12.incrementGrade();
-		std::cout << "After incrementing: " << std::endl;
-		std::cout << GREEN << ARROW << b12 << RESET << std::endl;
-	}
-	catch (std::exception & e) {
+		Form validForm_100_5("validForm_100_5", 100, 5);
+		std::cout << GREEN << zaz << RESET << std::endl;
+		zaz.signForm(validForm_100_5);
+		std::cout << std::endl;
+		std::cout << GREEN << validForm_100_5 << RESET << std::endl;
+	} catch (std::exception &e) {
 		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
 	}
-	
-	printTitle("TEST GRADE TOO LOW DECREMENT GRADE");
+
+	printTitle("TEST FORM SIGNING WITH EQUEAL GRADE");
 	try {
-		Bureaucrat b13("Decrementer", 150);
-		std::cout << "Before decrementing: " << std::endl;
-		std::cout << GREEN << ARROW << b13 << RESET << std::endl;
-		b13.decrementGrade();
-		std::cout << "After decrementing: " << std::endl;
-		std::cout << GREEN << ARROW << b13 << RESET << std::endl;
+		Form validForm_75_5("validForm_75_5", 75, 5);
+		std::cout << GREEN << zaz << RESET << std::endl;
+		zaz.signForm(validForm_75_5);
+		std::cout << std::endl;
+		std::cout << GREEN << validForm_75_5 << RESET << std::endl;
+	} catch (std::exception &e) {
+		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
 	}
-	catch (std::exception & e) {
+
+	printTitle("TEST FORM SIGNING ALREADY SIGNED");
+	try {
+		Form validForm_100_5("validForm_100_5", 100, 5);
+		zaz.signForm(validForm_100_5);
+		std::cout << std::endl;
+		std::cout << GREEN << validForm_100_5 << RESET << std::endl;
+		ana.signForm(validForm_100_5);
+	} catch (std::exception &e) {
+		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
+	}
+
+	printTitle("TEST FORM SIGNING GRADE TOO LOW");
+	try {
+		Form validForm_100_5("validForm_100_5", 100, 5);
+		std::cout << GREEN << bob << RESET << std::endl;
+		bob.signForm(validForm_100_5);
+		std::cout << std::endl;
+		std::cout << GREEN << validForm_100_5 << RESET << std::endl;
+	} catch (std::exception &e) {
 		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
 	}
 

@@ -6,26 +6,13 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:51:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/08/16 18:55:35 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/08/19 15:57:17 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
-
-#define RESET   "\033[0m"
-#define RED     "\033[31m"
-#define GREEN   "\033[32m"
-#define YELLOW  "\033[33m"
-#define BLUE    "\033[34m"
-#define MAGENTA "\033[35m"
-#define CYAN    "\033[36m"
-#define BOLD    "\033[1m"
-#define UNDERLINE "\033[4m"
-
-// Test separation lines with symbols
-#define LINE "|---------------------------------------------|"
-#define ARROW "=> "
+#include "main.hpp"
 
 void	printTitle(std::string title) {
 	std::cout << BOLD << CYAN;
@@ -53,7 +40,7 @@ int	main( void ) {
 		std::cout << RED << ARROW << "Exception: " << e.what() << RESET << std::endl;
 	}
 	try {
-		Bureaucrat b3("Zaz Sweet Middle", 100);
+		Bureaucrat b3("Zaz Sweet Middle", 75);
 		std::cout << GREEN << ARROW << b3 << RESET << std::endl;
 	}
 	catch (std::exception & e) {

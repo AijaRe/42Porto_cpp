@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:14:37 by arepsa            #+#    #+#             */
-/*   Updated: 2024/08/16 19:42:46 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/08/19 17:05:21 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ Bureaucrat & Bureaucrat::operator=( const Bureaucrat &src ) {
 }
 
 const char*	Bureaucrat::GradeTooHighException::what( void ) const throw() {
-	return "Grade is too high!";
+	return "Bureaucrat grade is too high!";
 }
 
 const char*	Bureaucrat::GradeTooLowException::what( void ) const throw() {
-	return "Grade is too low!";
+	return "Bureaucrat grade is too low!";
 }
 
 
@@ -74,10 +74,12 @@ void Bureaucrat::decrementGrade( void ) {
 }
 
 void Bureaucrat::signForm( Form &form ) {
-	form.beSigned(*this);
-	//if (form.getSignGrade() < this->_grade)
-	//	std::cout << this->_name << " cannot sign " << form.getName() << " because bureaucrat's grade is too low." << std::endl;
-	//std::cout << this->_name << " signed " << form.getName() << std::endl;
+	try {
+		form.beSigned(*this);
+		std::cout << GREEN << this->_name << " signed " << form.getName() << "." << RESET << std::endl;
+	} catch (std::exception &e) {
+		std::cout << YELLOW << ARROW << "Exception: " << this->_name << " cannot sign " << form.getName() << " because " << e.what() << RESET << std::endl;
+	}
 }
 
 std::ostream & operator<<( std::ostream &out, const Bureaucrat &rhs ) {

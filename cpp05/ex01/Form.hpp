@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:02:27 by arepsa            #+#    #+#             */
-/*   Updated: 2024/08/16 19:42:06 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/08/19 17:02:22 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 #include <string>
 #include "Bureaucrat.hpp"
 
-class Form : public Bureaucrat {
+class Bureaucrat;
+
+class Form {
     private:
         const std::string _name;
         bool        _signed;

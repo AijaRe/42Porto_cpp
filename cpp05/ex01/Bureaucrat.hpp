@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:14:29 by arepsa            #+#    #+#             */
-/*   Updated: 2024/08/16 19:42:27 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/08/19 17:04:17 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 # include <iostream>
 # include <string>
 # include "Form.hpp"
+
+#define RESET   "\033[0m"
+#define GREEN   "\033[32m"
+#define BLUE    "\033[34m"
+#define YELLOW  "\033[33m"
+#define BOLD    "\033[1m"
+#define ARROW "=> "
+
+class Form;
 
 class Bureaucrat
 {
