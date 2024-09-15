@@ -2,7 +2,7 @@
 #include <string>
 
 //noexcept specifier - what() will not throw an exception
-//this function helps to define exception nype, not throw it
+//this function helps to define exception type, not throw it
 class   CustomException : public std::exception{
     virtual const char * what() const noexcept{
         return "My custom error...";
