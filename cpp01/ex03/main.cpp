@@ -18,6 +18,7 @@
 ** HumanA takes the Weapon in its constructor, HumanB doesn’t.
 ** HumanA will always be armed (can use reference to a weapon). 
 ** HumanB may not always have a Weapon (needs pointer to a weapon).
+** {} block scope - visibility and lifetime of variables declared within.
 */
 int	main(void){
 	{
@@ -35,21 +36,9 @@ int	main(void){
 		club.setType("some other type of club");
 		jim.attack();
 	}
+	{
+		HumanB ana("Ana");
+		ana.attack();
+	}
 	return 0;
 }
-
-/* int	main(void){
-	Weapon feather;
-	Weapon club;
-	HumanA ana("Ana", feather);
-	HumanB bob("Bob");
-
-	feather.setType("Feather");
-	club.setType("Club");
-	ana.attack();
-	bob.attack();
-	bob.setWeapon(club);
-	bob.attack();
-	
-	return 0;
-} */
