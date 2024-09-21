@@ -6,7 +6,7 @@
 #    By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/16 15:46:42 by arepsa            #+#    #+#              #
-#    Updated: 2024/08/15 16:34:32 by arepsa           ###   ########.fr        #
+#    Updated: 2024/09/15 21:06:21 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ RM = rm -rf
 CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -fsanitize=address
 
 NAME 		= bureaucrat
-FILES 		= main Bureaucrat
+FILES 		= main Bureaucrat AForm
 SRC 		= $(addsuffix .cpp, $(FILES))
 OBJ 		= $(addsuffix .o, $(FILES))
 

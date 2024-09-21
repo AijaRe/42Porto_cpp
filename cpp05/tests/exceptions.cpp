@@ -2,7 +2,7 @@
 #include <string>
 
 //noexcept specifier - what() will not throw an exception
-//this function helps to define exception nype, not throw it
+//this function helps to define exception type, not throw it
 class   CustomException : public std::exception{
     virtual const char * what() const noexcept{
         return "My custom error...";
@@ -36,11 +36,11 @@ int main()
         errorFunction();
     } catch (std::out_of_range &e){
         std::cout << "Out of range exception: " << e.what() << std::endl;
-    } catch (std::bad_alloc& e){
+    } catch (std::bad_alloc &e){
         std::cout << "Bad alloc exception: " << e.what() << std::endl;
-    } catch (CustomExceptionThrow& e){
+    } catch (CustomExceptionThrow &e){
         std::cout << "CustomExceptionThrow caught: " << e.what() << std::endl;
-    } catch (std::exception& e){ //generic catch
+    } catch (std::exception &e){ //generic catch
         std::cout << "Exception thrown: " << e.what() << std::endl;
     } catch(...){ //not cool, avoid using, deal with types of errors instead
         std::cout << "Default catch case" << std::endl;

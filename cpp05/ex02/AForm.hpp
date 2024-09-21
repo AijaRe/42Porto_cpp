@@ -1,62 +1,66 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 16:14:29 by arepsa            #+#    #+#             */
-/*   Updated: 2024/08/19 15:56:44 by arepsa           ###   ########.fr       */
+/*   Created: 2024/08/16 19:02:27 by arepsa            #+#    #+#             */
+/*   Updated: 2024/09/15 21:47:52 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
-# include <iostream>
-# include <string>
+#include <iostream>
+#include <string>
+#include "Bureaucrat.hpp"
 
-class Bureaucrat
-{
+class Bureaucrat;
+
+class AForm {
 	private:
 		const std::string _name;
-		int _grade;
-		static const int LOWEST_GRADE = 150;
-		static const int HIGHEST_GRADE = 1;
-
+		bool        _signed;
+		const int   _signGrade;
+		const int   _execGrade;
 	public:
 		// Constructors
-		Bureaucrat( void );
-		Bureaucrat( const Bureaucrat &copy );
-		Bureaucrat( const std::string _name, int _grade );
+		AForm( void );
+		AForm( const std::string name, int signGrade, int execGrade );
+		AForm( const AForm &copy );
 		
 		// Destructor
-		~Bureaucrat( void );
+		~AForm( void );
+
+		// Operators
+		AForm & operator=( const AForm &src );
 		
 		// Exceptions
 		class GradeTooHighException : public std::exception {
 			public:
 				virtual const char* what( void ) const throw();
 		};
-
+		
 		class GradeTooLowException : public std::exception {
 			public:
 				virtual const char* what( void ) const throw();
 		};
-		
-		// Operators
-		Bureaucrat & operator=( const Bureaucrat &assign );
-		
+
 		// Getters / Setters
 		const std::string getName( void ) const;
-		int getGrade( void ) const;
-		void incrementGrade( void );
-		void decrementGrade( void );
-		
+		bool	getSigned( void ) const;
+		int		getSignGrade( void ) const;
+		int		getExecGrade( void ) const;
+
+		// Member functions
+		void    beSigned( const Bureaucrat &bureaucrat );
+		//pure virtual function, implemented differently in each concrete class
+		virtual void    execute( Bureaucrat const &executor ) const = 0;
 		
 };
 
-// Stream operators
-std::ostream & operator<<(std::ostream &out, const Bureaucrat &rhs);
+std::ostream & operator<<( std::ostream &out, const AForm &rhs );
 
-#endif
+#endif // AFORM_HPP
