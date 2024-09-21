@@ -12,9 +12,16 @@
 
 #include "Zombie.hpp"
 
-Zombie* zombieHorde( int N, std::string name ){
-	Zombie* horde = new Zombie[N];
+Zombie*	zombieHorde( int N, std::string name ){
+	if (N <= 0 || name.empty()){
+		std::cerr << "Error: zombieHorde: Missing information for a zombie..." << std::endl;
+		return NULL;
+	}
 
+	Zombie*	horde = new Zombie[N];
+
+	if (N <= 0)
+		return NULL;
 	for (int i = 0; i < N; i++){
 		horde[i].setName(name);
 		horde[i].setIndex(i + 1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 12:39:08 by arepsa            #+#    #+#             */
-/*   Updated: 2024/05/05 17:50:10 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/21 14:51:47 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@
 
 class Zombie
 {
-    private:
-        std::string name;
+	private:
+		std::string name;
 
-    public:
-        Zombie(void);
-        Zombie(std::string name);
-        ~Zombie(void);
-        void    announce(void);
+	public:
+		Zombie( void );
+		Zombie( std::string name );
+		~Zombie( void );
+		void    announce( void );
 };
-Zombie* newZombie(std:: string name);
-void    randomChump(std::string name);
+Zombie*	newZombie( std:: string name );
+void	randomChump( std::string name );
 
 #endif // ZOMBIE_HPP
