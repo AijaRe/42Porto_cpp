@@ -28,9 +28,9 @@ bool is_file_empty(const std::string& filename) {
 }
 
 /* 
-** replace s1 with s2 in the string 
+** replace s1 with s2 in the string on place
 */
-void	overwrite_string(std::string& string, std::string& s1, std::string s2){
+void	overwrite_str(std::string& string, std::string& s1, std::string s2){
 		//find() returns the position of the first character of the first match.
 		size_t pos = string.find(s1);
 		//If no matches ere found, find() returns string::npos.
@@ -45,7 +45,11 @@ void	overwrite_string(std::string& string, std::string& s1, std::string s2){
 /* 
 ** open infile and construct string by reading from infile buffer
 ** replace string contents
-** create outfile and output string contants into it
+** implicit file opening by passing the filename string as parameter
+** std::string has a constructor that accepts two input iterators: 
+** a starting iterator (std::istreambuf_iterator<char>(infile)) 
+** and an ending iterator (std::istreambuf_iterator<char>())
+** create outfile and output string contents into it
 ** runtime_error object is derived from exception class
 */
 int	do_replace(std::string& infileName, std::string& s1, std::string& s2){
@@ -53,20 +57,21 @@ int	do_replace(std::string& infileName, std::string& s1, std::string& s2){
 		std::ifstream infile(infileName.c_str());
 		if (!infile)
             throw std::runtime_error("Error: Could not open file.");
-		std::string input((std::istreambuf_iterator<char>(infile)),
-                          (std::istreambuf_iterator<char>()));;
-	/* 	std::string input;
-		getline(infile, input, '\0'); */
+		//std::string input((std::istreambuf_iterator<char>(infile)),
+        //                (std::istreambuf_iterator<char>()));
 
-		infile.close();
-
-		overwrite_string(input, s1, s2);
-
-		std::string ofName = infileName;
-		std::ofstream outfile(infileName.append(".replace").c_str());
+		std::string outName = infileName + ".replace";
+		std::ofstream outfile(outName.c_str());
 		if (!outfile) 
         	throw std::runtime_error("Error: Could not create output file.");
-		outfile << input;
+
+		std::string	line;
+		while (std::getline(infile, line))
+		{
+			overwrite_str(line, s1, s2);
+			outfile << line << std::endl;
+		}
+		infile.close();
 		outfile.close();
 		return 0;
 	} catch (const std::exception& err) {
@@ -85,7 +90,8 @@ int	main(int argc, char** argv) {
 		if (infileName.empty() || s1.empty()){
 			std::cerr << "Warning: Filename and string to replace cannot be empty." << std::endl;
 			return 1;
-		} else if (is_file_empty(infileName))
+		} 
+		if (is_file_empty(infileName))
             std::cerr << "Warning: Input file is empty." << std::endl;
 		else
 			do_replace(infileName, s1, s2);
