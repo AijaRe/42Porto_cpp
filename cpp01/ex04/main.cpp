@@ -22,9 +22,9 @@
 */
 
 bool is_file_empty(const std::string& filename) {
-    std::ifstream file(filename.c_str());
+	std::ifstream file(filename.c_str());
 	//peek() returns the next character in the input stream without extracting it
-    return file.peek() == EOF;
+	return file.peek() == EOF;
 }
 
 /* 
@@ -43,27 +43,31 @@ void	overwrite_str(std::string& string, std::string& s1, std::string s2){
 }
 
 /* 
-** open infile and construct string by reading from infile buffer
-** replace string contents
-** implicit file opening by passing the filename string as parameter
-** std::string has a constructor that accepts two input iterators: 
-** a starting iterator (std::istreambuf_iterator<char>(infile)) 
-** and an ending iterator (std::istreambuf_iterator<char>())
-** create outfile and output string contents into it
+** open infile, implicit file opening by passing the filename string as parameter
+** create outfile, replace string contents and output string contents into it 
 ** runtime_error object is derived from exception class
 */
 int	do_replace(std::string& infileName, std::string& s1, std::string& s2){
 	try {
 		std::ifstream infile(infileName.c_str());
-		if (!infile)
-            throw std::runtime_error("Error: Could not open file.");
-		//std::string input((std::istreambuf_iterator<char>(infile)),
-        //                (std::istreambuf_iterator<char>()));
+		if (!infile) {
+			if (errno == ENOENT)
+				throw std::runtime_error("Error: File does not exist.");
+			else if (errno == EACCES)
+				throw std::runtime_error("Error: Permission denied.");
+			else
+				throw std::runtime_error("Error: Could not open file.");
+		}
+
+		if (is_file_empty(infileName)) {
+		   std::cerr << "Warning: Input file is empty." << std::endl;
+		   return 1;
+		}
 
 		std::string outName = infileName + ".replace";
 		std::ofstream outfile(outName.c_str());
-		if (!outfile) 
-        	throw std::runtime_error("Error: Could not create output file.");
+		if (!outfile)
+			throw std::runtime_error("Error: Could not create output file.");
 
 		std::string	line;
 		while (std::getline(infile, line))
@@ -91,14 +95,12 @@ int	main(int argc, char** argv) {
 			std::cerr << "Warning: Filename and string to replace cannot be empty." << std::endl;
 			return 1;
 		} 
-		if (is_file_empty(infileName))
-            std::cerr << "Warning: Input file is empty." << std::endl;
-		else
-			do_replace(infileName, s1, s2);
+		return do_replace(infileName, s1, s2);
 	}
 	else {
 		std::cerr << "Incorrect input." << std::endl;
 		std::cerr << "Usage: ./sed <filename> <string_to_replace> <new_string>" << std::endl;
+		return 1;
 	}
 	return 0;
 }
