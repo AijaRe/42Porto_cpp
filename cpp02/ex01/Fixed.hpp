@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:56:34 by arepsa            #+#    #+#             */
-/*   Updated: 2024/05/25 12:29:02 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/26 21:07:33 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,16 @@
 class Fixed {
 private:
     int _raw_value;
-    static const int _fract_bits;
+    static const int _fract_bits = 8;
     
 public:
-    Fixed(void); //Canonical default constructor
+    Fixed( void ); //Canonical default constructor
     Fixed( const int num );
     Fixed( const float num );
     Fixed(const Fixed &copy); //Canonical copy constructor
-    ~Fixed(void); //Canonical destructos
-    Fixed &operator=(const Fixed &src); //Canonical copy assignment operator overload
+    ~Fixed( void ); //Canonical destructos
+    
+    Fixed   &operator=( const Fixed &src ); //Canonical copy assignment operator overload
     int     getRawBits( void ) const;
     void    setRawBits( int const raw );
     float   toFloat( void ) const;

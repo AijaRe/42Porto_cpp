@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:56:24 by arepsa            #+#    #+#             */
-/*   Updated: 2024/05/25 13:11:46 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/26 21:28:49 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ Fixed::Fixed( void ) : _raw_value(0) {
 }
 
 /* 
-** convert integer into fixed-point by multiplying it with 2^8 
+** convert integer into fixed-point by multiplying it with 2^8
+** num * (1 << _fract_bits) == 256
 */
 Fixed::Fixed( const int num ) {
     std::cout << "Int constructor called." << std::endl;
@@ -38,11 +39,12 @@ Fixed::Fixed( const int num ) {
 
 /* 
 ** round to avoid truncation when storing as int and preserve precision
+** num * (1 << _fract_bits) == 256
 */
 Fixed::Fixed( const float num ) {
     std::cout << "Float constructor called." << std::endl;
     float scaled_value = num * (1 << _fract_bits);
-    if (scaled_value > INT_MAX || scaled_value < INT_MIN) {
+    if (scaled_value > static_cast<float>(INT_MAX) || scaled_value < static_cast<float>(INT_MIN)) {
         std::cerr << "Overflow error: Value out of range for fixed-point conversion." << std::endl;
         this->_raw_value = 0;
     } else {

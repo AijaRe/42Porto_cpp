@@ -12,9 +12,7 @@
 
 #include "Fixed.hpp"
 
-const int Fixed::_fract_bits = 8;
-
-int main( void ) {
+int	main( void ) {
 	Fixed a;
 	Fixed const b( 10 );
 	Fixed const c( 42.42f );
@@ -29,9 +27,11 @@ int main( void ) {
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 
-	/* std::cout << "change a:" << std::endl;
+	std::cout << "\nBONUS TEST" << std::endl;
+	std::cout << "change a to (256 + 128):" << std::endl;
 	a.setRawBits(256 + 128);
     std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-    std::cout << "a is " << a.toFloat() << " as float" << std::endl; */
+    std::cout << "a is " << a.toFloat() << " as float" << std::endl;
+
 	return 0;
 }

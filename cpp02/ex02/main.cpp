@@ -27,7 +27,9 @@ int main( void ) {
 	std::cout << b << std::endl;
 	
 	std::cout << Fixed::max( a, b ) << std::endl;
-	/* Fixed a( 6 );
+
+	std::cout << "\nMORE TESTS.. LET'S GO!" << std::endl;
+	/*Fixed a( 6 );
 	Fixed b( 5 );
 	const Fixed c( 12 );
 	const Fixed d( 15.5f );
@@ -54,6 +56,7 @@ int main( void ) {
 	b = a--;
 	std::cout << "b = a-- .. print b: " << b << std::endl;
 	std::cout << "b = a-- .. print a: " << a << std::endl;
-	std::cout << "--a " << --a << std::endl; */
+	std::cout << "--a " << --a << std::endl;*/
+
 	return 0;
 }
