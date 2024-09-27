@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:56:24 by arepsa            #+#    #+#             */
-/*   Updated: 2024/09/26 22:02:03 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/27 19:23:28 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,37 @@ Fixed::Fixed( void ) : _raw_value(0) {
     return ;
 }
 
+/* 
+** cast to long to be able to scale max numbers
+** 1 << _fract_bits = 256 
+** shift 1 by _fract_bits (8) -> from least significant bit to 9th
+*/
 Fixed::Fixed( const int num ) {
-    if (num > (INT_MAX >> _fract_bits) || num < (INT_MIN >> _fract_bits)) {
+    long scaled_value = static_cast<long>(num) * (1 << _fract_bits);
+    if (scaled_value > INT_MAX || scaled_value < INT_MIN) {
         std::cerr << "Overflow error: Value out of range." << std::endl;
         this->_raw_value = 0;
     } else {
-        this->_raw_value = num * (1 << _fract_bits);
+        this->_raw_value = static_cast<int>(scaled_value);
     }
 }
 
 Fixed::Fixed( const float num ) {
-    float scaled_value = num * (1 << _fract_bits);
-    if (scaled_value > static_cast<float>(INT_MAX) || scaled_value < static_cast<float>(INT_MIN)) {
+    const int   scaling_factor = (1 << _fract_bits);
+    
+    if (num > (static_cast<float>(INT_MAX) / scaling_factor) ||
+        num < (static_cast<float>(INT_MIN) / scaling_factor)) {
         std::cerr << "Overflow error: Value out of range." << std::endl;
         this->_raw_value = 0;
+        return ;
     } else {
-        this->_raw_value = roundf(scaled_value);
+        float scaled_value = num * scaling_factor;
+        if (scaled_value >= static_cast<float>(INT_MAX) ||
+            scaled_value <= static_cast<float>(INT_MIN)) {
+            std::cerr << "Overflow error: Scaled value out of range." << std::endl;
+            this->_raw_value = 0;
+        } else
+            this->_raw_value = static_cast<int>(roundf(scaled_value));
     }
 }
 
@@ -72,7 +87,7 @@ void    Fixed::setRawBits( int const raw ) {
 }
 
 float   Fixed::toFloat( void ) const{
-    return (float)this->_raw_value / (float)(1 << _fract_bits);
+    return static_cast<float>(this->_raw_value) / static_cast<float>(1 << _fract_bits);
 }
 
 int   Fixed::toInt( void ) const{
@@ -117,6 +132,10 @@ Fixed   Fixed::operator*( const Fixed rhs ) const {
 }
 
 Fixed   Fixed::operator/( const Fixed rhs ) const {
+    if (rhs == 0) {
+        std::cerr << "Can't divide by zero!" << std::endl;
+        return 0;
+    }
     return this->toFloat() / rhs.toFloat();
 }
 

@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:56:34 by arepsa            #+#    #+#             */
-/*   Updated: 2024/05/25 16:26:23 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/27 18:47:35 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ private:
     static const int _fract_bits;
     
 public:
-    Fixed(void); //Canonical default constructor
+    Fixed( void ); //Canonical default constructor
     Fixed( const int num );
     Fixed( const float num );
-    Fixed(const Fixed &copy); //Canonical copy constructor
-    ~Fixed(void); //Canonical destructos
-    Fixed &operator=(const Fixed &src); //Canonical copy assignment operator overload
+    Fixed( const Fixed &copy ); //Canonical copy constructor
+    ~Fixed( void ); //Canonical destructos
+    Fixed   &operator=(const Fixed &src); //Canonical copy assignment operator overload
     int     getRawBits( void ) const;
     void    setRawBits( int const raw );
     float   toFloat( void ) const;
