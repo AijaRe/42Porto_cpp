@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:56:34 by arepsa            #+#    #+#             */
-/*   Updated: 2024/09/27 18:47:35 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/28 15:22:03 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class Fixed {
 private:
     int _raw_value;
-    static const int _fract_bits;
+    static const int _fract_bits = 8;
     
 public:
     Fixed( void ); //Canonical default constructor

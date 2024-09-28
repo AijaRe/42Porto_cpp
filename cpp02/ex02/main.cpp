@@ -20,8 +20,6 @@
 ** rounded to represent int
 */
 
-const int Fixed::_fract_bits = 8;
-
 int main( void ) {
 	Fixed a;
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
