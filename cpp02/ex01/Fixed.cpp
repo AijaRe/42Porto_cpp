@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:56:24 by arepsa            #+#    #+#             */
-/*   Updated: 2024/09/28 12:30:48 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/28 18:09:57 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ Fixed::Fixed( void ) : _raw_value(0) {
 ** num * (1 << _fract_bits) == 256
 */
 Fixed::Fixed( const int num ) {
-    std::cout << "Int constructor called." << std::endl;
-    if (num > (INT_MAX >> _fract_bits) || num < (INT_MIN >> _fract_bits)) {
+    long scaled_value = static_cast<long>(num) * (1 << _fract_bits);
+    if (scaled_value > INT_MAX || scaled_value < INT_MIN) {
         std::cerr << "Overflow error: Value out of range." << std::endl;
         this->_raw_value = 0;
     } else {
-        this->_raw_value = num * (1 << _fract_bits);
+        this->_raw_value = static_cast<int>(scaled_value);
     }
 }
 
@@ -42,13 +42,21 @@ Fixed::Fixed( const int num ) {
 ** num * (1 << _fract_bits) == 256
 */
 Fixed::Fixed( const float num ) {
-    std::cout << "Float constructor called." << std::endl;
-    float scaled_value = num * (1 << _fract_bits);
-    if (scaled_value > static_cast<float>(INT_MAX) || scaled_value < static_cast<float>(INT_MIN)) {
-        std::cerr << "Overflow error: Value out of range for fixed-point conversion." << std::endl;
+    const int   scaling_factor = (1 << _fract_bits);
+    
+    if (num > (static_cast<float>(INT_MAX) / scaling_factor) ||
+        num < (static_cast<float>(INT_MIN) / scaling_factor)) {
+        std::cerr << "Overflow error: Value out of range." << std::endl;
         this->_raw_value = 0;
+        return ;
     } else {
-        this->_raw_value = roundf(scaled_value);
+        float scaled_value = num * scaling_factor;
+        if (scaled_value >= static_cast<float>(INT_MAX) ||
+            scaled_value <= static_cast<float>(INT_MIN)) {
+            std::cerr << "Overflow error: Scaled value out of range." << std::endl;
+            this->_raw_value = 0;
+        } else
+            this->_raw_value = static_cast<int>(roundf(scaled_value));
     }
 }
 
