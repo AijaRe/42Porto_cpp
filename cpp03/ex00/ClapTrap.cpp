@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 21:22:58 by arepsa            #+#    #+#             */
-/*   Updated: 2024/05/31 17:56:55 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/28 20:02:05 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,14 @@ void    ClapTrap::takeDamage( unsigned int amount ){
     }
 }
 
+/* 
+** negative treatment should be done in input validation
+** negatives wrap around and casting to int for check does not make sense
+** since it reduces the possible input range for unsigned int
+** passing larger than unsigned int will cast to long and not compile
+*/
 void    ClapTrap::beRepaired( unsigned int amount ){
-    if (this->_energyPoints > 0 && this->_hitPoints > 0) {
+    if (this->_energyPoints > 0 && this->_hitPoints > 0 ) {
         this->_energyPoints--;
         this->_hitPoints += amount;
         std::cout << "ClapTrap " << this->_name << " was repaired! ";
@@ -104,6 +110,12 @@ unsigned int    ClapTrap::getAttackDamage( void ) const{
     return this->_attackDamage;
 }
 
+/* 
+** negative treatment should be done in input validation
+** negatives wrap around and casting to int for check does not make sense
+** since it reduces the possible input range for unsigned int
+** passing larger than unsigned int will cast to long and not compile
+*/
 void            ClapTrap::setAttackDamage( unsigned int damage ){
     this->_attackDamage = damage;
 }

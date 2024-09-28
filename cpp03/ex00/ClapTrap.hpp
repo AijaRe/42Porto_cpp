@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 21:23:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/05/31 17:55:42 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/28 20:02:11 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ public:
     void            setAttackDamage( unsigned int damage );
 };
 
-std::ostream	&operator<<( std::ostream &out, const ClapTrap &rhs);
+std::ostream	&operator<<( std::ostream &out, const ClapTrap &rhs );
 
 #endif // CLAPTRAP_HPP

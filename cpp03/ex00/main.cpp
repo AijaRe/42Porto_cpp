@@ -13,37 +13,48 @@
 #include "ClapTrap.hpp"
 
 int	main ( void ) {
-	ClapTrap a("Asa");
+	ClapTrap a("Ana");
     ClapTrap b("Bob");
     ClapTrap c = b;
 
-    std::cout << "AFTER INITIALIZING" << std::endl;
+    std::cout << "ASSIGNMENT CONSTRUCTOR AND ASSIGNMENT OPERATOR" << std::endl;
+    std::cout << "a named Ana, b named Bob, c = b: " << std::endl;
     std::cout << a << std::endl;
     std::cout << b << std::endl;
     std::cout << c << std::endl;
 
+    std::cout << "set Ana's attack damage to 5" << std::endl;
     a.setAttackDamage(5);
+    std::cout << "Ana attacks Bob" << std::endl;
     a.attack(b.getName());
+    std::cout << "Bob takes damage" << std::endl;
     b.takeDamage(a.getAttackDamage());
-    std::cout << "AFTER 1st ATTACK" << std::endl;
+    std::cout << "AFTER 1st ATTACK: " << std::endl;
     std::cout << a << std::endl;
     std::cout << b << std::endl;
 
+    std::cout << "Bob gets repaired by 1" << std::endl;
     b.beRepaired(1);
-    std::cout << "b AFTER REPAIR" << std::endl;
+    std::cout << "b AFTER REPAIR:" << std::endl;
     std::cout << b << std::endl;
 
+    std::cout << "set Ana's attack damage to 6" << std::endl;
     a.setAttackDamage(6);
+    std::cout << "Ana attacks Bob" << std::endl;
     a.attack(b.getName());
+    std::cout << "Bob takes damage" << std::endl;
     b.takeDamage(a.getAttackDamage());
-    std::cout << "AFTER 2ND ATTACK (Bob should have 0 hit points)" << std::endl;
+    std::cout << "AFTER 2ND ATTACK (Bob should have 0 hit points):" << std::endl;
     std::cout << a << std::endl;
     std::cout << b << std::endl;
 
+    std::cout << "set Ana's attack damage to 2" << std::endl;
     a.setAttackDamage(2);
+    std::cout << "Ana attacks Bob" << std::endl;
     a.attack(b.getName());
+    std::cout << "Bob takes damage" << std::endl;
     b.takeDamage(a.getAttackDamage());
-    std::cout << "AFTER 3rd ATTACK (attacking a dead man)" << std::endl;
+    std::cout << "AFTER 3rd ATTACK (attacking a dead man):" << std::endl;
     std::cout << a << std::endl;
     std::cout << b << std::endl;
 
