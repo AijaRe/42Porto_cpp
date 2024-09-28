@@ -21,21 +21,25 @@ int main( void ) {
  	Point p1(1.5f, 2.5f);
     Point p2(3.0f, 4.0f);
 
+	std::cout << "CONSTRUCTOR TEST" << std::endl;
     std::cout << "Before assignment:" << std::endl;
     std::cout << "p1: " << p1.getX() << " " << p1.getY()  << std::endl;
     std::cout << "p2: "<< p2.getX() << " " << p2.getY() << std::endl;
 
+	std::cout << "\nASSIGNMENT OPERATOR TEST" << std::endl;
+	std::cout << "Values should not change because coordinates are const." << std::endl;
     p2 = p1;
-
     std::cout << "After assignment:" << std::endl;
     std::cout << "p1: " << p1.getX() << " " << p1.getY() << std::endl;
     std::cout << "p2: " << p2.getX() << " " << p2.getY() << std::endl;
 
+	std::cout << "\nCOPY CONSTRUCTOR TEST" << std::endl;
 	Point p3(1.5f, 2.5f);
     Point p4(p3);
 	std::cout << "p3: " << p3.getX() << " " << p3.getY() << std::endl;
     std::cout << "p4: " << p4.getX() << " " << p4.getY() << std::endl;
 
+	std::cout << "\nBSP TRIANGLE TEST" << std::endl;
 	std::cout << "For the triangle with the points A(0,0) B(10 ,30) and C(20,0): " << std::endl;
     test = bsp(Point(0, 0), Point(10, 20), Point(25, 0), Point(10,10));
 	std::cout << "Point: 10, 10 (inside): " << std::boolalpha << test << std::endl;
@@ -48,7 +52,7 @@ int main( void ) {
 	test = bsp(Point(0, 0), Point(10, 20), Point(25, 0), Point(17.5,10));
 	std::cout << "Point 17.5,10(line BC): " << std::boolalpha << test << std::endl;
 	test = bsp(Point(0, 0), Point(10, 20), Point(25, 0), Point(10,20));
-	std::cout << "Point 10,20(vertix): " << std::boolalpha << test << std::endl;
+	std::cout << "Point 10,20(vertex): " << std::boolalpha << test << std::endl;
 	test = bsp(Point(0, 0), Point(10, 20), Point(10, 20), Point(10,10));
 	std::cout << "Repeated B and C: " << std::boolalpha << test << std::endl;
 	test = bsp(Point(0, 0), Point(10, 20), Point(25, 0), Point(15,5));

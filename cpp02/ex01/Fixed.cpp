@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 12:56:24 by arepsa            #+#    #+#             */
-/*   Updated: 2024/09/26 21:28:49 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/28 12:30:48 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void    Fixed::setRawBits( int const raw ) {
 }
 
 float   Fixed::toFloat( void ) const{
-    return (float)this->_raw_value / (float)(1 << _fract_bits);
+    return static_cast<float>(this->_raw_value) / static_cast<float>((1 << _fract_bits));
 }
 
 int   Fixed::toInt( void ) const{

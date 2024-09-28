@@ -82,7 +82,7 @@ int main( void ) {
 	Fixed f1(8388609.0f);
 	std::cout << "f1 = 8388609.0f just above limit, trigger overflow: " << f1 << std::endl;
 	Fixed f2(8388607.0f);
-	std::cout << "f2 = 388607.0f just below limit: " << f2 << std::endl;
+	std::cout << "f2 = 8388607.0f just below limit: " << f2 << std::endl;
 	std::cout << "\nAnd now let's go crazy and divide by zero!" << std::endl;
 	a / 0;
 

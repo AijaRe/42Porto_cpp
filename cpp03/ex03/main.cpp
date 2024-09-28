@@ -16,7 +16,7 @@ int	main ( void ) {
     std::cout << "-----DIAMONDTRAP INIT-----" << std::endl;
     DiamondTrap s("Shine");
     s.whoAmI();
-
+    std::cout << s << std::endl;
 
     return 0;
 }

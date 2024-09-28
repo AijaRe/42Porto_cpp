@@ -28,7 +28,7 @@ int	main( void ) {
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 
 	std::cout << "\nBONUS TEST" << std::endl;
-	std::cout << "change a to (256 + 128):" << std::endl;
+	std::cout << "set raw bits of a to (256 + 128):" << std::endl;
 	a.setRawBits(256 + 128);
     std::cout << "a is " << a.toInt() << " as integer" << std::endl;
     std::cout << "a is " << a.toFloat() << " as float" << std::endl;

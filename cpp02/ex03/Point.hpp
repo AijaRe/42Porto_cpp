@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 19:57:37 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/02 11:34:26 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/28 11:50:40 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Point {
         Fixed getX( void ) const;
         Fixed getY( void ) const;
 };
-
-bool    bsp( Point const a, Point const b, Point const c, Point const point);
+//accepts triangle coordinates and point to confirm
+bool    bsp( Point const a, Point const b, Point const c, Point const point );
 
 #endif // POINT_HPP
