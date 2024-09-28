@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:13:40 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/02 16:13:41 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/28 18:14:40 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ public:
     void    highFivesGuys( void );
 };
 
-std::ostream	&operator<<( std::ostream &out, const FragTrap &rhs);
+std::ostream	&operator<<( std::ostream &out, const FragTrap &rhs );
 
 #endif // FRAGTRAP_HPP
