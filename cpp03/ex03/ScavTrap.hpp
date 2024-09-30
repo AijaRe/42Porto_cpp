@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 15:32:34 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/03 19:40:38 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/30 22:59:07 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ public:
     void    guardGate( void );
 };
 
-std::ostream	&operator<<( std::ostream &out, const ScavTrap &rhs);
+std::ostream	&operator<<( std::ostream &out, const ScavTrap &rhs );
 
 #endif // SCAVTRAP_HPP

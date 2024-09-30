@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 21:22:58 by arepsa            #+#    #+#             */
-/*   Updated: 2024/05/31 17:56:55 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/30 21:13:29 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ ClapTrap::~ClapTrap( void ) {
 }
 
 ClapTrap & ClapTrap::operator=( const ClapTrap &src ) {
+    std::cout << "ClapTrap assignment operator overload called." << std::endl;
     if (this != &src) {
         this->_name = src._name;
         this->_hitPoints = src._hitPoints;

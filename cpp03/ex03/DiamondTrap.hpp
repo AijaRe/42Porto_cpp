@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:14:04 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/11 20:02:03 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/30 22:01:41 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-class DiamondTrap : public ScavTrap, public FragTrap{
+class DiamondTrap : public ScavTrap, public FragTrap {
     private:
         std::string _name;
     public:
@@ -28,7 +28,7 @@ class DiamondTrap : public ScavTrap, public FragTrap{
         DiamondTrap & operator=( const DiamondTrap &src );
 
         void        whoAmI( void );
-        std::string getDiamondName( void );
+        std::string getDiamondName( void ) const;
 
         using   ScavTrap::attack;
 };
