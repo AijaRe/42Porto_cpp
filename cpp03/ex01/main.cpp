@@ -14,17 +14,18 @@
 #include "ScavTrap.hpp"
 
 int	main ( void ) {
+    std::cout << "---ASSIGNMENT CONSTRUCTOR CHECK---" << std::endl;
     ScavTrap z("Zaz");
-    std::cout << "-----AFTER INITIALIZING SCAVTRAP Z-----" << std::endl;
     std::cout << z << std::endl;
 
     std::cout << "-------COPY CONSTRUCTOR CHECK-------" << std::endl;
     ScavTrap x(z);
     std::cout << x << std::endl;
 
-    std::cout << "----ASSIGNMENT OPERATOR OVERLOAD CHECK----" << std::endl;
+    std::cout << "------DEFAULT CONSTRUCTOR CHECK------" << std::endl;
     ScavTrap y;
     std::cout << y << std::endl;
+    std::cout << "---ASSIGNMENT OPERATOR OVERLOAD CHECK---" << std::endl;
     y = z;
     std::cout << y << std::endl;
 
@@ -41,6 +42,12 @@ int	main ( void ) {
     std::cout << z << std::endl;
 
     z.guardGate();
+
+    std::cout << std::endl;
+    std::cout << "-----HEAP ALLOC AND DELETE TEST-----" << std::endl;
+    ClapTrap* trapp = new ScavTrap("Heap");
+    std::cout << *trapp << std::endl;
+    delete trapp;
 
     return 0;
 }

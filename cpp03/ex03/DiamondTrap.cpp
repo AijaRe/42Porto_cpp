@@ -44,9 +44,9 @@ DiamondTrap::~DiamondTrap( void ) {
 DiamondTrap & DiamondTrap::operator=( const DiamondTrap &src ) {
     std::cout << "DiamondTrap assignment operator overload called." << std::endl;
     if (this != &src) {
-        ClapTrap::operator=(src);
-        ScavTrap::operator=(src);
-        FragTrap::operator=(src);
+        //ClapTrap::operator=(src);
+        //ScavTrap::operator=(src);
+        //FragTrap::operator=(src);
         this->_name = src._name;
         this->_hitPoints = src._hitPoints;
         this->_energyPoints = src._energyPoints;

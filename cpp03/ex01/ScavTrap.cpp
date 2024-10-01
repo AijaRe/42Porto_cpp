@@ -6,13 +6,13 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 15:31:31 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/02 15:31:32 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/30 21:13:54 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap( void ) {
+ScavTrap::ScavTrap( void ) : ClapTrap() {
     std::cout << "ScavTrap default constructor called." << std::endl;
     this->_name = "";
     this->_hitPoints = 100;
@@ -32,14 +32,14 @@ ScavTrap::ScavTrap( std::string name ) : ClapTrap(name){
 }
 
 ScavTrap::~ScavTrap( void ) {
-    std::cout << "ScavTrap destructor called." << std::endl;
+    std::cout << "ScavTrap " + this->_name + " destructor called." << std::endl;
 }
 
 ScavTrap & ScavTrap::operator=( const ScavTrap &src ) {
     if (this != &src) {
         ClapTrap::operator=(src);
     }
-    std::cout << "Copy assignment operator overload called." << std::endl;
+    std::cout << "ScavTrap assignment operator overload called." << std::endl;
     return *this;
 }
 

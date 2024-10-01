@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 21:23:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/01 14:48:17 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/09/30 20:59:34 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
     ClapTrap( void );
     ClapTrap( std::string name );
     ClapTrap( const ClapTrap &src );
-    ~ClapTrap( void );
+    virtual ~ClapTrap( void );
     ClapTrap & operator=( const ClapTrap &src );
     //action
     void    attack( const std::string& target );

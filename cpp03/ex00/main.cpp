@@ -58,5 +58,17 @@ int	main ( void ) {
     std::cout << a << std::endl;
     std::cout << b << std::endl;
 
+    std::cout << std::endl;
+    std::cout << "TEST SILLY NUMBERS" << std::endl;
+    std::cout << "Set megalomaniac attack: " << std::endl;
+    a.setAttackDamage(2147483648);
+    std::cout << "Set negative attack: " << std::endl;
+    a.setAttackDamage(-200);
+    std::cout << "Set megalomaniac repair: " << std::endl;
+    a.beRepaired(2147483648);
+    std::cout << "Set negative repair: " << std::endl;
+    a.beRepaired(-2);
+    std::cout << std::endl;
+
     return 0;
 }

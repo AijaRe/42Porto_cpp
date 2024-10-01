@@ -30,6 +30,7 @@ ClapTrap::~ClapTrap( void ) {
 }
 
 ClapTrap & ClapTrap::operator=( const ClapTrap &src ) {
+    std::cout << "ClapTrap assignment operator overload called." << std::endl;
     if (this != &src) {
         this->_name = src._name;
         this->_hitPoints = src._hitPoints;
@@ -85,6 +86,10 @@ void    ClapTrap::takeDamage( unsigned int amount ){
 ** passing larger than unsigned int will cast to long and not compile
 */
 void    ClapTrap::beRepaired( unsigned int amount ){
+     if (static_cast<int>(amount) < 0) {
+        std::cerr << "Silly repair number. Nothing to be done." << std::endl;
+        return ; 
+    }
     if (this->_energyPoints > 0 && this->_hitPoints > 0 ) {
         this->_energyPoints--;
         this->_hitPoints += amount;
@@ -117,5 +122,9 @@ unsigned int    ClapTrap::getAttackDamage( void ) const{
 ** passing larger than unsigned int will cast to long and not compile
 */
 void            ClapTrap::setAttackDamage( unsigned int damage ){
+    if (static_cast<int>(damage) < 0) {
+        std::cerr << "Silly damage number. Nothing to be done." << std::endl;
+        return ; 
+    }
     this->_attackDamage = damage;
 }

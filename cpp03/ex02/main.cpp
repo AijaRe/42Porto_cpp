@@ -15,25 +15,41 @@
 #include "FragTrap.hpp"
 
 int	main ( void ) {
-    std::cout << "-----FRAGTRAP CONSTRUCTOR AND SPECIAL CAPACITY-----" << std::endl;
-    FragTrap f("Fif");
-    std::cout << f << std::endl;
-    f.highFivesGuys();
+    std::cout << "-----FRAGTRAP DEFAULT CONSTRUCTOR-----" << std::endl;
+    FragTrap def;
+    std::cout << def << std::endl;
 
-    ScavTrap s("Sas");
+    std::cout << "-----FRAGTRAP ASSIGNMENT CONSTRUCTOR-----" << std::endl;
+    FragTrap frag("Fif");
+    std::cout << frag << std::endl;
 
-    s.attack(f.getName());
-    f.takeDamage(s.getAttackDamage());
+    std::cout << "-----FRAGTRAP COPY CONSTRUCTOR-----" << std::endl;
+    FragTrap copy(frag);
+    std::cout << copy << std::endl;
+
+    std::cout << "-----FRAGTRAP ASSIGNMENT OPERATOR-----" << std::endl;
+    def = frag;
+    std::cout << def << std::endl;
+
+    std::cout << "-----FRAGTRAP SPECIAL CAPACITY-----" << std::endl;
+    frag.highFivesGuys();
+
+    std::cout << "-----CREATING A SCAVTRAP-----" << std::endl;
+    ScavTrap scav("Sas");
+    std::cout << scav << std::endl;
+
+    scav.attack(frag.getName());
+    frag.takeDamage(scav.getAttackDamage());
     std::cout << "----------AFTER 1ST ATTACK----------" << std::endl;
-    std::cout << f << std::endl;
-    std::cout << s << std::endl;
+    std::cout << frag << std::endl;
+    std::cout << scav << std::endl;
 
-    f.beRepaired(10);
-    f.attack(s.getName());
-    s.takeDamage(f.getAttackDamage());
+    frag.beRepaired(10);
+    frag.attack(scav.getName());
+    scav.takeDamage(frag.getAttackDamage());
     std::cout << "----------AFTER 2ND ATTACK----------" << std::endl;
-    std::cout << f << std::endl;
-    std::cout << s << std::endl;
+    std::cout << frag << std::endl;
+    std::cout << scav << std::endl;
 
 
     return 0;
