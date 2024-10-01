@@ -6,14 +6,14 @@
 #    By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/28 21:22:20 by arepsa            #+#    #+#              #
-#    Updated: 2024/06/03 19:54:10 by arepsa           ###   ########.fr        #
+#    Updated: 2024/10/01 15:43:06 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 RM = rm -rf
 
-CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -fsanitize=address
+CXXFLAGS 	= -Wall -Werror -Wextra -Wshadow -std=c++98 -pedantic-errors -fsanitize=address
 
 NAME 		= diamondtrap
 FILES 		= main ClapTrap ScavTrap FragTrap DiamondTrap
