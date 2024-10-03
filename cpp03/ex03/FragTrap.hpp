@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:13:56 by arepsa            #+#    #+#             */
-/*   Updated: 2024/09/30 22:58:53 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/03 18:28:46 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 ** unless explicitly stated otherwise 
 ** "diamond problem" - inherit from base class multiple times
 */
-class FragTrap : virtual public ClapTrap {
+class FragTrap : public virtual ClapTrap {
     private:
         // Private members
     public:

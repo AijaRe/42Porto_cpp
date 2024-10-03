@@ -12,24 +12,27 @@
 
 #include "DiamondTrap.hpp"
 
+/* 
+** the last derived class constructor that is called 
+** determines the values ofshared member variables
+** => attributes from FragTrap are used
+*/
 DiamondTrap::DiamondTrap( void ) : _name("") {
     std::cout << "DiamondTrap default constructor called." << std::endl;
     ClapTrap::_name = "_clap_trap";
     ScavTrap scav;
-    FragTrap frag;
-    this->_hitPoints = frag.getHitPoints(); //100
+    this->_hitPoints = FragTrap::getEnergyPoints(); //100
     this->_energyPoints = scav.getEnergyPoints(); //50
-    this->_attackDamage = frag.getAttackDamage(); //30
+    this->_attackDamage = FragTrap::getAttackDamage(); //30
 }
 
 DiamondTrap::DiamondTrap( std::string name ) : _name(name)  {
     std::cout << "DiamondTrap assignment constructor called." << std::endl;
     ClapTrap::_name = name + "_clap_trap";
     ScavTrap scav(name);
-    FragTrap frag(name);
-    this->_hitPoints = frag.getHitPoints(); //100
+    this->_hitPoints = FragTrap::getHitPoints(); //100
     this->_energyPoints = scav.getEnergyPoints(); //50
-    this->_attackDamage = frag.getAttackDamage(); //30
+    this->_attackDamage = FragTrap::getAttackDamage(); //30
 }
 
 DiamondTrap::DiamondTrap( const DiamondTrap &src ) : ClapTrap(src), ScavTrap(src), FragTrap(src), _name(src._name) {
@@ -44,13 +47,11 @@ DiamondTrap::~DiamondTrap( void ) {
 DiamondTrap & DiamondTrap::operator=( const DiamondTrap &src ) {
     std::cout << "DiamondTrap assignment operator overload called." << std::endl;
     if (this != &src) {
-        //ClapTrap::operator=(src);
-        //ScavTrap::operator=(src);
-        //FragTrap::operator=(src);
         this->_name = src._name;
         this->_hitPoints = src._hitPoints;
         this->_energyPoints = src._energyPoints;
         this->_attackDamage = src._attackDamage;
+        this->ClapTrap::_name = src.ClapTrap::_name;
     }
     return *this;
 }

@@ -17,16 +17,16 @@
 #include "ClapTrap.hpp"
 
 class FragTrap : public ClapTrap{
-private:
-    // Private members
-public:
-    FragTrap( void );
-    FragTrap( std::string name );
-    FragTrap( const FragTrap &src );
-    ~FragTrap( void );
-    FragTrap & operator=( const FragTrap &src );
+    private:
+        // Private members
+    public:
+        FragTrap( void );
+        FragTrap( std::string name );
+        FragTrap( const FragTrap &src );
+        ~FragTrap( void );
+        FragTrap & operator=( const FragTrap &src );
 
-    void    highFivesGuys( void );
+        void    highFivesGuys( void );
 };
 
 std::ostream	&operator<<( std::ostream &out, const FragTrap &rhs );

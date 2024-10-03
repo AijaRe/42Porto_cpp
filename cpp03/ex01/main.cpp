@@ -45,7 +45,9 @@ int	main ( void ) {
 
     std::cout << std::endl;
     std::cout << "-----HEAP ALLOC AND DELETE TEST-----" << std::endl;
+	//this is why attck() in ClapTrap is virtual
     ClapTrap* trapp = new ScavTrap("Heap");
+    trapp->attack("PolymorphTest");
     std::cout << *trapp << std::endl;
     delete trapp;
 

@@ -33,6 +33,7 @@ int	main ( void ) {
 
     std::cout << "-----FRAGTRAP SPECIAL CAPACITY-----" << std::endl;
     frag.highFivesGuys();
+	std::cout << std::endl;
 
     std::cout << "-----CREATING A SCAVTRAP-----" << std::endl;
     ScavTrap scav("Sas");
@@ -50,7 +51,6 @@ int	main ( void ) {
     std::cout << "----------AFTER 2ND ATTACK----------" << std::endl;
     std::cout << frag << std::endl;
     std::cout << scav << std::endl;
-
 
     return 0;
 }

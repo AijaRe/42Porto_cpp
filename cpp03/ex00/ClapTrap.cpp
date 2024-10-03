@@ -16,7 +16,6 @@ ClapTrap::ClapTrap( void ) : _name(""), _hitPoints(10), _energyPoints(10), _atta
     std::cout << "ClapTrap default constructor called." << std::endl;
 }
 
-
 ClapTrap::ClapTrap( std::string name ) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
     std::cout << "ClapTrap assignment constructor called." << std::endl;
 }
@@ -80,10 +79,10 @@ void    ClapTrap::takeDamage( unsigned int amount ){
 }
 
 /* 
-** negative treatment should be done in input validation
-** negatives wrap around and casting to int for check does not make sense
-** since it reduces the possible input range for unsigned int
-** passing larger than unsigned int will cast to long and not compile
+** casting to int reduces the input range, 
+** but let's do error treatment for negative values
+** and values larger than unsigned int since
+** larger values will wrap around and become negative
 */
 void    ClapTrap::beRepaired( unsigned int amount ){
      if (static_cast<int>(amount) < 0) {
@@ -93,7 +92,7 @@ void    ClapTrap::beRepaired( unsigned int amount ){
     if (this->_energyPoints > 0 && this->_hitPoints > 0 ) {
         this->_energyPoints--;
         this->_hitPoints += amount;
-        std::cout << "ClapTrap " << this->_name << " was repaired! ";
+        std::cout << "ClapTrap " << this->_name << " was repaired by " << amount << " points! " << std::endl;
         std::cout << "Hit points increased to " << this->_hitPoints << std::endl;
     }
     else
@@ -116,10 +115,10 @@ unsigned int    ClapTrap::getAttackDamage( void ) const{
 }
 
 /* 
-** negative treatment should be done in input validation
-** negatives wrap around and casting to int for check does not make sense
-** since it reduces the possible input range for unsigned int
-** passing larger than unsigned int will cast to long and not compile
+** casting to int reduces the input range, 
+** but let's do error treatment for negative values
+** and values larger than unsigned int since
+** larger values will wrap around and become negative
 */
 void            ClapTrap::setAttackDamage( unsigned int damage ){
     if (static_cast<int>(damage) < 0) {

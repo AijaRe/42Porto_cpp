@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 16:14:04 by arepsa            #+#    #+#             */
-/*   Updated: 2024/09/30 22:01:41 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/03 18:48:43 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
+/* 
+** the last derived class constructor that is called 
+** determines the values ofshared member variables
+*/
 class DiamondTrap : public ScavTrap, public FragTrap {
     private:
         std::string _name;
@@ -30,7 +34,7 @@ class DiamondTrap : public ScavTrap, public FragTrap {
         void        whoAmI( void );
         std::string getDiamondName( void ) const;
 
-        using   ScavTrap::attack;
+        using   FragTrap::attack;
 };
 
 std::ostream	&operator<<(std::ostream & out, const DiamondTrap &rhs );

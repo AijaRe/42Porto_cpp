@@ -33,13 +33,13 @@ int	main ( void ) {
     std::cout << a << std::endl;
     std::cout << b << std::endl;
 
-    std::cout << "Bob gets repaired by 1" << std::endl;
-    b.beRepaired(1);
+    std::cout << "Bob gets repaired by 2" << std::endl;
+    b.beRepaired(2);
     std::cout << "b AFTER REPAIR:" << std::endl;
     std::cout << b << std::endl;
 
-    std::cout << "set Ana's attack damage to 6" << std::endl;
-    a.setAttackDamage(6);
+    std::cout << "set Ana's attack damage to 7" << std::endl;
+    a.setAttackDamage(7);
     std::cout << "Ana attacks Bob" << std::endl;
     a.attack(b.getName());
     std::cout << "Bob takes damage" << std::endl;
@@ -48,8 +48,6 @@ int	main ( void ) {
     std::cout << a << std::endl;
     std::cout << b << std::endl;
 
-    std::cout << "set Ana's attack damage to 2" << std::endl;
-    a.setAttackDamage(2);
     std::cout << "Ana attacks Bob" << std::endl;
     a.attack(b.getName());
     std::cout << "Bob takes damage" << std::endl;

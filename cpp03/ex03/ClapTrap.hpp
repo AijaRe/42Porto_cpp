@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 21:23:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/09/30 21:18:57 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/03 18:55:31 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class ClapTrap {
         virtual ~ClapTrap( void );
         ClapTrap & operator=( const ClapTrap &src );
         //action
-        void    attack( const std::string& target );
+        virtual void    attack( const std::string& target );
         void    takeDamage( unsigned int amount );
         void    beRepaired( unsigned int amount );
         //auxiliary

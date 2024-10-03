@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 15:31:31 by arepsa            #+#    #+#             */
-/*   Updated: 2024/09/30 22:59:11 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/03 21:11:24 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ ScavTrap & ScavTrap::operator=( const ScavTrap &src ) {
     return *this;
 }
 
+void    ScavTrap::attack( std::string const & target ){
+    std::cout << "Ferocious ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!" << std::endl;
+}
+
+void    ScavTrap::guardGate(){
+    std::cout << "ScavTrap " << this->_name << " is now in Gate keeper mode." << std::endl;
+}
+
 std::ostream	&operator<<( std::ostream &out, const ScavTrap &rhs){
     out << "------------------------------------" << std::endl;
     out << "ScavTrap " << rhs.getName() << std::endl;
@@ -51,8 +59,4 @@ std::ostream	&operator<<( std::ostream &out, const ScavTrap &rhs){
 	out << "Attack Power: " << rhs.getAttackDamage() << std::endl;
 	out << "------------------------------------" << std::flush;
 	return out; 
-}
-
-void    ScavTrap::guardGate(){
-    std::cout << "ScavTrap " << this->_name << " is now in Gate keeper mode." << std::endl;
 }
