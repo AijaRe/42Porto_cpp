@@ -8,7 +8,6 @@
 - using namespace <ns_name> and friend keywords is forbidden
 - using the STL is forbidden (no Containers and no Algorithms)
 
-
 ### ex00 - Megaphone
 
 Write a program that receives input as argument/s and outputs everything in caps.

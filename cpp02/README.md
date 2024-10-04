@@ -12,6 +12,15 @@
 
 Skills: fixed-point number implementation, operator overload, canonical form, binary space partitioning basics.
 
+## Resources
+
+[Fixed point math](https://www.youtube.com/watch?v=Is67DfCdvcE)
+
+[Fixed point numbers in C++](https://www.youtube.com/watch?v=ZMsrZvBmQnU)
+
+[Cross product math](https://engineeringstatics.org/cross-product-math.html)
+
+
 ### ex00 - My First Class in Orthodox Canonical Form
 
 This exercise will create a basic structure for fixed-point number.

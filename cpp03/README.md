@@ -1,4 +1,4 @@
-# C++ - Module 02
+# C++ - Module 03
 ## Inheritance
 
 ## General rules
@@ -10,6 +10,10 @@
 - all classes must be designed in the Orthodox Canonical Form (containting default constructor, copy constructor, copy assignment operator, destructor)
 
 Skills: inheritance, virtual inheritance, DDD (Dreadful Diamond on Derivation)
+
+## Resources
+
+[Diamond problem (multiple/virtual inheritance)](https://www.learncpp.com/cpp-tutorial/virtual-base-classes/?utm_content=cmp-true)
 
 ### ex00 - Aaaaand... OPEN!
 

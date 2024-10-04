@@ -34,7 +34,7 @@ class DiamondTrap : public ScavTrap, public FragTrap {
         void        whoAmI( void );
         std::string getDiamondName( void ) const;
 
-        using   FragTrap::attack;
+        using   ScavTrap::attack;
 };
 
 std::ostream	&operator<<(std::ostream & out, const DiamondTrap &rhs );
