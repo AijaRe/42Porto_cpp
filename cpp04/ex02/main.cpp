@@ -18,16 +18,20 @@
 #include "Brain.hpp"
 
 int	main( void ) {
+	std::cout << "\n-----CREATING ANIMALS: CAT & DOG-----" << std::endl;
 	const AAnimal* dog = new Dog();
 	const AAnimal* cat = new Cat();
 
-	//not possible to instantiate AAnimal
+	std::cout << "\n----UNCOMMENT TO TEST THE ABSTRACT ANIMAL----" << std::endl;
+	std::cout << "-----not possible to instantiate AAnimal-----" << std::endl;
 	//AAnimal beastie;
 	//AAnimal* beastie = new AAnimal();
 
+	std::cout << "\n-------------SOUND CHECK-------------" << std::endl;
 	dog->makeSound();
 	cat->makeSound();
 
+	std::cout << "\n---------DELETING INSTANCES----------" << std::endl;
 	delete dog;
 	delete cat;
 	

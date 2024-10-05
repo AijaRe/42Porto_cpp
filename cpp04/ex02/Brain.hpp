@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:49:44 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/15 10:46:58 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/05 17:40:05 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define BRAIN_HPP
 
 #include <iostream>
+#include <string>
+#include <climits>
 
 class Brain {
     private:
@@ -28,6 +30,8 @@ class Brain {
 
         void    setIdea( std::string idea );
         void    printIdeas( void );
+        int     getBusyCount( void );
+        int     getIdeaCount( void );
 };
 
 #endif // BRAIN_HPP

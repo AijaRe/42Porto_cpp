@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:49:40 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/15 10:50:42 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/05 17:42:54 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,26 @@ Brain & Brain::operator=( const Brain &src ) {
     return *this;
 }
 
+/* 
+** this->_busy is always within the range of 0 to 99 (inclusive).
+** _busy wraps around after reaching 100
+** -> overwrite older ideas after reaching 100
+*/
 void    Brain::setIdea( std::string idea ) {
+	if (this->_idea_count == INT_MAX) {
+		std::cout << "Reached idea limit. Resetting to 0." << std::endl;
+		this->_idea_count = 0;
+    }
     int i = this->_busy;
     this->_ideas[i] = idea;
     this->_busy = (i + 1) % 100;
     this->_idea_count++;
 }
 
+/* 
+** if idea cound hasn't reached 100, print only busy slots,
+** otherwise print all
+*/
 void    Brain::printIdeas( void ) {
     if (this->_idea_count != 0) {
         if (this->_idea_count < 100) {
@@ -58,4 +71,12 @@ void    Brain::printIdeas( void ) {
     } else {
         std::cout << "This brain has no ideas!" << std::endl;
     }
+}
+
+int	Brain::getBusyCount( void ) {
+    return this->_busy;
+}
+
+int	Brain::getIdeaCount( void ) {
+    return this->_idea_count;
 }
