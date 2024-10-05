@@ -66,8 +66,19 @@ int main() {
 
     std::cout << "\n------TEST CHARACTER DEEP COPY ------" << std::endl;
     std::cout << bob << std::endl;
+    Character copy(bob);
     ana = bob;
-    std::cout << "Ana after deep copying from Bob: \n" << std::endl;
+    std::cout << "\nCharacter after copying from Bob: \n" << std::endl;
+    std::cout << copy << std::endl;
+    std::cout << "\nAna after assigning from Bob: \n" << std::endl;
+    std::cout << ana << std::endl;
+    std::cout << "\nCopy unequips slot 0: \n" << std::endl;
+    copy.unequip(0);
+    std::cout << "\nEx-Ana unequips slot 1: \n" << std::endl;
+    ana.unequip(1);
+    std::cout << "\nPrinting Bob - Copy - Ana: \n" << std::endl;
+    std::cout << bob << std::endl;
+    std::cout << copy << std::endl;
     std::cout << ana << std::endl;
 
     std::cout << "\n---------TEST MATERIA SOURCE---------" << std::endl;
