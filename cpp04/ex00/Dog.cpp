@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 20:00:29 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/12 20:07:18 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/05 12:44:35 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog( void ): Animal("dog") {
+Dog::Dog( void ): Animal("Dog") {
     std::cout << "Dog default constructor called." << std::endl;
 }
 

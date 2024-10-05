@@ -25,7 +25,7 @@ int	main ( void ) {
 	std::cout << "-----------VERIFY DEEP COPY-----------" << std::endl;
 	std::cout << "Change s attack damage to 44:" << std::endl;
 	s.setAttackDamage(44);
-	 std::cout << "s attack damage: " << s.getAttackDamage() << std::endl;
+	std::cout << "s attack damage: " << s.getAttackDamage() << std::endl;
 	std::cout << "c attack damage: " << c.getAttackDamage() << std::endl;
 	std::cout << "-----DIAMONDTRAP ASSIGNMENT CONSTRUCTOR-----" << std::endl;
 	DiamondTrap assigned_s("Shine2");
@@ -37,7 +37,7 @@ int	main ( void ) {
 	s.setAttackDamage(85);
 	std::cout << "s attack damage: " << s.getAttackDamage() << std::endl;
 	std::cout << "assigned_s attack damage: " << assigned_s.getAttackDamage() << std::endl;
-	 std::cout << std::endl;
+	std::cout << std::endl;
 	std::cout << "----------DIAMONDTRAP ATTACK----------" << std::endl;
 	s.attack("DiamondTarget");
 	std::cout << std::endl;

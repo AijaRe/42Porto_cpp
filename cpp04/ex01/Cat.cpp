@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 20:00:35 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/14 19:10:36 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/05 12:37:39 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat( void ) : Animal("cat") {
+Cat::Cat( void ) : Animal("Cat") {
     std::cout << "Cat default constructor called." << std::endl;
     this->_brain = new Brain;
 }

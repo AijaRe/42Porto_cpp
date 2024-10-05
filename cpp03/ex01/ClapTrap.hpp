@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 21:23:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/03 21:08:17 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/05 15:14:00 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class ClapTrap {
         ClapTrap( void );
         ClapTrap( std::string name );
         ClapTrap( const ClapTrap &src );
-        virtual ~ClapTrap( void ); 
+        ~ClapTrap( void ); 
         ClapTrap & operator=( const ClapTrap &src );
         //action
         virtual void    attack( const std::string& target );

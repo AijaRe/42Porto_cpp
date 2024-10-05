@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 20:58:08 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/12 21:25:54 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/05 12:44:45 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal( void ) : _type("random wrong beastie"){
+WrongAnimal::WrongAnimal( void ) : _type("Random Wrong Beastie"){
     std::cout << "WrongAnimal default constructor called." << std::endl;
 }
 

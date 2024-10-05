@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 20:58:17 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/12 21:27:17 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/05 12:44:54 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat( void ) : WrongAnimal("wrong cat") {
+WrongCat::WrongCat( void ) : WrongAnimal("Wrong Cat") {
     std::cout << "WrongCat default constructor called." << std::endl;
 }
 

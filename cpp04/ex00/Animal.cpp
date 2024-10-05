@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 20:00:41 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/12 21:13:14 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/05 12:38:13 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal( void ) : _type("random beastie") {
+Animal::Animal( void ) : _type("Random Beastie") {
     std::cout << "Animal default constructor called." << std::endl;
 }
 

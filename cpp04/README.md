@@ -8,3 +8,5 @@
 - using namespace <ns_name> and friend keywords is forbidden
 - using the STL is forbidden (no Containers and no Algorithms)
 - all classes must be designed in the Orthodox Canonical Form (containting default constructor, copy constructor, copy assignment operator, destructor)
+
+### ex00 - Polymorphism
