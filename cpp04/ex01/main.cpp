@@ -46,6 +46,7 @@ int	main( void ) {
 
 		std::cout << "\n-----------DEEP COPY TEST-----------" << std::endl;
 		Cat copycat(chonk);
+		//Cat copycat = chonk;
 		std::cout << "\n------Copycat gets one more idea------" << std::endl;
 		copycat.getBrain()->setIdea("If I speed up, I will get into another dimension.");
 		std::cout << std::endl;
@@ -54,8 +55,6 @@ int	main( void ) {
 		std::cout << std::endl;
 		std::cout << "-----------Copycat's ideas-----------" << std::endl;
 		copycat.getBrain()->printIdeas();
-		std::cout << copycat.getBrain()->getBusyCount() << std::endl;
-		std::cout << copycat.getBrain()->getIdeaCount() << std::endl;
 		std::cout << std::endl;
 	}
 	{

@@ -49,6 +49,9 @@ int	main( void ) {
 		wmeta->makeSound();
 		std::cout << ">> Wrong Cat sound: "; 
 		wcat->makeSound();
+		WrongCat wcat_stack;
+		std::cout << ">> Wrong Cat sound as stack object: "; 
+		wcat_stack.makeSound();
 		std::cout << std::endl;
 
 		std::cout << "-------DELETING INSTANCES-------" << std::endl;

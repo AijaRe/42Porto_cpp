@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 20:00:38 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/15 10:54:57 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/09 21:38:54 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 /* 
 ** for polymorphism to work correctly the base class 
-** needs to have virtual destructor 
+** needs to have virtual destructor (otherwise only deletes base class)
 ** to override a function in child class, you need to mark
 ** the same base class function as virtual
 */

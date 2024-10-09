@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:43:56 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/05 18:19:03 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/09 21:06:37 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 ** pointers (_inventory) by default are initialized to NULL
 */
 Character::Character( void ) : _name("nameless"), _inventory(), _droppedItems(), _dropCount(0), _dropCapacity(0) {
-	std::cout << "Character default constructor called." << std::endl;
+	//std::cout << "Character default constructor called." << std::endl;
 }
 
 Character::Character( std::string name ) : _name(name), _inventory(), _droppedItems(), _dropCount(0), _dropCapacity(0) {
-	std::cout << "Character assignment constructor called." << std::endl;
+	//std::cout << "Character assignment constructor called." << std::endl;
 }
 
 Character::Character( const Character &src ) : _name(src._name), _dropCount(src._dropCount), _dropCapacity(src._dropCapacity) {
-	std::cout << "Character copy constructor called." << std::endl;
+	//std::cout << "Character copy constructor called." << std::endl;
 	for (int i = 0; i < INVENTORY_SLOTS; ++i) {
 		if (src._inventory[i])
 			this->_inventory[i] = src._inventory[i]->clone();
@@ -39,7 +39,7 @@ Character::Character( const Character &src ) : _name(src._name), _dropCount(src.
 }
 
 Character::~Character( void ) {
-	std::cout << "Character destructor called." << std::endl;
+	//std::cout << "Character destructor called." << std::endl;
 	for (int i = 0; i < INVENTORY_SLOTS; ++i) {
 		if (this->_inventory[i])
 			delete this->_inventory[i];
@@ -51,7 +51,7 @@ Character::~Character( void ) {
 }
 
 Character & Character::operator=( const Character &src ) {
-	std::cout << "Character assignment operator called." << std::endl;
+	//std::cout << "Character assignment operator called." << std::endl;
 	if (this != &src) {
 		if (this->_name != src._name)
 			this->_name = src._name;
@@ -60,7 +60,7 @@ Character & Character::operator=( const Character &src ) {
 				delete this->_inventory[i];
 			if (src._inventory[i])
 				this->_inventory[i] = src._inventory[i]->clone();
-			else //is this else necessary? doesn't delete set pointer to null?
+			else
 				this->_inventory[i] = NULL;
 		}
 		

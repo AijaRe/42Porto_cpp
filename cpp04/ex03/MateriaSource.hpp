@@ -16,7 +16,7 @@ class MateriaSource: public IMateriaSource {
 		MateriaSource & operator=( const MateriaSource &src );
 
 		void learnMateria( AMateria* m );
-		AMateria* createMateria( std::string const & type );
+		AMateria* createMateria( std::string const &type );
 };
 
 #endif // MATERIASOURCE_HPP

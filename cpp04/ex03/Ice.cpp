@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:44:09 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/05 18:19:27 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/09 21:07:15 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 #include "ICharacter.hpp"
 
 Ice::Ice( void ) : AMateria("ice") {
-	std::cout << "Ice default constructor called." << std::endl;
+	//std::cout << "Ice default constructor called." << std::endl;
 }
 
 Ice::Ice( const Ice &src ) : AMateria(src) {
-	std::cout << "Ice copy constructor called." << std::endl;
+	//std::cout << "Ice copy constructor called." << std::endl;
 }
 
 Ice::~Ice( void ) {
-	std::cout << "Ice destructor called." << std::endl;
+	//std::cout << "Ice destructor called." << std::endl;
 }
 
 /* 
@@ -30,7 +30,7 @@ Ice::~Ice( void ) {
 ** and does not change throughout lifecycle 
 */
 Ice & Ice::operator=( const Ice &src ) {
-	std::cout << "Ice assignment operator called." << std::endl;
+	//std::cout << "Ice assignment operator called." << std::endl;
 	(void)src;
 	return *this;
 }

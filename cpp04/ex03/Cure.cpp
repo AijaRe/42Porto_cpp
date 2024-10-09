@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 21:44:03 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/05 18:19:17 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/09 21:06:56 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 #include "ICharacter.hpp"
 
 Cure::Cure( void ) : AMateria("cure") {
-	std::cout << "Cure default constructor called." << std::endl;
+	//std::cout << "Cure default constructor called." << std::endl;
 }
 
 Cure::Cure( const Cure &src ) : AMateria(src) {
-	std::cout << "Cure copy constructor called." << std::endl;
+	//std::cout << "Cure copy constructor called." << std::endl;
 }
 
 Cure::~Cure( void ) {
-	std::cout << "Cure destructor called." << std::endl;
+	//std::cout << "Cure destructor called." << std::endl;
 }
 
 /* 
@@ -30,7 +30,7 @@ Cure::~Cure( void ) {
 ** and does not change throughout lifecycle 
 */
 Cure & Cure::operator=( const Cure &src ) {
-	std::cout << "Cure assignment operator called." << std::endl;
+	//std::cout << "Cure assignment operator called." << std::endl;
 	(void)src;
 	return *this;
 }

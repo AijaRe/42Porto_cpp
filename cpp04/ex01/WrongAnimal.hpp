@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 20:58:14 by arepsa            #+#    #+#             */
-/*   Updated: 2024/06/12 21:24:39 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/09 21:44:00 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class WrongAnimal {
         WrongAnimal & operator=( const WrongAnimal &src );
 
         std::string     getType( void ) const;
-        virtual void    makeSound( void ) const;
+        void    makeSound( void ) const;
 };
 
 #endif // WRONGANIMAL_HPP
