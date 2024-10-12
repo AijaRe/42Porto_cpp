@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:51:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/09/15 20:00:20 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/12 16:06:51 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main( void ) {
 	
 	printTitle("TEST VALID FORM CREATION");
 	try {
-		Form validForm_100_5("validForm_100_5", 50, 5);
+		Form PresPardon = new PresidentialPardonForm("Artur");
 		std::cout << GREEN << validForm_100_5 << RESET << std::endl;
 	}
 	catch (std::exception &e) {
@@ -38,6 +38,82 @@ int	main( void ) {
 	}
 
 	printTitle("TEST FORM COPY CONSTRUCTOR");
+	try {
+		Form validForm_50_5("validForm_50_5", 50, 5);
+		Form validForm_50_5_copy(validForm_50_5);
+		std::cout << GREEN << validForm_50_5_copy << RESET << std::endl;
+	} catch (std::exception &e) {
+		 std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
+	}
+	
+	printTitle("TEST FORM ASSIGNMENT OPERATOR");
+	try {
+		Form validForm_50_5("validForm_50_5", 50, 5);
+		validForm_50_5.beSigned(ana);
+		std::cout << GREEN << validForm_50_5 << RESET << std::endl;
+		Form validForm_100_10_assign("validForm_100_10_assign", 100, 10);
+		validForm_100_10_assign = validForm_50_5;
+		std::cout << GREEN << validForm_100_10_assign << RESET << std::endl;
+	} catch (std::exception &e){
+		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
+	}
+	
+	printTitle("TEST FORM GRADE TOO LOW CREATION");
+	try {
+		Form lowForm_151_5("lowForm_151_5", 151, 5);
+		std::cout << GREEN << ARROW << lowForm_151_5 << RESET << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
+	}
+
+	printTitle("TEST FORM GRADE TOO HIGH CREATION");
+	try {
+		Form highForm_100_0("highForm_100_0", 100, 0);
+		std::cout << GREEN << highForm_100_0 << RESET << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
+	}
+
+	printTitle("TEST NEGATIVE FORM GRADE CREATION");
+	try {
+		Form negativeForm("negativeForm", 100, -15);
+		std::cout << GREEN << negativeForm << RESET << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
+	}
+
+	printTitle("TEST VALID FORM SIGNING");
+	try {
+		Form validForm_100_5("validForm_100_5", 100, 5);
+		std::cout << GREEN << zaz << RESET << std::endl;
+		zaz.signForm(validForm_100_5);
+		std::cout << std::endl;
+		std::cout << GREEN << validForm_100_5 << RESET << std::endl;
+	} catch (std::exception &e) {
+		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
+	}
+
+	printTitle("TEST FORM SIGNING WITH EQUEAL GRADE");
+	try {
+		Form validForm_75_5("validForm_75_5", 75, 5);
+		std::cout << GREEN << zaz << RESET << std::endl;
+		zaz.signForm(validForm_75_5);
+		std::cout << std::endl;
+		std::cout << GREEN << validForm_75_5 << RESET << std::endl;
+	} catch (std::exception &e) {
+		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
+	}
+
+	printTitle("TEST FORM SIGNING ALREADY SIGNED");
+	try {
+		Form validForm_100_5("validForm_100_5", 100, 5);
+		zaz.signForm(validForm_100_5);
+		std::cout << std::endl;
+		std::cout << GREEN << validForm_100_5 << RESET << std::endl;
+		ana.signForm(printTitle("TEST FORM COPY CONSTRUCTOR");
 	try {
 		Form validForm_50_5("validForm_50_5", 50, 5);
 		Form validForm_50_5_copy(validForm_50_5);
@@ -128,8 +204,23 @@ int	main( void ) {
 	} catch (std::exception &e) {
 		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
 	}
+validForm_100_5);
+	} catch (std::exception &e) {
+		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
+	}
 
-	std::cout << BOLD << CYAN << LINE << RESET << std::endl;
-	std::cout << BOLD << CYAN << "| END OF TESTS" << RESET << std::endl;
+	printTitle("TEST FORM SIGNING GRADE TOO LOW");
+	try {
+		Form validForm_100_5("validForm_100_5", 100, 5);
+		std::cout << GREEN << bob << RESET << std::endl;
+		bob.signForm(validForm_100_5);
+		std::cout << std::endl;
+		std::cout << GREEN << validForm_100_5 << RESET << std::endl;
+	} catch (std::exception &e) {
+		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
+	}
+
+	printTitle("END OF TESTS");
+	
 	return 0;
 }

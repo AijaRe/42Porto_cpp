@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:51:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/08/19 15:57:17 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/12 14:01:07 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 
 void	printTitle(std::string title) {
 	std::cout << BOLD << CYAN;
-    std::cout << LINE << std::endl;
-    std::cout << "| " << title << std::endl;
-    std::cout << LINE << std::endl;
-    std::cout << RESET << std::endl;
+	std::cout << LINE << std::endl;
+	std::cout << "| " << title << std::endl;
+	std::cout << LINE << std::endl;
+	std::cout << RESET << std::endl;
 }
 
 int	main( void ) {
@@ -70,6 +70,7 @@ int	main( void ) {
 		Bureaucrat b6("Copycat", 50);
 		std::cout << GREEN << ARROW << b6 << RESET;
 		Bureaucrat b7(b6);
+		std::cout << "Bureaucrat created using copy constructor: " << std::endl;
 		std::cout << GREEN << ARROW << b7 << RESET << std::endl;
 	}
 	catch (std::exception & e) {
@@ -144,8 +145,7 @@ int	main( void ) {
 		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
 	}
 
-	std::cout << BOLD << CYAN << LINE << RESET << std::endl;
-	std::cout << BOLD << CYAN << "| END OF TESTS" << RESET << std::endl;
-	std::cout << BOLD << UNDERLINE << CYAN << LINE << RESET << std::endl;
+	printTitle("END OF TESTS");
+	
 	return 0;
 }

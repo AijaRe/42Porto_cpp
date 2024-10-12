@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:14:29 by arepsa            #+#    #+#             */
-/*   Updated: 2024/08/19 15:56:44 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/12 14:03:00 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 class Bureaucrat
 {
 	private:
-		const std::string _name;
-		int _grade;
-		static const int LOWEST_GRADE = 150;
-		static const int HIGHEST_GRADE = 1;
+		const std::string	_name;
+		int					_grade;
+		static const int	LOWEST_GRADE = 150;
+		static const int	HIGHEST_GRADE = 1;
 
 	public:
 		// Constructors
@@ -48,10 +48,12 @@ class Bureaucrat
 		Bureaucrat & operator=( const Bureaucrat &assign );
 		
 		// Getters / Setters
-		const std::string getName( void ) const;
-		int getGrade( void ) const;
-		void incrementGrade( void );
-		void decrementGrade( void );
+		const std::string	getName( void ) const;
+		int					getGrade( void ) const;
+
+		// Member functions
+		void				incrementGrade( void );
+		void				decrementGrade( void );
 		
 		
 };

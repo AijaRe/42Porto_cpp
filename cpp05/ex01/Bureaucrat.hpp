@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:14:29 by arepsa            #+#    #+#             */
-/*   Updated: 2024/08/19 17:04:17 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/12 14:57:16 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ class Form;
 class Bureaucrat
 {
 	private:
-		const std::string _name;
-		int _grade;
+		const std::string	_name;
+		int					_grade;
 
 	public:
-		static const int LOWEST_GRADE = 150;
-		static const int HIGHEST_GRADE = 1;
+		static const int	LOWEST_GRADE = 150;
+		static const int	HIGHEST_GRADE = 1;
 		// Constructors
 		Bureaucrat( void );
 		Bureaucrat( const Bureaucrat &copy );
@@ -58,13 +58,13 @@ class Bureaucrat
 		};
 		
 		// Getters / Setters
-		const std::string getName( void ) const;
-		int getGrade( void ) const;
+		const std::string	getName( void ) const;
+		int					getGrade( void ) const;
 		
 		// Member functions
-		void incrementGrade( void );
-		void decrementGrade( void );
-		void signForm( Form &form );
+		void				incrementGrade( void );
+		void				decrementGrade( void );
+		void				signForm( Form &form );
 };
 
 // Stream operators

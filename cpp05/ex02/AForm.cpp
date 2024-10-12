@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:02:30 by arepsa            #+#    #+#             */
-/*   Updated: 2024/09/15 21:10:54 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/12 14:35:20 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
 AForm::AForm( void ) : _name("nameless"), _signed(false), _signGrade(150), _execGrade(150) {
-    std::cout << "AForm default constructor called." << std::endl;
+    //std::cout << "AForm default constructor called." << std::endl;
 }
 
 AForm::AForm ( const std::string name, int signGrade, int execGrade ) : _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade) {
@@ -25,7 +25,7 @@ AForm::AForm ( const std::string name, int signGrade, int execGrade ) : _name(na
 }
 
 AForm::AForm( const AForm &copy ) : _name(copy.getName()), _signed(copy.getSigned()), _signGrade(copy.getSignGrade()), _execGrade(copy.getExecGrade()) {
-    std::cout << "Form copy constructor called." << std::endl;
+    //std::cout << "Form copy constructor called." << std::endl;
 }
 
 AForm::~AForm( void ) {

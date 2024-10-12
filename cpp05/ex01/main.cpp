@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:51:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/09/15 20:00:20 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/12 14:58:45 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ int	main( void ) {
 	printTitle("TEST FORM COPY CONSTRUCTOR");
 	try {
 		Form validForm_50_5("validForm_50_5", 50, 5);
+		std::cout << "Form used for copy: " << std::endl;
+		std::cout << GREEN << validForm_50_5 << RESET << std::endl;
 		Form validForm_50_5_copy(validForm_50_5);
+		std::cout << "Form created using copy constructor: " << std::endl;
 		std::cout << GREEN << validForm_50_5_copy << RESET << std::endl;
 	} catch (std::exception &e) {
 		 std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
@@ -50,9 +53,13 @@ int	main( void ) {
 	try {
 		Form validForm_50_5("validForm_50_5", 50, 5);
 		validForm_50_5.beSigned(ana);
+		std::cout << "Form used for assignment: " << std::endl;
 		std::cout << GREEN << validForm_50_5 << RESET << std::endl;
 		Form validForm_100_10_assign("validForm_100_10_assign", 100, 10);
+		std::cout << "Form before assignment: " << std::endl;
+		std::cout << GREEN << validForm_100_10_assign << RESET << std::endl;
 		validForm_100_10_assign = validForm_50_5;
+		std::cout << "Form after assignment: " << std::endl;
 		std::cout << GREEN << validForm_100_10_assign << RESET << std::endl;
 	} catch (std::exception &e){
 		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
@@ -129,7 +136,7 @@ int	main( void ) {
 		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
 	}
 
-	std::cout << BOLD << CYAN << LINE << RESET << std::endl;
-	std::cout << BOLD << CYAN << "| END OF TESTS" << RESET << std::endl;
+	printTitle("END OF TESTS");
+	
 	return 0;
 }
