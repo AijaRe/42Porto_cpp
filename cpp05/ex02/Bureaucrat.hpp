@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:14:29 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/12 15:09:28 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/13 19:36:23 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #define BOLD    "\033[1m"
 #define ARROW "=> "
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:51:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/12 14:58:45 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/13 19:53:22 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main( void ) {
 	printTitle("TEST FORM ASSIGNMENT OPERATOR");
 	try {
 		Form validForm_50_5("validForm_50_5", 50, 5);
-		validForm_50_5.beSigned(ana);
+		ana.signForm(validForm_50_5);
 		std::cout << "Form used for assignment: " << std::endl;
 		std::cout << GREEN << validForm_50_5 << RESET << std::endl;
 		Form validForm_100_10_assign("validForm_100_10_assign", 100, 10);

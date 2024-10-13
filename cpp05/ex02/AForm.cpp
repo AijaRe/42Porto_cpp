@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 19:02:30 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/12 14:35:20 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/13 19:43:40 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,13 @@ std::ostream & operator<<( std::ostream &out, const AForm &rhs ) {
     out << "Form exec grade: " << rhs.getExecGrade() << std::endl;
     out << "Form signed: " << rhs.getSigned() << std::endl;
     return out;
+}
+
+void    AForm::execute( Bureaucrat const &executor ) const {
+    if (!this->getSigned()) {
+        throw std::logic_error("Form " + this->getName() + " is not signed.");
+    }
+    else if (executor.getGrade() > this->getExecGrade()) {
+        throw Bureaucrat::GradeTooLowException();
+    }
 }

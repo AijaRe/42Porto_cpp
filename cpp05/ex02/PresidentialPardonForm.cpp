@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:27:50 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/12 16:09:08 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/13 19:26:43 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,8 @@ std::string	PresidentialPardonForm::getTarget( void ) const {
 }
 
 void		PresidentialPardonForm::execute( Bureaucrat const &executor ) const {
-	try {
-		if (this->getSigned() && (executor.getGrade() <= this->getExecGrade())) {
-			std::cout << GREEN << executor.getName() << " executed " << this->getName() << RESET << std::endl;
-			std::cout << GREEN << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << RESET << std::endl;
-			}
-	} catch (std::exception &e) {
-		std::cout << YELLOW << ARROW << e.what() << RESET << std::endl;
-	}
+	AForm::execute(executor);
+	std::cout << GREEN << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << RESET << std::endl;
 }
 
 std::ostream & operator<<( std::ostream &out, const PresidentialPardonForm &rhs ) {
