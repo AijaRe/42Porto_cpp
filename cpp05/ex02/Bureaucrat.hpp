@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:14:29 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/13 19:36:23 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/14 20:06:49 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 #define RESET   "\033[0m"
 #define GREEN   "\033[32m"
+#define RED     "\033[31m"
 #define BLUE    "\033[34m"
 #define YELLOW  "\033[33m"
 #define BOLD    "\033[1m"

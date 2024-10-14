@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:51:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/13 19:53:22 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/14 19:23:05 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ void	printTitle(std::string title) {
     std::cout << RESET << std::endl;
 }
 
+/* 
+** signForm() can be called without the try-catch block, since
+** it uses the block inside the method when calling beSigned()
+** form creation has to be inside the try-catch block since it is called from main
+** caller is responsible for exception treatment
+*/
 int	main( void ) {
 	Bureaucrat ana("Ana The Best", 1);
 	Bureaucrat bob("Bob The Worst", 150);
@@ -93,49 +99,31 @@ int	main( void ) {
 	}
 
 	printTitle("TEST VALID FORM SIGNING");
-	try {
-		Form validForm_100_5("validForm_100_5", 100, 5);
-		std::cout << GREEN << zaz << RESET << std::endl;
-		zaz.signForm(validForm_100_5);
-		std::cout << std::endl;
-		std::cout << GREEN << validForm_100_5 << RESET << std::endl;
-	} catch (std::exception &e) {
-		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
-	}
+	Form validForm_100_5("validForm_100_5", 100, 5);
+	std::cout << GREEN << zaz << RESET << std::endl;
+	zaz.signForm(validForm_100_5);
+	std::cout << std::endl;
+	std::cout << GREEN << validForm_100_5 << RESET << std::endl;
+
 
 	printTitle("TEST FORM SIGNING WITH EQUEAL GRADE");
-	try {
-		Form validForm_75_5("validForm_75_5", 75, 5);
-		std::cout << GREEN << zaz << RESET << std::endl;
-		zaz.signForm(validForm_75_5);
-		std::cout << std::endl;
-		std::cout << GREEN << validForm_75_5 << RESET << std::endl;
-	} catch (std::exception &e) {
-		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
-	}
+	Form validForm_75_5("validForm_75_5", 75, 5);
+	std::cout << GREEN << zaz << RESET << std::endl;
+	zaz.signForm(validForm_75_5);
+	std::cout << std::endl;
+	std::cout << GREEN << validForm_75_5 << RESET << std::endl;
 
 	printTitle("TEST FORM SIGNING ALREADY SIGNED");
-	try {
-		Form validForm_100_5("validForm_100_5", 100, 5);
-		zaz.signForm(validForm_100_5);
-		std::cout << std::endl;
-		std::cout << GREEN << validForm_100_5 << RESET << std::endl;
-		ana.signForm(validForm_100_5);
-	} catch (std::exception &e) {
-		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
-	}
+	std::cout << GREEN << validForm_100_5 << RESET << std::endl;
+	ana.signForm(validForm_100_5);
 
 	printTitle("TEST FORM SIGNING GRADE TOO LOW");
-	try {
-		Form validForm_100_5("validForm_100_5", 100, 5);
-		std::cout << GREEN << bob << RESET << std::endl;
-		bob.signForm(validForm_100_5);
-		std::cout << std::endl;
-		std::cout << GREEN << validForm_100_5 << RESET << std::endl;
-	} catch (std::exception &e) {
-		std::cout << YELLOW << ARROW << "Exception: " << e.what() << RESET << std::endl;
-	}
-
+	Form validForm_70_5("validForm_70_5", 70, 5);
+	std::cout << GREEN << bob << RESET << std::endl;
+	bob.signForm(validForm_70_5);
+	std::cout << std::endl;
+	std::cout << GREEN << validForm_70_5 << RESET << std::endl;
+	
 	printTitle("END OF TESTS");
 	
 	return 0;

@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:27:50 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/13 19:26:43 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/14 19:43:08 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm( void )
-	: AForm ("PresidentialPardon", 25, 5), _target("notarget") {
+	: AForm("PresidentialPardon", 25, 5), _target("notarget") {
 	//std::cout << "PresidentialPardonForm default constructor called." << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm( std::string target )
-	: AForm ("PresidentialPardon", 25, 5), _target(target) {
-	//std::cout << "PresidentialPardonForm default constructor called." << std::endl;
+	: AForm("PresidentialPardon", 25, 5), _target(target) {
+	//std::cout << "PresidentialPardonForm assignment constructor called." << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm &copy )

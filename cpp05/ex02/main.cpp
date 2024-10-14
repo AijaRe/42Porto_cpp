@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:51:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/13 19:58:50 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/14 20:08:18 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,16 @@ int	main( void ) {
 	Bureaucrat ana("Ana The Best", 1);
 	Bureaucrat bob("Bob The Worst", 150);
 	Bureaucrat zaz("Zaz Sweet Middle", 75);
+	Bureaucrat ror("Ror A Bit Above Average", 60);
 	
 	printTitle("TEST GRADE TOO LOW FORM SIGN/EXECUTION");
 	PresidentialPardonForm pform("Arthur");
+	std::cout << pform << std::endl;
 	zaz.signForm(pform);
 	ana.signForm(pform);
+	std::cout << pform << std::endl;
 	zaz.executeForm(pform);
+	
 	
 	printTitle("TEST UNSIGNED PRESIDENTIAL FORM EXECUTION");
 	PresidentialPardonForm pform2("Ford");
@@ -44,6 +48,14 @@ int	main( void ) {
 	std::cout << pform << std::endl;
 	ana.executeForm(pform);
 	
+	printTitle("TEST PRESIDENTIAL FORM COPY OPERATOR");
+	PresidentialPardonForm pformCopy(pform);
+	std::cout << pformCopy << std::endl;
+
+	printTitle("TEST PRESIDENTIAL FORM ASSIGNMENT OPERATOR");
+	PresidentialPardonForm pformAssign = pform;
+	std::cout << pformAssign << std::endl;
+
 
 	printTitle("END OF TESTS");
 	
