@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 21:27:50 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/14 19:43:08 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/15 20:12:37 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ PresidentialPardonForm & PresidentialPardonForm::operator=( const PresidentialPa
 	//std::cout << "PresidentialPardonForm assignment operator called." << std::endl;
 	if (this != &src) {
 		AForm::operator=(src);
-		_target = src._target;
+		this->_target = src._target;
 	}
 	return *this;
 }

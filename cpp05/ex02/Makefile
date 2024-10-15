@@ -6,7 +6,7 @@
 #    By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/16 15:46:42 by arepsa            #+#    #+#              #
-#    Updated: 2024/10/13 19:37:30 by arepsa           ###   ########.fr        #
+#    Updated: 2024/10/15 21:12:44 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ RM = rm -rf
 CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -fsanitize=address
 
 NAME 		= bureaucrat
-FILES 		= main Bureaucrat AForm PresidentialPardonForm
+FILES 		= main Bureaucrat AForm PresidentialPardonForm RobotomyRequestForm\
+			ShrubberyCreationForm
 SRC 		= $(addsuffix .cpp, $(FILES))
 OBJ 		= $(addsuffix .o, $(FILES))
 
@@ -29,7 +30,7 @@ clean:
 	@$(RM) $(OBJ)
 
 fclean: clean
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) *_shrubbery
 
 re: fclean all
 

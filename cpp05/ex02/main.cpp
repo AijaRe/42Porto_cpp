@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:51:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/14 20:08:18 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/15 21:02:25 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 void	printTitle(std::string title) {
 	std::cout << BOLD << CYAN;
@@ -56,6 +58,27 @@ int	main( void ) {
 	PresidentialPardonForm pformAssign = pform;
 	std::cout << pformAssign << std::endl;
 
+	printTitle("TEST ROBOTOMY FORM SIGNING");
+	RobotomyRequestForm rform("Marvin");
+	std::cout << rform << std::endl;
+	zaz.signForm(rform);
+	ror.signForm(rform);
+
+	printTitle("TEST ROBOTOMY FORM EXECUTION");
+	ror.executeForm(rform);
+	ana.executeForm(rform);
+	
+	printTitle("TEST SHRUBBERY FORM UNSIGNED EXECUTION");
+	ShrubberyCreationForm sform("Asgard");
+	bob.signForm(sform);
+
+	printTitle("TEST SHRUBBERY FORM SIGNING");
+	zaz.executeForm(sform);
+	zaz.signForm(sform);
+	
+	printTitle("TEST SHRUBBERY FORM EXECUTION");
+	bob.executeForm(sform);
+	zaz.executeForm(sform);	
 
 	printTitle("END OF TESTS");
 	
