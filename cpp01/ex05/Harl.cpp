@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 12:39:56 by arepsa            #+#    #+#             */
-/*   Updated: 2024/09/23 20:13:19 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/16 19:23:17 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void    Harl::error ( void ){
 ** array of function pointers for Harl level private functions
 ** define an array of levels and compare them to input level
 ** call member function through a pointer to a function
+** return_type (*FuncPtr) (parameter type, ....);  
 */
 void Harl::complain ( std::string level ) {
 	void    (Harl::*harlFunc[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
