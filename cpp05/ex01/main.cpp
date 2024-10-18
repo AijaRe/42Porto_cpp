@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:51:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/14 19:23:05 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/18 15:49:17 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main( void ) {
 	
 	printTitle("TEST VALID FORM CREATION");
 	try {
-		Form validForm_100_5("validForm_100_5", 50, 5);
+		Form validForm_100_5("validForm_100_5", 100, 5);
 		std::cout << GREEN << validForm_100_5 << RESET << std::endl;
 	}
 	catch (std::exception &e) {
