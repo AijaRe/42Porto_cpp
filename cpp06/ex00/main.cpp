@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:17:39 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/18 20:00:22 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/19 17:53:49 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int main(int argc, char** argv) {
     if (argc != 2)
     {
-        std::cout << "Program usage: ./convert <arg>" << std::endl;
+        std::cerr << "Program usage: ./convert <arg>" << std::endl;
         return 1;
     }
     
@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
     
     if (arg.empty())
     {
-        std::cout << "Error: empty argument" << std::endl;
+        std::cerr << "Error: empty argument" << std::endl;
         return 2;
     }
     
