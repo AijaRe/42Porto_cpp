@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:15:57 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/19 18:57:06 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/19 18:59:28 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ ScalarConverter & ScalarConverter::operator=(const ScalarConverter &src) {
     return *this;
 }
 
-//print the char representation
 void    printChar(char c) {
     if (isprint(c)){
         std::cout << "char: " << c << std::endl;
@@ -42,7 +41,6 @@ void    printChar(char c) {
     }
 }
 
-//print the int representation
 void    printInt(int n) {
     std::cout << "int: " << n << std::endl;
 }
@@ -52,7 +50,6 @@ void    printInt(float f) {
     std::cout << "float: " << f << std::endl;
 }
 
-//print the double representation
 void    printDouble(double d) {
     std::cout << "double: " << d << std::endl;
 }
@@ -80,7 +77,7 @@ void ScalarConverter::convert(const std::string& str) {
             break;
         case INT:
             ss >> n;
-            std::cout << "int: " << n << std::endl;
+            printInt(n);
             break;
         case FLOAT:
             ss >> f;
