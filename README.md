@@ -12,7 +12,9 @@ CPP03 - Inheritance
 
 CPP04 - Subtype polymorphism, abstract classes, interfaces
 
-CPP05 - Work In Progres...
+CPP05 - Exceptions
+
+CPP06 - Work In Progress...
 
 
 ## Resources
