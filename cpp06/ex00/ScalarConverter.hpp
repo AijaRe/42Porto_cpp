@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:16:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/19 18:53:12 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/20 21:18:04 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include <string>
+#include <cctype>   //isprint
+#include <cstdlib>  //strtol
 #include <sstream>  //stringstream
 #include <climits>
 
@@ -29,7 +31,10 @@ class ScalarConverter {
 		~ScalarConverter(void);
 		ScalarConverter & operator=(const ScalarConverter &src);
 		
-		enum Type { CHAR, INT, FLOAT, DOUBLE, PSEUDO, INVALID };
+		enum	Type { CHAR, INT, FLOAT, DOUBLE, PSEUDO, INVALID };
+
+		// Helper functions
+		static Type	getType(const std::string& str);
 };
 
 #endif // SCALARCONVERTER_HPP

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:15:57 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/19 18:59:28 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/20 21:19:01 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,58 @@ void    printDouble(double d) {
     std::cout << "double: " << d << std::endl;
 }
 
+static bool isChar(const std::string& str) {
+    return (str.length() == 1 && isprint(str[0]) && !isdigit(str[0]));
+}
+
+/* 
+** allow + or - sign at the beginning of the string
+** allow only digits in the string (check if ends with '\0')
+*/
+static bool isInt(const std::string& str) {
+    if (str.length() == 1 && !isdigit(str[0])) {
+        return false;
+    }
+    char *end;
+    long value = strtol(str.c_str(), &end, 10);
+    if (*end != '\0' || value > INT_MAX || value < INT_MIN) {
+        return false;
+    }
+    return true;
+}
+
+static bool isPseudo(const std::string& str) {
+    if (str == "nan" || str == "+inf" || str == "-inf" ||
+        str == "nanf" || str == "+inff" || str == "-inff") {
+        return true;
+    }
+    return false;
+}
+
+static bool isFloat(const std::string& str) {
+    (void)str;
+    return false;
+}
+
+static bool isDouble(const std::string& str) {
+    (void)str;
+    return false;
+}
+
+ScalarConverter::Type     ScalarConverter::getType(const std::string& str) {
+    if (isChar(str)) {
+        return CHAR;
+    } else if (isInt(str)) {
+        return INT;
+    } else if (isPseudo(str)) {
+        return PSEUDO;
+    } else if (isFloat(str)) {
+        return FLOAT;
+    } else if (isDouble(str)) {
+        return DOUBLE;
+    }
+    return INVALID;
+}
 /* 
 ** std::stringstream class allows to perform input and output operations on strings.
 ** >> operator to extracts the value from the string stream into the appropriate variable
@@ -61,14 +113,14 @@ void    printDouble(double d) {
 */
 void ScalarConverter::convert(const std::string& str) {
     std::cout << str << std::endl;
-    printChar('\t');
-    printChar('a');
 
-    Type type = INT;
+    Type type = getType(str);
     char c = 0;
     int n = 0;
     float f = 0.0f;
     double d = 0.0;
+    
+    std::cout << "Type: " << type << std::endl;
     
     std::stringstream ss(str);
     switch (type) {
@@ -77,7 +129,6 @@ void ScalarConverter::convert(const std::string& str) {
             break;
         case INT:
             ss >> n;
-            printInt(n);
             break;
         case FLOAT:
             ss >> f;

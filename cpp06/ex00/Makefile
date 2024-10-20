@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+         #
+#    By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 19:16:50 by arepsa            #+#    #+#              #
-#    Updated: 2024/10/18 19:46:46 by arepsa           ###   ########.fr        #
+#    Updated: 2024/10/20 21:19:24 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 RM = rm -rf
 
-CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -fsanitize=address
+CXXFLAGS 	= -Wall -Werror -Wextra -Wno-unused -std=c++98 -pedantic-errors -fsanitize=address
 
 NAME		= convert
 FILES		= main ScalarConverter
