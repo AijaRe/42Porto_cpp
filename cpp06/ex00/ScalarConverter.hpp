@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:16:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/20 21:18:04 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/21 20:23:31 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 #define SCALARCONVERTER_HPP
 
 #include <iostream>
+#include <iomanip>  //std::setprecision std::fixed
 #include <string>
 #include <cctype>   //isprint
-#include <cstdlib>  //strtol
+#include <cstdlib>  //strtol strtof strtod
 #include <sstream>  //stringstream
 #include <climits>
+#include <cerrno>
 
 class ScalarConverter {
 	public:
@@ -31,10 +33,11 @@ class ScalarConverter {
 		~ScalarConverter(void);
 		ScalarConverter & operator=(const ScalarConverter &src);
 		
-		enum	Type { CHAR, INT, FLOAT, DOUBLE, PSEUDO, INVALID };
+		enum	Type { CHAR, INT, FLOAT, DOUBLE,/*  PSEUDO, */ INVALID };
 
 		// Helper functions
 		static Type	getType(const std::string& str);
+		static void		printConverter(Type type, int precision, char c, int n, float f, double d);
 };
 
 #endif // SCALARCONVERTER_HPP
