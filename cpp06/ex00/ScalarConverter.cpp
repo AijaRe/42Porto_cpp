@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:15:57 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/21 20:25:35 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/25 22:09:24 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ ScalarConverter & ScalarConverter::operator=(const ScalarConverter &src) {
 
 void    printChar(char c) {
 	if (isprint(c)){
-		std::cout << "char: " << c << std::endl;
+	std::cout << "char: '" << c << "'" << std::endl;
 	} else {
 		std::cout << "char: Non displayable" << std::endl;
 	}
@@ -46,12 +46,12 @@ void    printInt(int n) {
 }
 
 //print the float representation
-void    printFloat(float f, int precision) {
-	std::cout << "float: " << std::fixed << std::setprecision(precision) << f << "f" << std::endl;
+void    printFloat(float f) {
+	std::cout << "float: " << f << std::endl;
 }
 
-void    printDouble(double d, int precision) {
-	std::cout << "double: " << std::fixed << std::setprecision(precision) << d << std::endl;
+void    printDouble(double d) {
+	std::cout << "double: " << d << std::endl;
 }
 
 static bool isChar(const std::string& str) {
@@ -59,7 +59,7 @@ static bool isChar(const std::string& str) {
 }
 
 /* 
-** allow + or - sign at the beginning of the string
+** allow + or - sign at the beginning of the string (strtol takes care of this)
 ** allow only digits in the string (check if ends with '\0')
 */
 static bool isInt(const std::string& str) {
@@ -73,14 +73,6 @@ static bool isInt(const std::string& str) {
 	}
 	return true;
 }
-
-/* static bool isPseudo(const std::string& str) {
-	if (str == "nan" || str == "+inf" || str == "-inf" ||
-		str == "nanf" || str == "+inff" || str == "-inff") {
-		return true;
-	}
-	return false;
-} */
 
 static bool isFloat(const std::string& str) {
 	if (str == "-inff" || str == "+inff" || str == "nanf") {
@@ -121,8 +113,6 @@ ScalarConverter::Type     ScalarConverter::getType(const std::string& str) {
 		return CHAR;
 	} else if (isInt(str)) {
 		return INT;
-	//} else if (isPseudo(str)) {
-	//	return PSEUDO;
 	} else if (isFloat(str)) {
 		return FLOAT;
 	} else if (isDouble(str)) {
@@ -131,31 +121,48 @@ ScalarConverter::Type     ScalarConverter::getType(const std::string& str) {
 	return INVALID;
 }
 
-void	ScalarConverter::printConverter(Type type, int precision, char c, int n, float f, double d) {
-	
-	switch (type) {
-		case CHAR:
-			printChar(c);
-			printInt(static_cast<int>(c));
-			printFloat(static_cast<float>(c), precision);
-			printDouble(static_cast<double>(c), precision);
-			break;
-		case INT:
-			printChar(static_cast<char>(n));
-			printInt(n);
-			printFloat(static_cast<float>(n), precision);
-			printDouble(static_cast<double>(n), precision);
-			break;
-		case FLOAT:
-			printFloat(f, precision);
-			break;
-		case DOUBLE:
-			printDouble(d, precision);
-			break;
-		default:
-			std::cout << "Conversion not possible" << std::endl;
-			break;
+static void printConverterInvalid() {
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: impossible" << std::endl;
+	std::cout << "double: impossible" << std::endl;
+}
+
+static void printConverterChar(char c) {
+	std::cout << "char: '" << c << "'" << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
+}
+
+static void 		printConverterInt(int n) {
+	if (n >= 0 && n <= 127) {
+		printChar(static_cast<char>(n));
+	} else {
+		std::cout << "char: impossible" << std::endl;
 	}
+	
+	std::cout << "int: " << n << std::endl;
+	
+    std::stringstream ss;
+	ss << static_cast<float>(n);
+	std::string floatStr = ss.str();
+	std::cout << "float: " << static_cast<float>(n);
+	//find() : if no matches were found, the function returns string::npos.
+	if (floatStr.find('e') == std::string::npos) {
+		std::cout << ".0";
+	}
+	std::cout << "f" << std::endl;
+
+	ss.str("");
+	ss << static_cast<double>(n);
+	std::string doubleStr = ss.str();
+	std::cout << "double: " << static_cast<double>(n);
+	if (doubleStr.find('e') == std::string::npos) {
+		std::cout << ".0";
+	}
+	std::cout << std::endl;
+	
 }
 
 /* 
@@ -164,14 +171,12 @@ void	ScalarConverter::printConverter(Type type, int precision, char c, int n, fl
 **
 */
 void ScalarConverter::convert(const std::string& str) {
-	std::cout << str << std::endl;
 
 	Type type = getType(str);
 	char c = 0;
 	int n = 0;
 	float f = 0.0f;
 	double d = 0.0;
-	int precision = 1;
 	
 	std::cout << "Type: " << type << std::endl;
 	
@@ -179,9 +184,11 @@ void ScalarConverter::convert(const std::string& str) {
 	switch (type) {
 		case CHAR:
 			c = str[0];
+			printConverterChar(c);
 			break;
 		case INT:
 			ss >> n;
+			printConverterInt(n);
 			break;
 		case FLOAT:
 			ss >> f;
@@ -189,18 +196,9 @@ void ScalarConverter::convert(const std::string& str) {
 		case DOUBLE:
 			ss >> d;
 			break;
-		//case PSEUDO:
-		//	ss >> d;
-		//	f = static_cast<float>(d);
-		//	break;
 		case INVALID:
-			std::cout << "Invalid input" << std::endl;
-		default:
-			break;
+			printConverterInvalid();
+			return;
 	}
-
-	if (type == FLOAT || type == DOUBLE)
-		precision = getPrecision(str);
-	printConverter(type, precision, c, n, f, d);
 }
 
