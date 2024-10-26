@@ -17,6 +17,8 @@ Skills: C++ cast types
 
 [cplusplus.com](https://cplusplus.com/doc/oldtutorial/typecasting/)
 
+[Programiz: Float and Double in C++](https://www.programiz.com/cpp-programming/float-double)
+
 
 ### ex00 - Conversion of scalar types
 
@@ -61,5 +63,6 @@ handle numeric limits and special values.
 
 - Create a ScalarConverter class that will contain only a static convert method.
 - Use functions to detect the type of the literal based on the input format.
-- Convert the literal from the detected type to the other scalar types.
+- Convert the literal to the detected type.
+- Convert input type to all the other types.
 - Handle edge cases for non-displayable characters, special floating-point values, and overflow conditions.
