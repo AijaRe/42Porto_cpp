@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:17:39 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/19 17:53:49 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/26 11:26:50 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
         std::cerr << "Error: empty argument" << std::endl;
         return 2;
     }
-    
+
     ScalarConverter::convert(arg);
 
     return 0;
