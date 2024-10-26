@@ -94,5 +94,9 @@ Do not forget to turn in the files of your Data structure.
 
 Exercise skills: explore how data pointers can be represented as integers and to practice converting between these representations. Use `reinterpret_cast`.
 
-`uintptr_t` -	unsigned integer type capable of holding a pointer 
+`uintptr_t` -	unsigned integer type capable of holding a pointer.
+
+Pointers might vary in size across different architectures (32-bit vs 64-bit). The C++ standard guarantees that uintptr_t can handle all valid pointer values, ensuring portability.
+
+Hashing. Pointers can be used as unique identifiers for objects. Sometimes, when you want to create a hash table, you might want to use pointers as keys. However, most hash functions work on integers, so you convert pointers to integers for this purpose.
 
