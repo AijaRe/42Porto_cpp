@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:15:57 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/26 12:52:58 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/26 15:09:49 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,19 @@ ScalarConverter::~ScalarConverter(void) {
 ScalarConverter & ScalarConverter::operator=(const ScalarConverter &src) {
 	std::cout << "ScalarConverter assignment operator called." << std::endl;
 	if (this != &src) {
-		*this = src;
+		return *this;
 	}
 	return *this;
+}
+
+static bool floatOverflow(float f) {
+	return (f < -std::numeric_limits<float>::max() ||
+			f > std::numeric_limits<float>::max());
+}
+
+static bool doubleOverflow(double d) {
+	return (d < -std::numeric_limits<double>::max() ||
+			d > std::numeric_limits<double>::max());
 }
 
 void    printChar(char c) {
@@ -53,6 +63,7 @@ void    printFloat(float f) {
 void    printDouble(double d) {
 	std::cout << "double: " << d << std::endl;
 } */
+
 
 static bool isChar(const std::string& str) {
 	return (str.length() == 1 && static_cast<unsigned char>(str[0]) <= 127 && !isdigit(str[0]));
@@ -88,9 +99,8 @@ static bool isFloat(const std::string& str) {
 	}
 	char *end;
 	errno = 0;
-	float value = std::strtof(str.c_str(), &end);
+	std::strtof(str.c_str(), &end);
 	if (*end != 'f' || *(end + 1) != '\0' || errno == ERANGE) {
-		std::cout << "errno: " << errno << std::endl;
 		return false;
 	}
 	return true;
@@ -102,9 +112,8 @@ static bool isDouble(const std::string& str) {
 	}
 	char *end;
 	errno = 0;
-	double value = std::strtod(str.c_str(), &end);
+	std::strtod(str.c_str(), &end);
 	if (*end != '\0' || errno == ERANGE) {
-		std::cout << "errno: " << errno << std::endl;
 		return false;
 	}
 	return true;
@@ -200,15 +209,6 @@ static void 		printConverterInt(int n) {
 	std::cout << std::endl;
 }
 
-static bool floatOverflow(float f) {
-	return (f < -std::numeric_limits<float>::max() ||
-			f > std::numeric_limits<float>::max());
-}
-
-static bool doubleOverflow(double d) {
-	return (d < -std::numeric_limits<double>::max() ||
-			d > std::numeric_limits<double>::max());
-}
 
 /* 
 ** float precision: 7 decimal digits
@@ -285,7 +285,7 @@ static void	printConverterDouble(double d) {
 	}
 
 	if (!doubleOverflow(d)) {
-		std::cout << "double: " << static_cast<double>(d);
+		std::cout << "double: " << d;
 		std::stringstream ss;
 		ss << static_cast<double>(d);
 		std::string doubleStr = ss.str();
@@ -313,7 +313,7 @@ void ScalarConverter::convert(const std::string& str) {
     float f = 0.0f;
     double d = 0.0;
 	
-	std::cout << "Type: " << type << std::endl;
+	//std::cout << "Type: " << type << std::endl;
 	
 	switch (type) {
 		case CHAR:

@@ -19,6 +19,8 @@ Skills: C++ cast types
 
 [Programiz: Float and Double in C++](https://www.programiz.com/cpp-programming/float-double)
 
+[uintptr_t data type] (https://stackoverflow.com/questions/1845482/what-is-the-uintptr-t-data-type)
+
 
 ### ex00 - Conversion of scalar types
 
@@ -66,3 +68,31 @@ handle numeric limits and special values.
 - Convert the literal to the detected type.
 - Convert input type to all the other types.
 - Handle edge cases for non-displayable characters, special floating-point values, and overflow conditions.
+
+
+### ex01 - Serialization
+
+Implement a class Serializer, who will not be initializable by the user by any way,
+with the following static methods:
+
+`uintptr_t serialize(Data* ptr);`
+
+It takes a pointer and converts it to the unsigned integer type uintptr_t.
+
+`Data* deserialize(uintptr_t raw);`
+
+It takes an unsigned integer parameter and converts it to a pointer to Data.
+Write a program to test that your class works as expected.
+
+You must create a non-empty (it means it has data members) Data structure.
+
+Use `serialize()` on the address of the Data object and pass its return value to
+`deserialize()`. Then, ensure the return value of `deserialize()` compares equal to the
+original pointer.
+
+Do not forget to turn in the files of your Data structure.
+
+Exercise skills: explore how data pointers can be represented as integers and to practice converting between these representations. Use `reinterpret_cast`.
+
+`uintptr_t` -	unsigned integer type capable of holding a pointer 
+

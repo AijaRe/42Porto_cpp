@@ -18,13 +18,13 @@ cat > "$hppFileName" <<EOF
 #include <iostream>
 
 class $className {
-    private:
-        // Private members
     public:
         $className(void);
         $className(const $className &copy);
         ~$className(void);
         $className & operator=(const $className &src);
+    private:
+        // Private members
 };
 
 #endif // ${className^^}_HPP

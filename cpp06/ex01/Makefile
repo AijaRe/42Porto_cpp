@@ -6,7 +6,7 @@
 #    By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 19:16:50 by arepsa            #+#    #+#              #
-#    Updated: 2024/10/26 13:00:44 by arepsa           ###   ########.fr        #
+#    Updated: 2024/10/26 15:32:36 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ RM = rm -rf
 
 CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -fsanitize=address
 
-NAME		= convert
-FILES		= main ScalarConverter
+NAME		= serializer
+FILES		= main Serializer
 SRC			= $(addsuffix .cpp, $(FILES))
 OBJ			= $(addsuffix .o, $(FILES))
 
