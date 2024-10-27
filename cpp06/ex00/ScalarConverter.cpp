@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:15:57 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/26 15:09:49 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/27 18:22:13 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,21 @@ ScalarConverter & ScalarConverter::operator=(const ScalarConverter &src) {
 	return *this;
 }
 
+/* 
+** std::numeric_limits<float>::max(): The largest positive finite value a float can represent.
+** 3.40282e+38
+** -std::numeric_limits<float>::max(): The largest negative finite value a float can represent.
+** std::numeric_limits<float>::min(): The smallest positive normalized value a float can represent.
+** 1.17549e-38
+*/
 static bool floatOverflow(float f) {
 	return (f < -std::numeric_limits<float>::max() ||
 			f > std::numeric_limits<float>::max());
 }
 
+/* 
+** double max: 1.79769e+308
+*/
 static bool doubleOverflow(double d) {
 	return (d < -std::numeric_limits<double>::max() ||
 			d > std::numeric_limits<double>::max());
@@ -50,20 +60,6 @@ void    printChar(char c) {
 		std::cout << "char: Non displayable" << std::endl;
 	}
 }
-
-/* void    printInt(int n) {
-	std::cout << "int: " << n << std::endl;
-}
-
-//print the float representation
-void    printFloat(float f) {
-	std::cout << "float: " << f << std::endl;
-}
-
-void    printDouble(double d) {
-	std::cout << "double: " << d << std::endl;
-} */
-
 
 static bool isChar(const std::string& str) {
 	return (str.length() == 1 && static_cast<unsigned char>(str[0]) <= 127 && !isdigit(str[0]));
@@ -106,27 +102,21 @@ static bool isFloat(const std::string& str) {
 	return true;
 }
 
+/* 
+** double is the only one that does not check the range
+** to fail at overflow in later stage
+*/
 static bool isDouble(const std::string& str) {
 	if (isPseudo(str)) {
 		return false;
 	}
 	char *end;
-	errno = 0;
 	std::strtod(str.c_str(), &end);
-	if (*end != '\0' || errno == ERANGE) {
+	if (*end != '\0') {
 		return false;
 	}
 	return true;
 }
-
-
-/* int	getPrecision(const std::string& str) {
-    size_t dotPos = str.find('.');
-    if (dotPos == std::string::npos) {
-        return 1;
-    }
-    return str.length() - dotPos - 1;
-} */
 
 ScalarConverter::Type     ScalarConverter::getType(const std::string& str) {
 	if (isChar(str)) {
@@ -151,23 +141,21 @@ static void printConverterInvalid() {
 }
 
 static void printConverterPseudo(const std::string& str) {
-	std::string pseudo_f[3] = {"nanf", "+inff", "-inff"};
-	std::string pseudo_d[3] = {"nan", "+inf", "-inf"};
-	std::cout << "char: impossible" << std::endl;
-	std::cout << "int: impossible" << std::endl;
-	for (int i = 0; i < 3; i++) {
-		if (str == pseudo_f[i]) {
-			std::cout << "float: " << str << std::endl;
-			std::cout << "double: " << pseudo_d[i] << std::endl;
-			return;
-		}
-	}
-	for (int i = 0; i < 3; i++) {
-		if (str == pseudo_d[i]) {
-			std::cout << "float: " << pseudo_f[i] << std::endl;
-			std::cout << "double: " << str << std::endl;
-			return;
-		}
+	if (str == "nan" || str == "nanf") {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: nanf" << std::endl;
+		std::cout << "double: nan" << std::endl;
+	} else if (str == "+inf" || str == "+inff") {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: +inff" << std::endl;
+		std::cout << "double: +inf" << std::endl;
+	} else if (str == "-inf" || str == "-inff") {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: -inff" << std::endl;
+		std::cout << "double: -inf" << std::endl;
 	}
 }
 
@@ -209,7 +197,6 @@ static void 		printConverterInt(int n) {
 	std::cout << std::endl;
 }
 
-
 /* 
 ** float precision: 7 decimal digits
 */
@@ -238,7 +225,7 @@ static void 		printConverterFloat(float f) {
 		}
 		std::cout << "f" << std::endl;
 	} else {
-		std::cout << "float: impossible" << std::endl;
+		std::cout << "float: overflow" << std::endl;
 	}
 
 	std::cout << "double: " << static_cast<double>(f);
@@ -281,7 +268,7 @@ static void	printConverterDouble(double d) {
 		}
 		std::cout << "f" << std::endl;
 	} else {
-		std::cout << "float: impossible" << std::endl;
+		std::cout << "float: overflow" << std::endl;
 	}
 
 	if (!doubleOverflow(d)) {
@@ -296,7 +283,7 @@ static void	printConverterDouble(double d) {
 		}
 		std::cout << std::endl;
 	} else {
-		std::cout << "double: impossible" << std::endl;
+		std::cout << "double: overflow" << std::endl;
 	}
 }
 
@@ -312,8 +299,6 @@ void ScalarConverter::convert(const std::string& str) {
     int n = 0;
     float f = 0.0f;
     double d = 0.0;
-	
-	//std::cout << "Type: " << type << std::endl;
 	
 	switch (type) {
 		case CHAR:
