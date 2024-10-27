@@ -6,12 +6,12 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 18:25:55 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/27 18:26:02 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/27 20:21:19 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
 
 Base::~Base(void) {
-    std::cout << "Base destructor called." << std::endl;
+    //std::cout << "Base destructor called." << std::endl;
 }
