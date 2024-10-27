@@ -61,21 +61,21 @@ void	identify(Base& p){
 		std::cout << GREEN << ARROW << "A" << RESET << std::endl;
 		return ;
 	} catch (std::exception &e) {
-        //std::cout << RED << e.what() << RESET << std::endl;
+        std::cout << RED << e.what() << RESET << std::endl;
 	}
 	try {
 		dynamic_cast<B&>(p);
 		std::cout << GREEN << ARROW << "B" << RESET << std::endl;
 		return ;
 	} catch (std::exception &e) {
-        //std::cout << RED << e.what() << RESET << std::endl;
+        std::cout << RED << e.what() << RESET << std::endl;
 	}
 	try {
 		dynamic_cast<C&>(p);
 		std::cout << GREEN << ARROW << "C" << RESET << std::endl;
 		return ;
 	} catch (std::exception &e) {
-        //std::cout << RED << e.what() << RESET << std::endl;
+        std::cout << RED << e.what() << RESET << std::endl;
 	}
 	std::cout << RED << "Error: unknown type (by reference)" << RESET << std::endl;
 }

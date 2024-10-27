@@ -1,5 +1,5 @@
 #include <iostream>
-#include <typeinfo>
+//#include <typeinfo>
 #include <exception>
 
 //Dynamic cast happens at runtime, not compilation
