@@ -14,6 +14,8 @@ int main (void) {
     Animal* animal = &cat;       //Implicit upcast - Ok
 
     //Explicit downcast
+    //if using dynamic_cast with pointers,
+    //if the cast is not valid, the result is a nullptr.
     Cat* cat2 = dynamic_cast<Cat*>(animal);
     if (cat2 == NULL){
         std::cout << "Explicit Cat downcast not ok" << std::endl;
@@ -23,6 +25,8 @@ int main (void) {
     }
 
     //Explicit downcast
+    // when using dynamic_cast with references,
+    // if the cast is not valid, an exception (std::bad_cast) is thrown.
     try {
         Dog& dog = dynamic_cast<Dog&>(*animal);
         std::cout << "Dog explicit conversion/cast is ok" << std::endl;
