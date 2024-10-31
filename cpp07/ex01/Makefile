@@ -6,7 +6,7 @@
 #    By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 19:16:50 by arepsa            #+#    #+#              #
-#    Updated: 2024/10/31 20:17:42 by arepsa           ###   ########.fr        #
+#    Updated: 2024/10/31 20:17:21 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ RM = rm -rf
 
 CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -fsanitize=address
 
-NAME		= template
+NAME		= iter
 FILES		= main
 SRC			= $(addsuffix .cpp, $(FILES))
 OBJ			= $(addsuffix .o, $(FILES))
