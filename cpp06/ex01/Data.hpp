@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 15:15:38 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/26 15:52:10 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/28 19:32:16 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 struct Data {
 	int			number;
-    char        symbol;
+	char		symbol;
 	std::string	name;
 };
 

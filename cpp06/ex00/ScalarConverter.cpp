@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:15:57 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/27 18:22:13 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/28 19:31:50 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,19 @@ static bool isFloat(const std::string& str) {
 	if (isPseudo(str)) {
 		return false;
 	}
+	
 	char *end;
 	errno = 0;
 	std::strtof(str.c_str(), &end);
 	if (*end != 'f' || *(end + 1) != '\0' || errno == ERANGE) {
 		return false;
 	}
+	
+	if (str.find('.') == std::string::npos ||
+		str.find('.') == str.length() - 2) {
+		return false;
+	}
+	
 	return true;
 }
 
@@ -112,9 +119,14 @@ static bool isDouble(const std::string& str) {
 	}
 	char *end;
 	std::strtod(str.c_str(), &end);
-	if (*end != '\0') {
+	if (*end != '\0' || str.find('.') == std::string::npos) {
 		return false;
 	}
+
+	if (str.find('.') == str.length() - 1) {
+		return false;
+	}
+	
 	return true;
 }
 
@@ -325,4 +337,3 @@ void ScalarConverter::convert(const std::string& str) {
 			break;
 	}
 }
-
