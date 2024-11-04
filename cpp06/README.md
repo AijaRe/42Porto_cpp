@@ -7,15 +7,15 @@
 - headerfile for each class, no function implementation in headerfile
 - using namespace <ns_name> and friend keywords is forbidden
 - using the STL is forbidden (no Containers and no Algorithms)
-- all classes must be designed in the Orthodox Canonical Form (containting default constructor, copy constructor, copy assignment operator, destructor)
+- all classes, except ex02, must be designed in the Orthodox Canonical Form (containting default constructor, copy constructor, copy assignment operator, destructor)
 
-Skills: C++ cast types
+Skills: C++ cast types and usecases: static_cast, reinterpret_cast, dynamic_cast
 
 ## Resources
 
 [GeeksforGeeks Casting Operators in C++ - GeeksforGeeks](https://www.geeksforgeeks.org/casting-operators-in-cpp/)
 
-[cplusplus.com](https://cplusplus.com/doc/oldtutorial/typecasting/)
+[cplusplus.com typecasting](https://cplusplus.com/doc/oldtutorial/typecasting/)
 
 [Programiz: Float and Double in C++](https://www.programiz.com/cpp-programming/float-double)
 
@@ -23,7 +23,6 @@ Skills: C++ cast types
 
 
 ### ex00 - Conversion of scalar types
-
 
 Write a class ScalarConverter that will contain only one static method "convert"
 that will takes as parameter a string representation of a C++ literal in its most common
@@ -100,3 +99,28 @@ Pointers might vary in size across different architectures (32-bit vs 64-bit). T
 
 Hashing. Pointers can be used as unique identifiers for objects. Sometimes, when you want to create a hash table, you might want to use pointers as keys. However, most hash functions work on integers, so you convert pointers to integers for this purpose.
 
+
+### ex02 - Identify real type
+
+Implement a `Base` class that has a public virtual destructor only. Create three empty
+classes `A`, `B` and `C`, that publicly inherit from Base.
+
+Implement the following functions:
+
+`Base * generate(void);` 
+
+It randomly instanciates A, B or C and returns the instance as a Base pointer. Feel free
+to use anything you like for the random choice implementation.
+
+`void identify(Base* p);`
+
+It prints the actual type of the object pointed to by p: "A", "B" or "C".
+
+`void identify(Base& p);`
+
+It prints the actual type of the object pointed to by p: "A", "B" or "C". Using a pointer
+inside this function is forbidden.
+
+Including the typeinfo header is forbidden.
+
+Write a program to test that everything works as expected.
