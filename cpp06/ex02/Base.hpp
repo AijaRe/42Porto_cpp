@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 18:25:19 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/27 19:59:53 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/28 19:34:16 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include <iostream>
 
 class Base {
-    public:
-        virtual ~Base(void);
+	public:
+		virtual ~Base(void);
 };
 
 #endif // BASE_HPP

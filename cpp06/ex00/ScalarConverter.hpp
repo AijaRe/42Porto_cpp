@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 19:16:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/10/26 12:26:54 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/10/28 19:10:08 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 #define SCALARCONVERTER_HPP
 
 #include <iostream>
-#include <iomanip>  //std::setprecision std::fixed
 #include <string>
-#include <cctype>   //isprint
-#include <cstdlib>  //strtol strtof strtod
-#include <sstream>  //stringstream
+#include <cctype> //isprint
+#include <cstdlib> //strtol strtof strtod
+#include <sstream> //stringstream
 #include <climits>
 #include <limits> //numeric_limits
 #include <cerrno>
