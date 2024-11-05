@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:59:17 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/03 21:18:43 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/05 22:42:03 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 
 #include <iostream>
 
-template<typename A>
+template<typename T>
 class Array {
     public:
-        Array<A>(void);
-        Array<A>(unsigned int n);
-        Array<A>(const Array<A> &copy);
-        ~Array<A>(void);
-        Array <A>& operator=(const Array<A> &src);
+        Array<T>(void);
+        Array<T>(unsigned int n);
+        Array<T>(const Array<T> &copy);
+        ~Array<T>(void);
+        Array <T>& operator=(const Array<T> &src);
+        T& operator[](unsigned int index);
+        const T& operator[](unsigned int index) const;
 
         size_t size() const;
 
@@ -32,7 +34,7 @@ class Array {
 		};
         
     private:
-        A* _array;
+        T* _array;
         size_t _size;
 };
 

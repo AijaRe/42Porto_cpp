@@ -6,7 +6,7 @@
 #    By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 19:16:50 by arepsa            #+#    #+#              #
-#    Updated: 2024/11/03 20:52:22 by arepsa           ###   ########.fr        #
+#    Updated: 2024/11/05 21:51:45 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ RM = rm -rf
 CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -fsanitize=address
 
 NAME		= array
-FILES		= main Array
+FILES		= main
 SRC			= $(addsuffix .cpp, $(FILES))
 OBJ			= $(addsuffix .o, $(FILES))
 
