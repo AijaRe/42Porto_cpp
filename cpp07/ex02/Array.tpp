@@ -6,15 +6,15 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:59:09 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/05 22:41:57 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/06 21:10:53 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 
 template<typename T>
-Array<T>::Array(void) : _size(0) {
-    _array = new T[_size];
+Array<T>::Array(void) :  _array(NULL), _size(0) {
+    std::cout << "Allocating 0 array: " << this->_array << std::endl;
     std::cout << "Array default constructor called." << std::endl;
 }
 
@@ -54,15 +54,15 @@ Array<T>& Array<T>::operator=(const Array &src) {
 }
 
 template<typename T>
-T& Array<T>::operator[](unsigned int index) {
-    if (index > this->_size)
+T& Array<T>::operator[](int index) {
+    if (index >= static_cast<int>(this->_size) || index < 0)
         throw OutOfBoundsException();
     return this->_array[index];
 }
 
 template<typename T>
-const T& Array<T>::operator[](unsigned int index) const {
-    if (index > this->_size)
+const T& Array<T>::operator[](int index) const {
+    if (index >= static_cast<int>(this->_size) || index < 0)
         throw OutOfBoundsException();
     return this->_array[index];
 }

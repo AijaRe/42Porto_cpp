@@ -1,5 +1,6 @@
 *.out
 *.o
+*.d
 .vscode
 megaphone
 phonebook

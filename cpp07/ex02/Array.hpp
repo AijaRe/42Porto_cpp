@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:59:17 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/05 22:42:03 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/06 20:24:43 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class Array {
         Array<T>(const Array<T> &copy);
         ~Array<T>(void);
         Array <T>& operator=(const Array<T> &src);
-        T& operator[](unsigned int index);
-        const T& operator[](unsigned int index) const;
+        T& operator[](int index);
+        const T& operator[](int index) const;
 
         size_t size() const;
 
