@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+         #
+#    By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 19:16:50 by arepsa            #+#    #+#              #
-#    Updated: 2024/11/06 20:48:49 by arepsa           ###   ########.fr        #
+#    Updated: 2024/11/08 18:31:03 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ clean:
 	@$(RM) $(OBJ)
 
 fclean: clean
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) $(DEPS)
 
 re: fclean all
 

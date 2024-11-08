@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:59:09 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/06 21:10:53 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/08 18:27:11 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 template<typename T>
 Array<T>::Array(void) :  _array(NULL), _size(0) {
-    std::cout << "Allocating 0 array: " << this->_array << std::endl;
-    std::cout << "Array default constructor called." << std::endl;
+    //std::cout << "Array default constructor called." << std::endl;
 }
 
 template<typename T>
@@ -26,7 +25,7 @@ Array<T>::Array(unsigned int n) : _size(n) {
 
 template<typename T>
 Array<T>::Array(const Array &copy) : _size(copy._size) {
-    std::cout << "Array copy constructor called." << std::endl;
+    //std::cout << "Array copy constructor called." << std::endl;
     this->_array = new T[this->_size];
     for (unsigned int i = 0; i < this->_size; i++ ) {
         this->_array[i] = copy._array[i];
@@ -41,7 +40,7 @@ Array<T>::~Array(void) {
 
 template<typename T>
 Array<T>& Array<T>::operator=(const Array &src) {
-    std::cout << "Array assignment operator called." << std::endl;
+    //std::cout << "Array assignment operator called." << std::endl;
     if (this != &src) {
         delete[] this->_array;
         this->_size = src._size;

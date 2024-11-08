@@ -26,7 +26,6 @@ int main (void) {
 
 	std::cout << "\n\nLet's iter string array =>" << std::endl;
 	iter(strArr, 6, printItem);
-	std::cout << std::endl;
-
+	
 	return 0;
 }
