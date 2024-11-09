@@ -16,6 +16,7 @@
 int main (void) {
 	int intArr[] = {1, 42, -100, 14, 21};
 	double dbArr[] = {1.11, 42.42, -1.12345};
+	const int constArr[] = {1, 42, -100};
 	std::string strArr[] = {"Smile", "while", "you", "still", "have", "teeth"};
 
 	std::cout << "Let's iter int array =>" << std::endl;
@@ -23,6 +24,9 @@ int main (void) {
 
 	std::cout << "\n\nLet's iter double array =>" << std::endl;
 	iter(dbArr, 3, printItem);
+
+	std::cout << "\n\nLet's iter constant array =>" << std::endl;
+	iter(constArr, 3, printItem);
 
 	std::cout << "\n\nLet's iter string array =>" << std::endl;
 	iter(strArr, 6, printItem);

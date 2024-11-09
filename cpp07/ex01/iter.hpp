@@ -20,8 +20,12 @@ void	printItem(T const& item) {
 	std::cout << item << " ";
 }
 
+/* 
+** const T* for the array parameter allows it to work 
+** with both const and non-const arrays.  
+*/
 template< typename T>
-void	iter(T* arr, int len, void (*func)(T const& item)) {
+void	iter(T* arr, int len, void (*func)(const T & item)) {
 	for (int i = 0; i < len; i++) {
 		func(arr[i]);
 	}
