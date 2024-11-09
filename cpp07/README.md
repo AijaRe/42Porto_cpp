@@ -7,7 +7,7 @@
 - headerfile for each class, no function implementation in headerfile
 - using namespace <ns_name> and friend keywords is forbidden
 - using the STL is forbidden (no Containers and no Algorithms)
-- all classes, except ex02, must be designed in the Orthodox Canonical Form (containting default constructor, copy constructor, copy assignment operator, destructor)
+- all classes must be designed in the Orthodox Canonical Form (containting default constructor, copy constructor, copy assignment operator, destructor)
 
 Skills: C++ templates
 
@@ -63,5 +63,4 @@ Tip: Try to compile `int * a = new int();` then display `*a`.
 - When accessing an element with the `[ ]` operator, if its index is out of bounds, an `std::exception` is thrown.
 - A member function size() that returns the number of elements in the array. This member function takes no parameter and musn’t modify the current instance.
 
-As usual, ensure everything works as expected and turn in a main.cpp file that con-
-tains your tests.
+As usual, ensure everything works as expected and turn in a main.cpp file that contains your tests.
