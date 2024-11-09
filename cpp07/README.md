@@ -13,16 +13,55 @@ Skills: C++ templates
 
 ## Resources
 
-[GeeksforGeeks Casting Operators in C++ - GeeksforGeeks](https://www.geeksforgeeks.org/casting-operators-in-cpp/)
-
-[cplusplus.com typecasting](https://cplusplus.com/doc/oldtutorial/typecasting/)
-
-[Programiz: Float and Double in C++](https://www.programiz.com/cpp-programming/float-double)
-
-[uintptr_t data type] (https://stackoverflow.com/questions/1845482/what-is-the-uintptr-t-data-type)
+Watch intra videos, big fan.
+Apart form exercise content, check also class templates, default type templates and specializations (you can find examples in `test` folder).
 
 
-### ex00 - Conversion of scalar types
+### ex00 - Start with a few functions
 
-Write a class ScalarConverter that will contain only one static method "convert"
-that will takes as parameter a string representation of a 
+Implement the following function templates:
+
+- `swap`: Swaps the values of two given arguments. Does not return anything.
+
+- `min`: Compares the two values passed in its arguments and returns the smallest one. If the two of them are equal, then it returns the second one.
+
+- `max`: Compares the two values passed in its arguments and returns the greatest one. If the two of them are equal, then it returns the second one.
+
+These functions can be called with any type of argument. The only requirement is
+that the two arguments must have the same type and must support all the comparison
+operators.
+
+Templates must be defined in the header files.
+
+
+### ex01 - Iter
+
+Implement a function template iter that takes 3 parameters and returns nothing.
+- The first parameter is the address of an array.
+- The second one is the length of the array.
+- The third one is a function that will be called on every element of the array.
+
+Turn in a main.cpp file that contains your tests. Provide enough code to generate a
+test executable.
+
+Your iter function template must work with any type of array. The third parameter
+can be an instantiated function template.
+
+
+### ex02 - Array
+
+Develop a class template Array that contains elements of type T and that implements
+the following behavior and functions:
+
+- Construction with no parameter: Creates an empty array.
+- Construction with an unsigned int n as a parameter: Creates an array of n elements initialized by default.
+
+Tip: Try to compile `int * a = new int();` then display `*a`.
+- Construction by copy and assignment operator. In both cases, modifying either the original array or its copy after copying musn’t affect the other array.
+- You MUST use the operator `new[]` to allocate memory. Preventive allocation (allocating memory in advance) is forbidden. Your program must never access nonallocated memory.
+- Elements can be accessed through the subscript operator: `[ ]`.
+- When accessing an element with the `[ ]` operator, if its index is out of bounds, an `std::exception` is thrown.
+- A member function size() that returns the number of elements in the array. This member function takes no parameter and musn’t modify the current instance.
+
+As usual, ensure everything works as expected and turn in a main.cpp file that con-
+tains your tests.
