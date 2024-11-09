@@ -20,9 +20,11 @@ int main(void){
 
 	// .begin() returns an iterator to the first element
     // Dereference the iterator to access the element
-    std::cout << "list first element: " << *lst1.begin() << std::endl;
+    std::cout << "list first element w/ begin: " << *lst1.begin() << std::endl;
+	std::cout << "list first element w/ front: " << lst1.front() << std::endl;
 	
 	//.end() is not the last element, but the position past the last element.
+	std::cout << "list last element w/ back: " << lst1.back() << std::endl;
 	std::list<int>::const_iterator		it;
 	std::list<int>::const_iterator		itend = lst1.end();
 
