@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 21:08:21 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/12 22:04:15 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/13 22:04:57 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,36 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 /* 
 ** Vectors - sequence containers representing arrays that can change in size
 */
 class Span {
-    public:
-        Span(void);
-        Span(unsigned int N);
-        Span(const Span &copy);
-        ~Span(void);
-        Span & operator=(const Span &src);
+	public:
+		Span(void);
+		Span(unsigned int N);
+		Span(const Span &copy);
+		~Span(void);
+		Span & operator=(const Span &src);
 
-        //exceptions
-        class FullSpanException : public std::exception {
+		//exceptions
+		class FullSpanException : public std::exception {
 			public:
 				virtual const char* what( void ) const throw();
 		};
-        
-        //member funcrions
-        void addNumber(int n);
-        unsigned int    shortestSpan(void);
-        unsigned int    longestSpan(void);
+		
+		//member funcrions
+		void addNumber(int n);
+		unsigned int	shortestSpan(void) const;
+		unsigned int	longestSpan(void) const;
 
-        //void  fillSpan(int min, int max);
-        
-    private:
-        unsigned int _N; // Maximum number of elements
-        std::vector<int> _array;
-        
+		//void  fillSpan(int min, int max);
+		
+	private:
+		unsigned int _N; // Maximum number of elements
+		std::vector<int> _array;
+		
 };
 
 #endif // SPAN_HPP
