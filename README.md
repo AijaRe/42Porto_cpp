@@ -14,7 +14,11 @@ CPP04 - Subtype polymorphism, abstract classes, interfaces
 
 CPP05 - Exceptions
 
-CPP06 - Work In Progress...
+CPP06 - Casts
+
+CPP07 - Templates
+
+CPP08 - Work In Progress..
 
 
 ## Resources
