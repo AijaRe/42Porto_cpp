@@ -124,6 +124,16 @@ int	main(void) {
 		std::cout << e.what() << std::endl;
 	}
 
+	try {
+        printTitle("TEST FILL SPAN WITH RANDOM NUMBERS");
+        Span sp(10000);
+        std::vector<int> numbers(10000);
+        sp.fillSpan(numbers);
+        printSpan(sp);
+    } catch (std::exception& e) {
+        std::cout << e.what() << std::endl;
+    }
+
 	printTitle("END OF TESTS");
 
 	return 0;

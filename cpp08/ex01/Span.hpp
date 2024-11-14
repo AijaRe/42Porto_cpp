@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 21:08:21 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/13 22:04:57 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/14 18:44:12 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ class Span {
 		unsigned int	shortestSpan(void) const;
 		unsigned int	longestSpan(void) const;
 
-		//void  fillSpan(int min, int max);
+		void	fillSpan(std::vector<int> numbers);
 		
 	private:
 		unsigned int _N; // Maximum number of elements
-		std::vector<int> _array;
+		std::vector<int> _elements;
 		
 };
 
