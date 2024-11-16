@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 20:59:17 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/09 12:10:58 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/16 10:41:51 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Array {
         Array<T>(unsigned int n);
         Array<T>(const Array<T> &copy);
         ~Array<T>(void);
-        Array <T>& operator=(const Array<T> &src);
+        Array<T>& operator=(const Array<T> &src);
         T& operator[](int index);
         const T& operator[](int index) const;
 
@@ -30,7 +30,7 @@ class Array {
 
         class OutOfBoundsException : public std::exception {
 			public:
-				virtual const char* what( void ) const throw();
+				virtual const char* what(void) const throw();
 		};
         
     private:

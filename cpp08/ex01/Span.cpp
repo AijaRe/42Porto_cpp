@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 21:08:18 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/14 18:44:40 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/16 10:35:28 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void    Span::addNumber(int n) {
 unsigned int   Span::longestSpan(void) const {
 	if (_elements.size() < 2)
 		throw (std::logic_error("Not enough numbers to calculate span."));
-	std::vector<int>::const_iterator arrayMax = std::max_element(_elements.begin(), _elements.end());
-	std::vector<int>::const_iterator arrayMin = std::min_element(_elements.begin(), _elements.end());
-	return (*arrayMax - *arrayMin);
+	std::vector<int>::const_iterator elementsMax = std::max_element(_elements.begin(), _elements.end());
+	std::vector<int>::const_iterator elementsMin = std::min_element(_elements.begin(), _elements.end());
+	return (*elementsMax - *elementsMin);
 }
 
 /* 
