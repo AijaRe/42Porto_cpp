@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:55:24 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/16 11:10:23 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/17 10:43:10 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,16 @@ class MutantStack : public std::stack<T> {
 		MutantStack<T>(const MutantStack<T> &copy);
 		~MutantStack(void);
 		MutantStack<T> & operator=(const MutantStack<T> &src);
+
+		//define the iterator types based on the underlying container's iterators
+		typedef typename std::stack<T>::container_type::iterator	iterator;
+		typedef typename std::stack<T>::container_type::const_iterator	const_iterator;
+
+		iterator		begin();
+		iterator		end();
+		const_iterator	begin() const;
+		const_iterator	end() const;
 		
-	/* The c refers to the underlying container of the std::stack.
-	** The std::stack class is a container adaptor that uses another container
-	** (by default, std::deque) to store the elements. 
-	** The c represents this underlying container.
-	** By accesing c, you can use the iterators of the underlying container 
-	** to iterate over the elements of the stack.
-	*/
 };
 
 #include "MutantStack.tpp"

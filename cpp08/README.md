@@ -17,7 +17,8 @@ Skills:
 
 [Cplusplus algorithms](https://cplusplus.com/reference/algorithm/)
 [Cplusplus containers](https://cplusplus.com/reference/stl/)
-[Geeksforgeeks - generate a vector with random values] (https://www.geeksforgeeks.org/how-to-generate-a-vector-with-random-values-in-c/)
+[W3Schools C++ iterators](https://www.w3schools.com/cpp/cpp_iterators.asp)
+[Geeksforgeeks - generate a vector with random values](https://www.geeksforgeeks.org/how-to-generate-a-vector-with-random-values-in-c/)
 
 
 ### ex00 - Easy find
