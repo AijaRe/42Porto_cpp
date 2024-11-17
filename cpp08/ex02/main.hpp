@@ -14,6 +14,7 @@
 #define MAIN_HPP
 
 #include <iostream>
+#include <list>
 #include "MutantStack.hpp"
 
 #define RESET   "\033[0m"
