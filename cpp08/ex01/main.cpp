@@ -102,7 +102,6 @@ int	main(void) {
 		Span sp = Span(1);
 		sp.addNumber(42);
 		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
 	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}

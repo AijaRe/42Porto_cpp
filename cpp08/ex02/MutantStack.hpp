@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:55:24 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/18 22:15:16 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/19 20:08:47 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 #include <stack>
 
+/* 
+** std::stck
+** template <class T, class Container = deque<T> > class stack;
+** default underlying container is deque
+*/
 template <typename T>
 class MutantStack : public std::stack<T> {
 	public:

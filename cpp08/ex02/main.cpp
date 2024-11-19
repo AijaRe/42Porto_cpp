@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:54:15 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/17 11:13:51 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/19 20:49:10 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,19 @@ void	printTitle(std::string title) {
     std::cout << LINE << RESET << std::endl;
 }
 
-int	main(void) {
+template <typename T>
+void	printMutantStack(MutantStack<T>& mstack, const std::string stackName){
+	std::cout << "Print " + stackName + " stack :" << std::endl;
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+}
 
+void	subjectTest(void){
 	printTitle("SUBJECT TEST");
 	MutantStack<int> mstack;
 	mstack.push(5);
@@ -42,11 +53,13 @@ int	main(void) {
 	std::cout << "Elements in stack:" << std::endl;
 	while (it != ite)
 	{
-	std::cout << *it << std::endl;
-	++it;
+		std::cout << *it << std::endl;
+		++it;
 	}
 	std::stack<int> s(mstack); //create new stack object and initialize with contents of mstack
-	
+}
+
+void	listTest(void){
 	printTitle("TEST WITH std::list");
 	std::list<int> lst;
 	lst.push_back(5);
@@ -70,6 +83,48 @@ int	main(void) {
 		std::cout << *lit << std::endl;
 		++lit;
 	}
+}
+
+void	copyConstructorTest(void){
+	printTitle("TEST COPY CONSTRUCTOR");
+	std::cout << "Creating stack that contains 21 and 42..." << std::endl;
+	MutantStack<int> originalStack;
+	originalStack.push(21);
+	originalStack.push(42);
+
+	std::cout << "Copying original stack..." << std::endl;
+	MutantStack<int> copyStack(originalStack);
+	
+	std::cout << "Adding 84 to the original stack..." << std::endl;
+	originalStack.push(84);
+
+	printMutantStack(originalStack, "original");
+	printMutantStack(copyStack, "copied");
+}
+
+void	assignmentOperatorTest(void){
+	printTitle("TEST ASSIGNMENT OPERATOR");
+	std::cout << "Creating stack that contains 21 and 42..." << std::endl;
+	MutantStack<int> originalStack;
+	originalStack.push(21);
+	originalStack.push(42);
+
+	std::cout << "Assigning original stack..." << std::endl;
+	MutantStack<int> assignedStack;
+	assignedStack = originalStack;
+	
+	std::cout << "Adding 84 to the original stack..." << std::endl;
+	originalStack.push(84);
+
+	printMutantStack(originalStack, "original");
+	printMutantStack(assignedStack, "assigned");
+}
+
+int	main(void) {
+	subjectTest();
+	listTest();
+	copyConstructorTest();
+	assignmentOperatorTest();
 	
 	return 0;
 }
