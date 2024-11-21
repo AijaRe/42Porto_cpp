@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:54:15 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/19 20:49:10 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/21 18:03:30 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ void	printTitle(std::string title) {
     std::cout << LINE << RESET << std::endl;
 }
 
+/* 
+** apart form different types
+** print also tests const_iterator
+*/
 template <typename T>
-void	printMutantStack(MutantStack<T>& mstack, const std::string stackName){
+void	printMutantStack(const MutantStack<T>& mstack, const std::string stackName){
 	std::cout << "Print " + stackName + " stack :" << std::endl;
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
+	typename MutantStack<T>::const_iterator it = mstack.begin();
+	typename MutantStack<T>::const_iterator ite = mstack.end();
 	while (it != ite)
 	{
 		std::cout << *it << std::endl;
@@ -86,7 +90,7 @@ void	listTest(void){
 }
 
 void	copyConstructorTest(void){
-	printTitle("TEST COPY CONSTRUCTOR");
+	printTitle("TEST COPY CONSTRUCTOR w/INT");
 	std::cout << "Creating stack that contains 21 and 42..." << std::endl;
 	MutantStack<int> originalStack;
 	originalStack.push(21);
@@ -103,18 +107,18 @@ void	copyConstructorTest(void){
 }
 
 void	assignmentOperatorTest(void){
-	printTitle("TEST ASSIGNMENT OPERATOR");
+	printTitle("TEST ASSIGNMENT OPERATOR w/FLOAT");
 	std::cout << "Creating stack that contains 21 and 42..." << std::endl;
-	MutantStack<int> originalStack;
-	originalStack.push(21);
-	originalStack.push(42);
+	MutantStack<float> originalStack;
+	originalStack.push(21.02f);
+	originalStack.push(42.04f);
 
 	std::cout << "Assigning original stack..." << std::endl;
-	MutantStack<int> assignedStack;
+	MutantStack<float> assignedStack;
 	assignedStack = originalStack;
 	
 	std::cout << "Adding 84 to the original stack..." << std::endl;
-	originalStack.push(84);
+	originalStack.push(84.12f);
 
 	printMutantStack(originalStack, "original");
 	printMutantStack(assignedStack, "assigned");
