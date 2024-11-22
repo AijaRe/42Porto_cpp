@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:54:15 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/21 18:03:30 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/22 19:11:44 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	printTitle(std::string title) {
 	std::cout << std::endl;
 	std::cout << BOLD << CYAN << LINE << std::endl;
-    std::cout << "| " << title << std::endl;
-    std::cout << LINE << RESET << std::endl;
+	std::cout << "| " << title << std::endl;
+	std::cout << LINE << RESET << std::endl;
 }
 
 /* 
@@ -108,7 +108,7 @@ void	copyConstructorTest(void){
 
 void	assignmentOperatorTest(void){
 	printTitle("TEST ASSIGNMENT OPERATOR w/FLOAT");
-	std::cout << "Creating stack that contains 21 and 42..." << std::endl;
+	std::cout << "Creating stack that contains 21.02 and 42.04..." << std::endl;
 	MutantStack<float> originalStack;
 	originalStack.push(21.02f);
 	originalStack.push(42.04f);
@@ -117,7 +117,7 @@ void	assignmentOperatorTest(void){
 	MutantStack<float> assignedStack;
 	assignedStack = originalStack;
 	
-	std::cout << "Adding 84 to the original stack..." << std::endl;
+	std::cout << "Adding 84.12 to the original stack..." << std::endl;
 	originalStack.push(84.12f);
 
 	printMutantStack(originalStack, "original");

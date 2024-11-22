@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 21:08:21 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/14 18:44:12 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/22 18:57:53 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ class Span {
 		};
 		
 		//member funcrions
-		void addNumber(int n);
+		void			addNumber(int n);
 		unsigned int	shortestSpan(void) const;
 		unsigned int	longestSpan(void) const;
 
 		void	fillSpan(std::vector<int> numbers);
 		
 	private:
-		unsigned int _N; // Maximum number of elements
-		std::vector<int> _elements;
+		unsigned int		_N; // Maximum number of elements
+		std::vector<int>	_elements;
 		
 };
 

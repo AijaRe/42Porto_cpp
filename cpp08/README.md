@@ -19,6 +19,7 @@ Skills:
 [Cplusplus containers](https://cplusplus.com/reference/stl/)
 [W3Schools C++ iterators](https://www.w3schools.com/cpp/cpp_iterators.asp)
 [Geeksforgeeks - generate a vector with random values](https://www.geeksforgeeks.org/how-to-generate-a-vector-with-random-values-in-c/)
+[CodeBeauty C++ STL playlist](https://www.youtube.com/playlist?list=PL43pGnjiVwgR9BloyT0OgsMo8d_hylBv0)
 
 
 ### ex00 - Easy find
@@ -56,3 +57,18 @@ you prefer) between all the numbers stored, and return it. If there are no numbe
 Of course, you will write your own tests and they will be way more thorough than the
 ones below. Test your Span at least with a minimum of 10 000 numbers. More would be
 even better.
+
+
+### ex02 - Mutated abomination
+
+
+The `std::stack` container is very nice. Unfortunately, it is one of the only STL Containers that is NOT iterable. That’s too bad.
+
+But why would we accept this? Especially if we can take the liberty of butchering the original stack to create missing features.
+
+To repair this injustice, you have to make the std::stack container iterable.
+
+Write a `MutantStack` class. It will be implemented in terms of a `std::stack`.
+It will offer all its member functions, plus an additional feature: `iterators`.
+
+Of course, you will write and turn in your own tests to ensure everything works as expected.

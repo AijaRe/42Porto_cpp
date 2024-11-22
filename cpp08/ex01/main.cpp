@@ -15,17 +15,17 @@
 void	printTitle(std::string title) {
 	std::cout << std::endl;
 	std::cout << BOLD << CYAN << LINE << std::endl;
-    std::cout << "| " << title << std::endl;
-    std::cout << LINE << RESET << std::endl;
+	std::cout << "| " << title << std::endl;
+	std::cout << LINE << RESET << std::endl;
 }
 
 void printSpan(const Span& span) {
-    try {
-        std::cout << "Shortest span: " << span.shortestSpan() << std::endl;
-        std::cout << "Longest span: " << span.longestSpan() << std::endl;
-    } catch (const std::exception& e) {
-        std::cout << e.what() << std::endl;
-    }
+	try {
+		std::cout << "Shortest span: " << span.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << span.longestSpan() << std::endl;
+	} catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 }
 
 int	main(void) {
@@ -124,14 +124,14 @@ int	main(void) {
 	}
 
 	try {
-        printTitle("TEST FILL SPAN WITH RANDOM NUMBERS");
-        Span sp(10000);
-        std::vector<int> numbers(10000);
-        sp.fillSpan(numbers);
-        printSpan(sp);
-    } catch (std::exception& e) {
-        std::cout << e.what() << std::endl;
-    }
+		printTitle("TEST FILL SPAN WITH RANDOM NUMBERS");
+		Span sp(10000);
+		std::vector<int> numbers(10000);
+		sp.fillSpan(numbers);
+		printSpan(sp);
+	} catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 
 	printTitle("END OF TESTS");
 

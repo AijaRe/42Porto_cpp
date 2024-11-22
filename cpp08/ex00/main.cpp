@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:08:01 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/11 20:18:04 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/22 18:58:43 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 void	printTitle(std::string title) {
 	std::cout << std::endl;
 	std::cout << BOLD << CYAN;
-    std::cout << LINE << std::endl;
-    std::cout << "| " << title << std::endl;
-    std::cout << LINE << std::endl;
-    std::cout << RESET << std::endl;
+	std::cout << LINE << std::endl;
+	std::cout << "| " << title << std::endl;
+	std::cout << LINE << std::endl;
+	std::cout << RESET << std::endl;
 }
 
 template<typename T>	

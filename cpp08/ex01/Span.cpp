@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 21:08:18 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/16 10:35:28 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/22 18:57:16 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Span & Span::operator=(const Span &src) {
 	return *this;
 }
 
-const char* Span::FullSpanException::what( void ) const throw() {
+const char*	Span::FullSpanException::what( void ) const throw() {
 	return "Cannot add number. Span is full!";
 }
 
@@ -47,7 +47,7 @@ const char* Span::FullSpanException::what( void ) const throw() {
 ** add a single number to the span
 ** thorw an exception if there are already N elements stored
 */
-void    Span::addNumber(int n) {
+void	Span::addNumber(int n) {
 	if (_elements.size() < _N)
 		_elements.push_back(n);
 	else
@@ -58,7 +58,7 @@ void    Span::addNumber(int n) {
 ** calculate the largest difference between two numbers
 ** throw an exception if there is only one number or none stored
 */
-unsigned int   Span::longestSpan(void) const {
+unsigned int	Span::longestSpan(void) const {
 	if (_elements.size() < 2)
 		throw (std::logic_error("Not enough numbers to calculate span."));
 	std::vector<int>::const_iterator elementsMax = std::max_element(_elements.begin(), _elements.end());
@@ -70,7 +70,7 @@ unsigned int   Span::longestSpan(void) const {
 ** calculate the smallest difference between two numbers
 ** throw an exception if there is only one number or none stored
 */
-unsigned int    Span::shortestSpan(void) const {
+unsigned int	Span::shortestSpan(void) const {
 	if (_elements.size() < 2)
 		throw (std::logic_error("Not enough numbers to calculate span."));
 	std::vector<int> sorted = _elements;
