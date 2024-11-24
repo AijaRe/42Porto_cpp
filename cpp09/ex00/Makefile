@@ -6,7 +6,7 @@
 #    By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 19:16:50 by arepsa            #+#    #+#              #
-#    Updated: 2024/11/24 20:06:01 by arepsa           ###   ########.fr        #
+#    Updated: 2024/11/24 20:36:45 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,12 @@ CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -Wno-unused -fsani
 CPPFLAGS	= -MMD
 
 NAME		= btc
+
+SRC_DIR		= srcs
+INC_DIR		= incs
 FILES		= main BitcoinExchange
-SRC			= $(addsuffix .cpp, $(FILES))
-OBJ			= $(addsuffix .o, $(FILES))
+SRC			= $(addprefix $(SRC_DIR)/, $(addsuffix .cpp, $(FILES)))
+OBJ			= $(addprefix $(SRC_DIR)/, $(addsuffix .o, $(FILES)))
 DEPS		= $(OBJ:.o=.d)
 
 all: $(NAME)
@@ -33,8 +36,8 @@ $(NAME): $(OBJ)
 # if an included file doesn't exist
 -include $(DEPS)
 
-%.o: %.cpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+$(SRC_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -I $(INC_DIR) -c $< -o $@
 	
 clean:
 	@$(RM) $(OBJ) $(DEPS)
