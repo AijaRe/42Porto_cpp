@@ -11,7 +11,7 @@
 - You can define your templates in the header files as usual. Or, if you want to, you
 can write your template declarations in the header files and write their implementations in .tpp files. In any case, the header files are mandatory while the .tpp files are optional.
 
-Skills: 
+Skills: templates, container basics, iterators
 
 ## Resources
 

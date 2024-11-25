@@ -33,20 +33,28 @@ int	main(int argc, char** argv) {
 		std::cerr << "Usage: ./btc <fileName>" << std::endl;
 		return 1;
 	}
-	else {
+	try {
 		std::string fileName = argv[1];
 		std::ifstream inputFile(fileName.c_str());
 		std::ifstream dataFile("data.csv");
-
+		if (!inputFile || !dataFile) {
+			if (errno == ENOENT)
+				throw std::runtime_error("Error: File does not exist.");
+			else if (errno == EACCES)
+				throw std::runtime_error("Error: Permission denied.");
+			else
+				throw std::runtime_error("Error: Could not open file.");
+		}
 		if (!fileExists(fileName) || !fileExists("data.csv")) {
-			std::cerr << "Error: file not valid." << std::endl;
-			return 1;
+			throw std::runtime_error("Error: file not valid.");
 		}
-		if (fileEmpty(fileName) || fileEmpty("data.csv")){
-			std::cerr << "Warning: empty file." << std::endl;
-			return 1;
+		if (fileEmpty(fileName) || fileEmpty("data.csv")) {
+			throw std::logic_error("Error: empty file.");
 		}
-		BitcoinExchange btc(inputFile, dataFile);
+		BitcoinExchange btc(dataFile);
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+		return 1;
 	}
 	return 0;
 }

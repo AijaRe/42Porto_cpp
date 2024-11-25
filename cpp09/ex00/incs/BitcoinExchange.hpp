@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:37 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/24 20:03:50 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/25 21:22:29 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
+#include <map>
 
 class BitcoinExchange {
 	public:
@@ -23,9 +25,9 @@ class BitcoinExchange {
 		~BitcoinExchange(void);
 		BitcoinExchange & operator=(const BitcoinExchange &src);
 
-		BitcoinExchange(std::ifstream& inputFile, std::ifstream& dataFile);
+		BitcoinExchange(std::ifstream& dataFile);
 	private:
-		// Private members
+		std::map<std::string, double> _exchangeRates;
 };
 
 #endif // BITCOINEXCHANGE_HPP
