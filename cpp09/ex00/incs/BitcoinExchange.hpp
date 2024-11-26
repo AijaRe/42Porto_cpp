@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:37 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/26 19:51:23 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/26 20:24:21 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,13 @@ class BitcoinExchange {
 		~BitcoinExchange(void);
 		BitcoinExchange & operator=(const BitcoinExchange &src);
 		
-		void	printExchangeRates(void);
+		void	printExchangeRates(void) const;
+		void	processInput(std::ifstream& inputFile);
 
 	private:
 		std::map<std::string, double> _exchangeRates;
+		
+		std::string trimSpace(std::string& str);
 };
 
 #endif // BITCOINEXCHANGE_HPP

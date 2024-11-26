@@ -70,5 +70,12 @@ Error: too large a number
 ```
 
 #### Plan:
-1. Validade both files
-2. Parse `data.csv` into map container (key: date, value: rate);
+1. Validade both files - check if files exist, can be opened and are not empty.
+2. Parse `data.csv` into map container (key: date, value: rate):
+	- validate the header
+	- split each line by comma: pass left side as key and right side as value to the map container 
+3. Process input file: 
+	- validate the header
+	- validate each line of the input file
+	- look up exchange rate in map container and calculate the converted value
+	- print the results or error message.

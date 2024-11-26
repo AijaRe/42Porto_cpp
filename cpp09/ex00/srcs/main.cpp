@@ -47,7 +47,8 @@ int	main(int argc, char** argv) {
 		}
 
 		BitcoinExchange btc(dataFile);
-		btc.printExchangeRates();
+		//btc.printExchangeRates();
+		btc.processInput(inputFile);
 
 		inputFile.close();
 		dataFile.close();
