@@ -12,17 +12,13 @@
 
 #include <iostream>
 #include <fstream>
+#include <stdexcept>
 #include "BitcoinExchange.hpp"
 
-bool fileEmpty(const std::string& fileName) {
+bool isFileEmpty(const std::string& fileName) {
 	std::ifstream file(fileName.c_str());
 	//peek() returns the next character in the input stream without extracting it
 	return file.peek() == EOF;
-}
-
-bool fileExists(const std::string& fileName) {
-    std::ifstream file(fileName.c_str());
-    return file.good();
 }
 
 int	main(int argc, char** argv) {
@@ -35,6 +31,7 @@ int	main(int argc, char** argv) {
 	}
 	try {
 		std::string fileName = argv[1];
+		
 		std::ifstream inputFile(fileName.c_str());
 		std::ifstream dataFile("data.csv");
 		if (!inputFile || !dataFile) {
@@ -45,13 +42,15 @@ int	main(int argc, char** argv) {
 			else
 				throw std::runtime_error("Error: Could not open file.");
 		}
-		if (!fileExists(fileName) || !fileExists("data.csv")) {
-			throw std::runtime_error("Error: file not valid.");
-		}
-		if (fileEmpty(fileName) || fileEmpty("data.csv")) {
+		if (isFileEmpty(fileName) || isFileEmpty("data.csv")) {
 			throw std::logic_error("Error: empty file.");
 		}
+
 		BitcoinExchange btc(dataFile);
+		btc.printExchangeRates();
+
+		inputFile.close();
+		dataFile.close();
 	} catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
 		return 1;

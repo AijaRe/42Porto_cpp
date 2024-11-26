@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:34 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/25 21:26:35 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/26 19:50:40 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,16 @@ BitcoinExchange::BitcoinExchange(std::ifstream& dataFile) {
 				return ;
 		}
 	}
-	while (std::getline(dataFile, line))
+ 	while (std::getline(dataFile, line))
 	{
-		std::stringstream	ss;
+		std::stringstream	ss(line);
 		std::string			date;
 		std::string			rate;
 		
-		ss(line, date, ",");
+		std::getline(ss, date, ',');
+		ss >> rate;
 		
-		_exchangeRates.insert(pair<std::string, double>(date, rate));
+		_exchangeRates.insert(std::pair<std::string, double>(date, std::strtod(rate.c_str(), NULL)));
 	};
 }
 
@@ -55,5 +56,15 @@ BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange &src) {
 		// Implement assignment
 	}
 	return *this;
+}
+
+void	BitcoinExchange::printExchangeRates(void) {
+	std::map<std::string, double>::iterator it = _exchangeRates.begin();
+	std::map<std::string, double>::iterator ite = _exchangeRates.end();
+	
+	for (it; it != ite; ++it) {
+		std::cout << it->first << " - " << it->second << std::endl;
+	}
+	
 }
 
