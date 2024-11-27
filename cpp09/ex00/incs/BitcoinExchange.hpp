@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:37 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/26 20:24:21 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/27 22:14:06 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
+#include <climits>
 #include <map>
 #include <string> //??
 

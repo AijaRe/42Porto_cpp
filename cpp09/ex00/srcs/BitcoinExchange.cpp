@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:34 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/26 20:29:55 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/27 22:15:14 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ BitcoinExchange::BitcoinExchange(std::ifstream& dataFile) {
 	{
 		std::stringstream	ss(line);
 		std::string			date;
-		std::string			rate;
+		std::string			rateStr;
 		
 		std::getline(ss, date, ',');
-		ss >> rate;
+		ss >> rateStr;
 		
-		_exchangeRates.insert(std::pair<std::string, double>(date, std::strtod(rate.c_str(), NULL)));
+		_exchangeRates.insert(std::pair<std::string, double>(date, std::strtod(rateStr.c_str(), NULL)));
 	};
 }
 
@@ -92,7 +92,27 @@ void	BitcoinExchange::processInput(std::ifstream& inputFile) {
 	while (std::getline(inputFile, line)) {
 		std::stringstream	ss(line);
 		std::string			date;
-		std::string			value;
+		std::string			valueStr;
+		double				value;
+		
+		if (std::getline(ss, date, '|') && std::getline(ss, valueStr)) {
+			date = trimSpace(date);
+			valueStr = trimSpace(valueStr);
+
+			value = std::strtod(valueStr.c_str(), NULL);
+			if (value < 0) {
+				std::cerr << "Error: not a positive number. " << std::endl;
+				continue ;
+			}
+			else if (value > static_cast<double>(INT_MAX)) {
+				std::cerr << "Error: too large a number. " << std::endl;
+				continue ;
+			}
+
+			
+		} else {
+			std::cerr << "Error: bad input => " << date << std::endl;
+		}
 	}
 }
 
