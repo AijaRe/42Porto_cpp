@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:34 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/30 11:53:04 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/30 21:17:09 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	BitcoinExchange::printExchangeRates(void) const {
 	}
 }
 
-bool	BitcoinExchange::createValidateValue(const std::string& valueStr, double& value) {
+bool	BitcoinExchange::createAndValidateValue(const std::string& valueStr, double& value) {
 	
 		char* end;
 		value = std::strtod(valueStr.c_str(), &end);
@@ -97,6 +97,39 @@ bool	BitcoinExchange::createValidateValue(const std::string& valueStr, double& v
 			return false;
 		}
 		return true;
+}
+
+bool	BitcoinExchange::isValidDate(const std::string& date) {
+	if (date.size() != 10 && date[4] != '-' && date[7] != '-') {
+		std::cerr << "Error: invalid date format. " << std::endl;
+		return false;
+	}
+	int year, month, day;
+	char dash1, dash2;
+	std::istringstream iss(date);
+	// >> reads characters from the stream until it encounters whitespace 
+	// or a character that does not match the expected format for the type being extracted.
+	if (!(iss >> year >> dash1 >> month >> dash2 >> day)) {
+		return false;
+	}
+	std::cout << "year:*" << year << "*\n";
+	std::cout << "month:*" << month << "*\n";
+	std::cout << "day:*" << day << "*\n";
+	
+	std::tm time = {};
+	time.tm_year = year - 1900; //	years since 1900
+	time.tm_mon = month - 1; // months since January (0-11)
+	time.tm_mday = day; // day of the month (1-31)
+
+	//normalizes the fields and returns time_t value, on failure returns -1
+	//normalization, e.g., convert 2022-05-32 to 2022-06-01
+	if (mktime(&time) == -1)
+		return false;
+		
+	std::cout << "Normalized date: " << (time.tm_year + 1900) << "-"
+              << (time.tm_mon + 1) << "-" << time.tm_mday << std::endl;
+	
+	return true;
 }
 
 void	BitcoinExchange::convertValue(const std::string& date, const double& value) {
@@ -145,10 +178,13 @@ void	BitcoinExchange::processInput(std::ifstream& inputFile) {
 		if (std::getline(ss, date, '|') && std::getline(ss, valueStr)) {
 			date = trimSpace(date);
 			valueStr = trimSpace(valueStr);
-			std::cout << "date:*" << date << "*\n";
-			std::cout << "value str:*" << valueStr << "*\n";
 		
-		if (!createValidateValue(valueStr, value)){
+		if (!isValidDate(date)) {
+			std::cerr << "Error: Invalid date in input file => " << date << std::endl;
+                continue;
+		}
+		
+		if (!createAndValidateValue(valueStr, value)){
 			continue ;
 		}
 		

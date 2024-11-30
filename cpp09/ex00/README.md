@@ -16,6 +16,7 @@ Skills:
 
 [Cplusplus algorithms](https://cplusplus.com/reference/algorithm/)
 [Cplusplus containers](https://cplusplus.com/reference/stl/)
+[Cplusplus time struct / mktime](https://cplusplus.com/reference/ctime/)
 [CodeBeauty C++ STL playlist](https://www.youtube.com/playlist?list=PL43pGnjiVwgR9BloyT0OgsMo8d_hylBv0)
 
 
