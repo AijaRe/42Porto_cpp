@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:34 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/30 11:14:52 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/30 11:53:04 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ bool	BitcoinExchange::createValidateValue(const std::string& valueStr, double& v
 			std::cerr << "Error: invalid numeric value. " << std::endl;
 			return false;
 		}
-		if (value < 0) {
+		if (value <= 0) {
 			std::cerr << "Error: not a positive number. " << std::endl;
 			return false;
 		}
@@ -100,8 +100,22 @@ bool	BitcoinExchange::createValidateValue(const std::string& valueStr, double& v
 }
 
 void	BitcoinExchange::convertValue(const std::string& date, const double& value) {
-	std::map<std::string, double>::const_iterator it = _exchangeRates.lower_bound(date);
-	if (it != _exchangeRates.end()) {
+	std::map<std::string, double>::const_iterator it = _exchangeRates.upper_bound(date);
+	if (it != _exchangeRates.begin()) {
+        --it;
+        double rate = it->second;
+		if (rate <= 0) {
+			 std::cerr << "Error: invalid rate." << std::endl;
+			 return ;
+		}
+		std::cout << "rate: " << rate << std::endl;
+		std::cout << "value: " << value << std::endl;
+        double convertedValue = value * rate;
+        std::cout << date << " => " << value << " = " << convertedValue << std::endl;
+    } else {
+        std::cerr << "Error: date too old => " << date << "\nDates start at 2009-01-02" << std::endl;
+    }
+	/* if (it != _exchangeRates.end()) {
 		double rate = it->second;
 		std::cout << "rate: " << rate << std::endl;
 		std::cout << "value: " << value << std::endl;
@@ -109,7 +123,7 @@ void	BitcoinExchange::convertValue(const std::string& date, const double& value)
 		std::cout << date << "=>" << convertedValue << std::endl;
 	} else {
 		std::cerr << "Error: bad input => " << date << std::endl;
-	}
+	} */
 }
 
 void	BitcoinExchange::processInput(std::ifstream& inputFile) {
@@ -141,7 +155,7 @@ void	BitcoinExchange::processInput(std::ifstream& inputFile) {
 		convertValue(date, value);
 			
 		} else {
-			std::cerr << "Error: Invalid input format in line: " << line << std::endl;
+			std::cerr << "Error: bad input => " << line << std::endl;
 		}
 	}
 }

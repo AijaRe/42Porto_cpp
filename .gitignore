@@ -2,6 +2,8 @@
 *.o
 *.d
 .vscode
+autocomplete/
+jsconfig.json
 megaphone
 phonebook
 zombie
