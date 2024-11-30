@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:34 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/27 22:15:14 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/30 11:14:52 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,39 @@ void	BitcoinExchange::printExchangeRates(void) const {
 	}
 }
 
+bool	BitcoinExchange::createValidateValue(const std::string& valueStr, double& value) {
+	
+		char* end;
+		value = std::strtod(valueStr.c_str(), &end);
+		std::cout << "value num:*" << valueStr << "*\n";
+		if (*end != 0 || !value) {
+			std::cerr << "Error: invalid numeric value. " << std::endl;
+			return false;
+		}
+		if (value < 0) {
+			std::cerr << "Error: not a positive number. " << std::endl;
+			return false;
+		}
+		else if (value > static_cast<double>(INT_MAX)) {
+			std::cerr << "Error: too large a number. " << std::endl;
+			return false;
+		}
+		return true;
+}
+
+void	BitcoinExchange::convertValue(const std::string& date, const double& value) {
+	std::map<std::string, double>::const_iterator it = _exchangeRates.lower_bound(date);
+	if (it != _exchangeRates.end()) {
+		double rate = it->second;
+		std::cout << "rate: " << rate << std::endl;
+		std::cout << "value: " << value << std::endl;
+		double convertedValue = value * rate;
+		std::cout << date << "=>" << convertedValue << std::endl;
+	} else {
+		std::cerr << "Error: bad input => " << date << std::endl;
+	}
+}
+
 void	BitcoinExchange::processInput(std::ifstream& inputFile) {
 	std::string	line;
 	
@@ -98,20 +131,17 @@ void	BitcoinExchange::processInput(std::ifstream& inputFile) {
 		if (std::getline(ss, date, '|') && std::getline(ss, valueStr)) {
 			date = trimSpace(date);
 			valueStr = trimSpace(valueStr);
-
-			value = std::strtod(valueStr.c_str(), NULL);
-			if (value < 0) {
-				std::cerr << "Error: not a positive number. " << std::endl;
-				continue ;
-			}
-			else if (value > static_cast<double>(INT_MAX)) {
-				std::cerr << "Error: too large a number. " << std::endl;
-				continue ;
-			}
-
+			std::cout << "date:*" << date << "*\n";
+			std::cout << "value str:*" << valueStr << "*\n";
+		
+		if (!createValidateValue(valueStr, value)){
+			continue ;
+		}
+		
+		convertValue(date, value);
 			
 		} else {
-			std::cerr << "Error: bad input => " << date << std::endl;
+			std::cerr << "Error: Invalid input format in line: " << line << std::endl;
 		}
 	}
 }

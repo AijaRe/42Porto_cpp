@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:37 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/27 22:14:06 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/30 11:12:12 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ class BitcoinExchange {
 		std::map<std::string, double> _exchangeRates;
 		
 		std::string trimSpace(std::string& str);
+		bool		createValidateValue(const std::string& valueStr, double& value);
+		void		convertValue(const std::string& date, const double& value);
 };
 
 #endif // BITCOINEXCHANGE_HPP
