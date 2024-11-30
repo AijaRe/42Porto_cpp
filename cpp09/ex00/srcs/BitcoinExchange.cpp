@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:34 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/30 21:17:09 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/11/30 21:27:49 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,23 +112,23 @@ bool	BitcoinExchange::isValidDate(const std::string& date) {
 	if (!(iss >> year >> dash1 >> month >> dash2 >> day)) {
 		return false;
 	}
-	std::cout << "year:*" << year << "*\n";
-	std::cout << "month:*" << month << "*\n";
-	std::cout << "day:*" << day << "*\n";
 	
 	std::tm time = {};
 	time.tm_year = year - 1900; //	years since 1900
 	time.tm_mon = month - 1; // months since January (0-11)
 	time.tm_mday = day; // day of the month (1-31)
 
+	std::tm normalizedTime = time;
 	//normalizes the fields and returns time_t value, on failure returns -1
 	//normalization, e.g., convert 2022-05-32 to 2022-06-01
-	if (mktime(&time) == -1)
+	if (mktime(&normalizedTime) == -1)
 		return false;
 		
-	std::cout << "Normalized date: " << (time.tm_year + 1900) << "-"
-              << (time.tm_mon + 1) << "-" << time.tm_mday << std::endl;
-	
+	if (normalizedTime.tm_year != time.tm_year ||
+		normalizedTime.tm_mon != time.tm_mon ||
+		normalizedTime.tm_mday != time.tm_mday) {
+			return false;
+	}
 	return true;
 }
 
