@@ -6,19 +6,18 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:34 by arepsa            #+#    #+#             */
-/*   Updated: 2024/12/01 13:35:15 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/12/01 20:08:02 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(void) {
-	std::cout << "BitcoinExchange default constructor called." << std::endl;
+BitcoinExchange::BitcoinExchange(void) : _exchangeRates() {
+	//std::cout << "BitcoinExchange default constructor called." << std::endl;
 }
 
 BitcoinExchange::BitcoinExchange(std::ifstream& dataFile) {
-	std::cout << "BitcoinExchange assignment constructor called." << std::endl;
-	
+	//std::cout << "BitcoinExchange assignment constructor called." << std::endl;
 	std::string line;
 	
 	//verify if first line is date,exchange_rate
@@ -42,15 +41,15 @@ BitcoinExchange::BitcoinExchange(std::ifstream& dataFile) {
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) : _exchangeRates(copy._exchangeRates) {
-	std::cout << "BitcoinExchange copy constructor called." << std::endl;
+	//std::cout << "BitcoinExchange copy constructor called." << std::endl;
 }
 
 BitcoinExchange::~BitcoinExchange(void) {
-	std::cout << "BitcoinExchange destructor called." << std::endl;
+	//std::cout << "BitcoinExchange destructor called." << std::endl;
 }
 
 BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange &src) {
-	std::cout << "BitcoinExchange assignment operator called." << std::endl;
+	//std::cout << "BitcoinExchange assignment operator called." << std::endl;
 	if (this != &src) {
 		_exchangeRates = src._exchangeRates;
 	}
