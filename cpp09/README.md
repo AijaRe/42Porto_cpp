@@ -115,3 +115,4 @@ Error
 1. Place all operands(numbers) in a stack 
 2. When an operator appears, pop first 2 elements from the stack 
 3. Apply the operator to the popped elements (second popped element - operator - first popped element) and place the result back on stack.
+4. After processing the entire input string, the stack should contain a single value aka result.
