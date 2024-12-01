@@ -18,6 +18,7 @@ Skills:
 [Cplusplus containers](https://cplusplus.com/reference/stl/)
 [Cplusplus time struct / mktime](https://cplusplus.com/reference/ctime/)
 [CodeBeauty C++ STL playlist](https://www.youtube.com/playlist?list=PL43pGnjiVwgR9BloyT0OgsMo8d_hylBv0)
+[Computing Tutor - Reverse Polish Notation](https://www.youtube.com/watch?v=HDwRlIc75w4)
 
 
 ### ex00 - Bitcoin Exchange
@@ -77,6 +78,40 @@ Error: too large a number
 	- split each line by comma: pass left side as key and right side as value to the map container 
 3. Process input file: 
 	- validate the header
-	- validate each line of the input file
+	- validate each line of the input file: validate date and the value
 	- look up exchange rate in map container and calculate the converted value
 	- print the results or error message.
+
+
+### ex01 - Reverse Polish Notation
+
+
+You must create a program with these constraints:
+- The program name is `RPN`.
+- Your program must take an inverted Polish mathematical expression as an argument.
+- The numbers used in this operation and passed as arguments will always be less
+than 10. The calculation itself but also the result do not take into account this rule.
+- Your program must process this expression and output the correct result on the
+standard output.
+- If an error occurs during the execution of the program an error message should be
+displayed on the standard error.
+- Your program must be able to handle operations with these tokens: `"+ - / *"`.
+- You don’t need to manage the brackets or decimal numbers.
+
+
+Example of standard use:
+```
+$> ./RPN "8 9 * 9 - 9 - 9 - 4 - 1 +"
+42
+$> ./RPN "7 7 * 7 -"
+42
+$> ./RPN "1 2 * 2 / 2 * 2 4 - +"
+0
+$> ./RPN "(1 + 1)"
+Error
+```
+
+#### RPN structure:
+1. Place all operands(numbers) in a stack 
+2. When an operator appears, pop first 2 elements from the stack 
+3. Apply the operator to the popped elements (second popped element - operator - first popped element) and place the result back on stack.
