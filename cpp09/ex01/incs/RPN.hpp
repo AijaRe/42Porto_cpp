@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 12:51:02 by arepsa            #+#    #+#             */
-/*   Updated: 2024/12/01 20:05:03 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/12/01 20:40:33 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@
 class RPN {
     public:
         RPN(void);
-        RPN(const std::string &input);
-        RPN(const RPN &copy);
+        RPN(const RPN& copy);
         ~RPN(void);
-        RPN & operator=(const RPN &src);
+        RPN & operator=(const RPN& src);
+
+        void processInput(std::string& input);
     private:
         std::stack<int> _stack;
+        void    validateInput(std::string& input);
 };
 
 #endif // RPN_HPP
