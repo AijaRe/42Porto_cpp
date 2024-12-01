@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 12:50:57 by arepsa            #+#    #+#             */
-/*   Updated: 2024/12/01 21:39:18 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/12/01 21:48:05 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void    RPN::processInput(std::string& input) {
             if (isTokenNumber(token)) {
                 char *end;
                 long num = std::strtol(token.c_str(), &end, 10);
-                if (*end != '\0' || num > INT_MAX || num < INT_MIN)
+                if (*end != '\0' || num > std::numeric_limits<int>::max() || num < std::numeric_limits<int>::min())
                     throw std::invalid_argument("Error: invalid number.");
                 _stack.push(num);
             } else if (std::string("+-/*").find(token) != std::string::npos && token.size() == 1) {
@@ -89,14 +89,17 @@ void    RPN::processInput(std::string& input) {
                 long num1 = _stack.top();
                 _stack.pop();
                 long result = calculate(num1, num2, token[0]);
-                if (result > INT_MAX || result < INT_MIN)
+                if (result > std::numeric_limits<int>::max() || result < std::numeric_limits<int>::min())
                     throw std::runtime_error("Error: result out of range.");
                 _stack.push(result);
+
             } else {
                 throw std::invalid_argument("Error: invalid token.");
-            }            
+            }
+            
         }
 
+        
         if (_stack.size() != 1) {
             throw std::runtime_error("Error: invalid RPN expression.");
         }

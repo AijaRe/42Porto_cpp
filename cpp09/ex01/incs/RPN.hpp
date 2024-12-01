@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 12:51:02 by arepsa            #+#    #+#             */
-/*   Updated: 2024/12/01 21:36:45 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/12/01 21:47:16 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <sstream>
 #include <stack>
 #include <stdexcept>
-#include <climits>
+#include <limits>
 #include <cstdlib>
 
 class RPN {
