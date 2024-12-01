@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:34 by arepsa            #+#    #+#             */
-/*   Updated: 2024/11/30 21:27:49 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/12/01 11:57:00 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ bool	BitcoinExchange::createAndValidateValue(const std::string& valueStr, double
 	
 		char* end;
 		value = std::strtod(valueStr.c_str(), &end);
-		std::cout << "value num:*" << valueStr << "*\n";
 		if (*end != 0 || !value) {
 			std::cerr << "Error: invalid numeric value. " << std::endl;
 			return false;
@@ -101,7 +100,6 @@ bool	BitcoinExchange::createAndValidateValue(const std::string& valueStr, double
 
 bool	BitcoinExchange::isValidDate(const std::string& date) {
 	if (date.size() != 10 && date[4] != '-' && date[7] != '-') {
-		std::cerr << "Error: invalid date format. " << std::endl;
 		return false;
 	}
 	int year, month, day;
@@ -141,12 +139,12 @@ void	BitcoinExchange::convertValue(const std::string& date, const double& value)
 			 std::cerr << "Error: invalid rate." << std::endl;
 			 return ;
 		}
-		std::cout << "rate: " << rate << std::endl;
-		std::cout << "value: " << value << std::endl;
+		//std::cout << "rate: " << rate << std::endl;
+		//std::cout << "value: " << value << std::endl;
         double convertedValue = value * rate;
         std::cout << date << " => " << value << " = " << convertedValue << std::endl;
     } else {
-        std::cerr << "Error: date too old => " << date << "\nDates start at 2009-01-02" << std::endl;
+        std::cerr << "Error: date too old => " << date << " / Dates start at 2009-01-02" << std::endl;
     }
 	/* if (it != _exchangeRates.end()) {
 		double rate = it->second;
