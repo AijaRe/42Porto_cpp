@@ -6,23 +6,23 @@
 #    By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 19:16:50 by arepsa            #+#    #+#              #
-#    Updated: 2024/12/01 12:43:35 by arepsa           ###   ########.fr        #
+#    Updated: 2024/12/01 12:43:58 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 RM = rm -rf
 
-CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -fsanitize=address
+CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -Wno-unused -fsanitize=address
 
 #generate dependency file
 CPPFLAGS	= -MMD
 
-NAME		= btc
+NAME		= RPN
 
 SRC_DIR		= srcs
 INC_DIR		= incs
-FILES		= main BitcoinExchange
+FILES		= main RPN
 SRC			= $(addprefix $(SRC_DIR)/, $(addsuffix .cpp, $(FILES)))
 OBJ			= $(addprefix $(SRC_DIR)/, $(addsuffix .o, $(FILES)))
 DEPS		= $(OBJ:.o=.d)

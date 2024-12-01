@@ -6,7 +6,7 @@
 /*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:34 by arepsa            #+#    #+#             */
-/*   Updated: 2024/12/01 11:57:00 by arepsa           ###   ########.fr       */
+/*   Updated: 2024/12/01 13:35:15 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ BitcoinExchange::BitcoinExchange(std::ifstream& dataFile) {
 	};
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) {
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy) : _exchangeRates(copy._exchangeRates) {
 	std::cout << "BitcoinExchange copy constructor called." << std::endl;
-	*this = copy;
 }
 
 BitcoinExchange::~BitcoinExchange(void) {
@@ -53,7 +52,7 @@ BitcoinExchange::~BitcoinExchange(void) {
 BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange &src) {
 	std::cout << "BitcoinExchange assignment operator called." << std::endl;
 	if (this != &src) {
-		// Implement assignment
+		_exchangeRates = src._exchangeRates;
 	}
 	return *this;
 }
@@ -71,10 +70,10 @@ std::string	BitcoinExchange::trimSpace(std::string& str) {
 }
 
 void	BitcoinExchange::printExchangeRates(void) const {
-	std::map<std::string, double>::const_iterator it = _exchangeRates.begin();
+	std::map<std::string, double>::const_iterator it;
 	std::map<std::string, double>::const_iterator ite = _exchangeRates.end();
 	
-	for (it; it != ite; ++it) {
+	for (it = _exchangeRates.begin(); it != ite; ++it) {
 		std::cout << it->first << " - " << it->second << std::endl;
 	}
 }
@@ -99,7 +98,7 @@ bool	BitcoinExchange::createAndValidateValue(const std::string& valueStr, double
 }
 
 bool	BitcoinExchange::isValidDate(const std::string& date) {
-	if (date.size() != 10 && date[4] != '-' && date[7] != '-') {
+	if (date.size() != 10 || date[4] != '-' || date[7] != '-') {
 		return false;
 	}
 	int year, month, day;
@@ -139,22 +138,11 @@ void	BitcoinExchange::convertValue(const std::string& date, const double& value)
 			 std::cerr << "Error: invalid rate." << std::endl;
 			 return ;
 		}
-		//std::cout << "rate: " << rate << std::endl;
-		//std::cout << "value: " << value << std::endl;
         double convertedValue = value * rate;
         std::cout << date << " => " << value << " = " << convertedValue << std::endl;
     } else {
         std::cerr << "Error: date too old => " << date << " / Dates start at 2009-01-02" << std::endl;
     }
-	/* if (it != _exchangeRates.end()) {
-		double rate = it->second;
-		std::cout << "rate: " << rate << std::endl;
-		std::cout << "value: " << value << std::endl;
-		double convertedValue = value * rate;
-		std::cout << date << "=>" << convertedValue << std::endl;
-	} else {
-		std::cerr << "Error: bad input => " << date << std::endl;
-	} */
 }
 
 void	BitcoinExchange::processInput(std::ifstream& inputFile) {
@@ -176,18 +164,14 @@ void	BitcoinExchange::processInput(std::ifstream& inputFile) {
 		if (std::getline(ss, date, '|') && std::getline(ss, valueStr)) {
 			date = trimSpace(date);
 			valueStr = trimSpace(valueStr);
-		
 		if (!isValidDate(date)) {
 			std::cerr << "Error: Invalid date in input file => " << date << std::endl;
                 continue;
 		}
-		
 		if (!createAndValidateValue(valueStr, value)){
 			continue ;
 		}
-		
 		convertValue(date, value);
-			
 		} else {
 			std::cerr << "Error: bad input => " << line << std::endl;
 		}
