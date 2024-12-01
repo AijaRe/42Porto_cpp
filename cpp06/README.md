@@ -19,7 +19,7 @@ Skills: C++ cast types and usecases: static_cast, reinterpret_cast, dynamic_cast
 
 [Programiz: Float and Double in C++](https://www.programiz.com/cpp-programming/float-double)
 
-[uintptr_t data type] (https://stackoverflow.com/questions/1845482/what-is-the-uintptr-t-data-type)
+[uintptr_t data type](https://stackoverflow.com/questions/1845482/what-is-the-uintptr-t-data-type)
 
 
 ### ex00 - Conversion of scalar types

@@ -18,7 +18,9 @@ CPP06 - Casts
 
 CPP07 - Templates
 
-CPP08 - Work In Progress..
+CPP08 - Templated containers, iterators, algorithms
+
+CPP09 - Work In Progress...
 
 
 ## Resources
