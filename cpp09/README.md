@@ -19,6 +19,7 @@ Skills:
 [Cplusplus time struct / mktime](https://cplusplus.com/reference/ctime/)
 [CodeBeauty C++ STL playlist](https://www.youtube.com/playlist?list=PL43pGnjiVwgR9BloyT0OgsMo8d_hylBv0)
 [Computing Tutor - Reverse Polish Notation](https://www.youtube.com/watch?v=HDwRlIc75w4)
+[Visualisation of the Ford-Johnson algorithm](https://dev.to/emuminov/human-explanation-and-step-by-step-visualisation-of-the-ford-johnson-algorithm-5g91)
 
 
 ### ex00 - Bitcoin Exchange
@@ -169,5 +170,5 @@ operations, both the sorting part and the data management part.
 
 #### Algorithm steps:
 1. Group elements into pairs.
-2. Sort the bigger numbers of each pair using merge insert (how exatcly?) -> create the main chain.
-3. Insert the smaller elements into the main chain one by one (how exactly? Jacobsthal?)
+2. Sort the bigger numbers of each pair using merge insert -> create the main chain. Keep track of the pending numbers of each pair.
+3. Insert the smaller elements into the main chain one by one. Use Jacobsthl sequence (start with the 3rd smallest element and go backwards, next start with the 5th...) and binary search (get the min and max range, split in half and discard the half in which the number does not fit etc. until you find a place for the number).

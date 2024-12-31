@@ -6,7 +6,7 @@
 #    By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 19:16:50 by arepsa            #+#    #+#              #
-#    Updated: 2024/12/01 12:43:58 by arepsa           ###   ########.fr        #
+#    Updated: 2024/12/30 14:54:56 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,11 @@ CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -Wno-unused -fsani
 #generate dependency file
 CPPFLAGS	= -MMD
 
-NAME		= RPN
+NAME		= PmergeMe
 
 SRC_DIR		= srcs
 INC_DIR		= incs
-FILES		= main RPN
+FILES		= main PmergeMe
 SRC			= $(addprefix $(SRC_DIR)/, $(addsuffix .cpp, $(FILES)))
 OBJ			= $(addprefix $(SRC_DIR)/, $(addsuffix .o, $(FILES)))
 DEPS		= $(OBJ:.o=.d)
