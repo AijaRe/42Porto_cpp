@@ -40,9 +40,25 @@ void PmergeMe::display() const {
     std::cout << std::endl;
 }
 
+// Generate Jacobsthal's sequence starting from 3 up to a given size
+std::vector<long> generateJacobsthalSequence(int n) {
+    std::vector<long> jacobsthal;
+    
+    jacobsthal.push_back(1);
+    jacobsthal.push_back(3);
+    long nextNumber = 5;
+    for (size_t i = 3; nextNumber < n; i++) {
+        jacobsthal.push_back(nextNumber);
+        nextNumber = 2 * jacobsthal[i - 2] + jacobsthal[i - 1];
+    }
+    jacobsthal.erase(jacobsthal.begin());
+    return jacobsthal;
+}
+
 void recursiveMergeInsertionSort(std::vector<std::pair<int, int> >& pairs) {
+    // Base case: A single pair or no pairs is already sorted.
     if (pairs.size() <= 1) {
-        return; // Base case: A single pair or no pairs is already sorted.
+        return; 
     }
 
     // Split pairs into two halves for sorting
@@ -80,7 +96,7 @@ void    PmergeMe::sortVector() {
         }
     } */
     //sort pairs by largest element, e.g., 2 23 4 11 -> 4 11 2 23
-    // Group elements into pairs (smaller, larger)
+    // Group elements into pairs and sort them on the way (smaller, larger)
     std::vector<std::pair<int, int> > pairs;
     for (size_t i = 0; i < _elements.size(); i += 2) {
         if (i + 1 < _elements.size()) {
@@ -98,12 +114,45 @@ void    PmergeMe::sortVector() {
     // Sort the pairs by recursively sorting the larger elements
     recursiveMergeInsertionSort(pairs);
 
+     // Generate the Jacobsthal sequence for insertion 
+     // (based on the number of even-position (smallest) elements)
+    std::vector<long> jacobsthal = generateJacobsthalSequence(pairs.size());
+    std::vector<long>::const_iterator it;
+    std::cout << "Print jacobstahl: ";
+    for (it = jacobsthal.begin(); it != jacobsthal.end(); it++) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+
+    // Create main chain and populate with sorted large pair numbers
+    std::vector<int> mainChain;
+    for (size_t i = 0; i < pairs.size(); ++i) {
+        mainChain.push_back(pairs[i].second);  // Larger element
+    }
+
+    // Create main chain and populate with sorted large pair numbers
+    std::vector<int> smallChain;
+    for (size_t i = 0; i < pairs.size(); ++i) {
+        mainChain.push_back(pairs[i].first);  // Smaller element
+    }
+
+    // Insert the elements of smallChain into mainChain
+    // using Jacobsthal sequence binary search
+       for (size_t i = 0; i < jacobsthal.size(); ++i) {
+        size_t index = jacobsthal[i] - 1;
+        if (index < smallChain.size()) {
+            int element = smallChain[index];
+            //insert element into mainChain using binary search
+        }
+    }
+
+    _elements = mainChain;
     // Reconstruct the sorted vector
-    _elements.clear();
+    /* _elements.clear();
     for (size_t i = 0; i < pairs.size(); ++i) {
         _elements.push_back(pairs[i].first);  // Smaller element
         _elements.push_back(pairs[i].second); // Larger element
     }
-}
+} */
 
 

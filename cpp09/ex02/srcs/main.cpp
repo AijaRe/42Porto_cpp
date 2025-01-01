@@ -21,7 +21,7 @@ void	displayInput(int argc, char** argv) {
 }
 
 int main (int argc, char** argv) {
-	if (argc <= 2 && std::strcmp(argv[0], "./PmergeMe") != 0) {
+	if (argc <= 2 || std::strcmp(argv[0], "./PmergeMe") != 0) {
 		std::cerr << "Usage: ./PmergeMe <numbers>" << std::endl;
 		return 1;
 	}
