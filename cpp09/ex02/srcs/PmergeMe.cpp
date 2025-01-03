@@ -129,11 +129,23 @@ void    PmergeMe::sortVector() {
     for (size_t i = 0; i < pairs.size(); ++i) {
         mainChain.push_back(pairs[i].second);  // Larger element
     }
+    // Print mainChain
+    std::vector<int>::const_iterator it2;
+    std::cout << "\nPrint mainChain: ";
+    for (it2 = mainChain.begin(); it2 != mainChain.end(); it2++) {
+        std::cout << *it2 << " ";
+    }
 
-    // Create main chain and populate with sorted large pair numbers
+    // Create small number chain and populate with smaller pair numbers
     std::vector<int> smallChain;
     for (size_t i = 0; i < pairs.size(); ++i) {
-        mainChain.push_back(pairs[i].first);  // Smaller element
+        smallChain.push_back(pairs[i].first);  // Smaller element
+    }
+    // Print smallChain
+    std::vector<int>::const_iterator it3;
+    std::cout << "\nPrint smallChain: ";
+    for (it3 = smallChain.begin(); it3 != smallChain.end(); it3++) {
+        std::cout << *it3 << " ";
     }
 
     // Insert the elements of smallChain into mainChain
@@ -143,6 +155,17 @@ void    PmergeMe::sortVector() {
         if (index < smallChain.size()) {
             int element = smallChain[index];
             //insert element into mainChain using binary search
+            size_t left = 0;
+            size_t right = mainChain.size();
+            while (left < right) {
+                size_t mid = left + (right - left) / 2;
+                if (element < mainChain[mid]) {
+                    right = mid;
+                } else {
+                    left = mid + 1;
+                }
+            }
+            mainChain.insert(mainChain.begin() + left, element);
         }
     }
 
@@ -152,7 +175,7 @@ void    PmergeMe::sortVector() {
     for (size_t i = 0; i < pairs.size(); ++i) {
         _elements.push_back(pairs[i].first);  // Smaller element
         _elements.push_back(pairs[i].second); // Larger element
-    }
-} */
+    } */
+} 
 
 
