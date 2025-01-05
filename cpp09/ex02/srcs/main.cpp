@@ -12,7 +12,8 @@
 
 #include "PmergeMe.hpp"
 #include <cstring> //strcmp
-#include <ctime>
+#include <ctime> //clock
+#include <iomanip> //setprecision fixed
 
 void	displayInput(int argc, char** argv) {
 	for (int i = 1; i < argc; i++) {
@@ -40,27 +41,25 @@ int main (int argc, char** argv) {
 	}
 
 	try {
-		PmergeMe sortVect;
 
-		sortVect.inputToVector(argc, argv);
-
-		std::cout << "Before: ";
-		displayInput(argc, argv);
+		PmergeMe sortMe;
 
 		std::clock_t startVec = std::clock(); //unit is "clock ticks"
-		sortVect.sortVector();
+		sortMe.inputToVector(argc, argv);
+		sortMe.sortVector();
 		std::clock_t endVec = std::clock();
-		// CLOCKS_PER_SEC - number of clock ticks per second
-		double timeVec = static_cast<double>(endVec - startVec) / CLOCKS_PER_SEC;
-		double timeVecUs = static_cast<double>(endVec - startVec) * 1000000.0 / CLOCKS_PER_SEC;
-		std::cout << "Time: " << timeVec << " seconds" << std::endl;
-		std::cout << "Time: " << timeVecUs << " microseconds" << std::endl;
-
-
+		std::cout << "Before: ";
+		displayInput(argc, argv);
 		std::cout << "After: ";
-		sortVect.display();
+		sortMe.display(sortMe.getVector());
+		// CLOCKS_PER_SEC - number of clock ticks per second 
+		// 1000000 - number of microseconds in a second
+		double timeVecUs = static_cast<double>(endVec - startVec) * 1000000.0 / CLOCKS_PER_SEC;
+		std::cout 	<< "Time to process a range of " << argc - 1 
+					<< " elements with std::vector : " << std::fixed << std::setprecision(5) 
+					<< timeVecUs << " us" << std::endl;
 
-		checkIfSorted(sortVect.getElements());
+		checkIfSorted(sortMe.getVector());
 
 	} catch (const std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;

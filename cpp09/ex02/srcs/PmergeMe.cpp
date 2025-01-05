@@ -16,13 +16,13 @@ PmergeMe::~PmergeMe(void) {
 PmergeMe & PmergeMe::operator=(const PmergeMe &src) {
     std::cout << "PmergeMe assignment operator called." << std::endl;
     if (this != &src) {
-        _elements = src._elements;
+        _velements = src._velements;
     }
     return *this;
 }
 
-std::vector<int> PmergeMe::getElements() const {
-    return _elements;
+std::vector<int> PmergeMe::getVector() const {
+    return _velements;
 }
 
 void PmergeMe::inputToVector(int argc, char** argv) {
@@ -33,19 +33,11 @@ void PmergeMe::inputToVector(int argc, char** argv) {
             throw std::invalid_argument("Invalid number: " + std::string(argv[i]));
         }
         //reject duplicates
-        if (std::find(_elements.begin(), _elements.end(), static_cast<int>(value)) != _elements.end()) {
+        if (std::find(_velements.begin(), _velements.end(), static_cast<int>(value)) != _velements.end()) {
             throw std::invalid_argument("Duplicate number: " + std::string(argv[i]));
         }
-        _elements.push_back(static_cast<int>(value));
+        _velements.push_back(static_cast<int>(value));
     }
-}
-
-void PmergeMe::display() const {
-    std::vector<int>::const_iterator it;
-    for (it = _elements.begin(); it != _elements.end(); it++) {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
 }
 
 // Generate Jacobsthal's sequence starting from 3 up to a given size
@@ -166,7 +158,7 @@ std::vector<int>    mergeInsertSort(std::vector<int>& vect) {
 } 
 
 void PmergeMe::sortVector() {
-    _elements = mergeInsertSort(_elements);
+    _velements = mergeInsertSort(_velements);
 }
 
 
