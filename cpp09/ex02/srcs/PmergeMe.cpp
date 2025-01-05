@@ -89,6 +89,33 @@ std::vector<std::pair<int, int> > generatePairs(std::vector<int>& vect) {
     return pairs;
 }
 
+void    insertByJacobsthal(std::vector<int>& mainChain, std::vector<int>& smallChain) {
+    // Generate the Jacobsthal sequence for insertion 
+    // (based on the number of even-position (smallest) elements)
+    std::vector<long> jacobsthal = generateJacobsthalSequence(smallChain.size());
+
+    // Insert the elements of smallChain into mainChain
+    // using Jacobsthal sequence binary search
+    size_t lastInserted = 0;
+    int prevJacobsthal = 0;
+    for (size_t i = 0; i < jacobsthal.size(); i++) {
+        size_t currJacobsthal = jacobsthal[i] - 1;
+        if (currJacobsthal < smallChain.size()) {
+            for (int j = currJacobsthal; j >= prevJacobsthal; j--) {
+                binarySearchInsert(mainChain, smallChain[j]);
+            }
+            prevJacobsthal = currJacobsthal + 1;
+        }
+        lastInserted = currJacobsthal;
+    }
+
+    // Insert the remaining elements of smallChain into mainChain
+    for (size_t i = lastInserted + 1; i < smallChain.size(); i++) {
+        binarySearchInsert(mainChain, smallChain[i]);
+    } 
+}
+
+
 std::vector<int>    mergeInsertSort(std::vector<int>& vect) {
     if (vect.size() <= 1) {
         return vect; 
@@ -120,28 +147,12 @@ std::vector<int>    mergeInsertSort(std::vector<int>& vect) {
         binarySearchInsert(mainChain, smallChain[i]);
     } */
 
-    // Generate the Jacobsthal sequence for insertion 
-    // (based on the number of even-position (smallest) elements)
-    std::vector<long> jacobsthal = generateJacobsthalSequence(smallChain.size());
-
-    // Insert the elements of smallChain into mainChain
-    // using Jacobsthal sequence binary search
-    size_t lastInserted = 0;
-    int prevJacobsthal = 0;
-    for (size_t i = 0; i < jacobsthal.size(); i++) {
-        size_t currJacobsthal = jacobsthal[i] - 1;
-        if (currJacobsthal < smallChain.size()) {
-            for (int i = currJacobsthal; i >= prevJacobsthal; i--) {
-                binarySearchInsert(mainChain, smallChain[i]);
-            }
-            lastInserted = currJacobsthal;
-            prevJacobsthal = currJacobsthal + 1;
+    if (smallChain.size() >= 3) {
+        insertByJacobsthal(mainChain, smallChain);
+    } else {
+        for (size_t i = 0; i < smallChain.size(); ++i) {
+            binarySearchInsert(mainChain, smallChain[i]);
         }
-    } 
-
-    // Insert the remaining elements of smallChain into mainChain
-    for (size_t i = smallChain.size() - 1; i > lastInserted; i--) {
-        binarySearchInsert(mainChain, smallChain[i]);
     }
 
     long unpairedElement = LONG_MAX;
@@ -151,7 +162,6 @@ std::vector<int>    mergeInsertSort(std::vector<int>& vect) {
             break;
         }
     }
-    
     
     // Insert the unpaired element if it exists
     if (unpairedElement != LONG_MAX) {
