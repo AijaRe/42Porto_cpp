@@ -19,6 +19,7 @@ class PmergeMe {
         void    inputToVector(int argc, char** argv);
         void    display() const;
         void    sortVector();
+        std::vector<int>    getElements() const;
 
     private:
         std::vector<int> _elements;

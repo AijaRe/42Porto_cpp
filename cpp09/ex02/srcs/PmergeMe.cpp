@@ -21,12 +21,20 @@ PmergeMe & PmergeMe::operator=(const PmergeMe &src) {
     return *this;
 }
 
+std::vector<int> PmergeMe::getElements() const {
+    return _elements;
+}
+
 void PmergeMe::inputToVector(int argc, char** argv) {
      for (int i = 1; i < argc; i++) {
         char *end;
         long value = std::strtol(argv[i], &end, 10);
-        if (*end != '\0' || value > INT_MAX || value < INT_MIN) {
+        if (*end != '\0' || value > INT_MAX || value < 0) {
             throw std::invalid_argument("Invalid number: " + std::string(argv[i]));
+        }
+        //reject duplicates
+        if (std::find(_elements.begin(), _elements.end(), static_cast<int>(value)) != _elements.end()) {
+            throw std::invalid_argument("Duplicate number: " + std::string(argv[i]));
         }
         _elements.push_back(static_cast<int>(value));
     }
