@@ -70,40 +70,6 @@ void    binarySearchInsert(std::vector<int>& vect, int element) {
     vect.insert(vect.begin() + left, element);
 }
 
-
-/* void recursiveMergeInsertionSort(std::vector<std::pair<int, int> >& pairs) {
-    // Base case: A single pair or no pairs is already sorted.
-    if (pairs.size() <= 1) {
-        return; 
-    }
-
-    // Split pairs into two halves for sorting
-    std::vector<std::pair<int, int> > left(pairs.begin(), pairs.begin() + pairs.size() / 2);
-    std::vector<std::pair<int, int> > right(pairs.begin() + pairs.size() / 2, pairs.end());
-
-    // Recursive calls
-    recursiveMergeInsertionSort(left);
-    recursiveMergeInsertionSort(right);
-
-    // Merge the two halves, sorted by the larger element in each pair
-    size_t i = 0, j = 0, k = 0;
-    while (i < left.size() && j < right.size()) {
-        if (left[i].second < right[j].second) {
-            pairs[k++] = left[i++];
-        } else {
-            pairs[k++] = right[j++];
-        }
-    }
-
-    // Copy remaining elements
-    while (i < left.size()) {
-        pairs[k++] = left[i++];
-    }
-    while (j < right.size()) {
-        pairs[k++] = right[j++];
-    }
-} */
-
 // Generate pairs from a vector of integers
 // where the first element is always smaller than the second
 std::vector<std::pair<int, int> > generatePairs(std::vector<int>& vect) {
@@ -149,39 +115,43 @@ std::vector<int>    mergeInsertSort(std::vector<int>& vect) {
         }
     }
 
-      // Insert the elements of smallChain into mainChain by simple binary search insert
+    /* // simple binary search insert
     for (size_t i = 0; i < smallChain.size(); ++i) {
         binarySearchInsert(mainChain, smallChain[i]);
-    }
+    } */
 
-    long unpairedElement = LONG_MAX;
-    for (size_t i = 0; i < pairs.size(); ++i) {
-        if (pairs[i].first == pairs[i].second) {
-            unpairedElement = pairs[i].first;
-            break;
-        }
-    }
-    
-/*     // Generate the Jacobsthal sequence for insertion 
+    // Generate the Jacobsthal sequence for insertion 
     // (based on the number of even-position (smallest) elements)
     std::vector<long> jacobsthal = generateJacobsthalSequence(smallChain.size());
 
     // Insert the elements of smallChain into mainChain
     // using Jacobsthal sequence binary search
     size_t lastInserted = 0;
-    for (size_t i = 0; i < jacobsthal.size(); ++i) {
-        size_t index = jacobsthal[i] - 1;
-        if (index < smallChain.size()) {
-            int element = smallChain[index];
-            binarySearchInsert(mainChain, element);
-            lastInserted = index;
+    int prevJacobsthal = 0;
+    for (size_t i = 0; i < jacobsthal.size(); i++) {
+        size_t currJacobsthal = jacobsthal[i] - 1;
+        if (currJacobsthal < smallChain.size()) {
+            for (int i = currJacobsthal; i >= prevJacobsthal; i--) {
+                binarySearchInsert(mainChain, smallChain[i]);
+            }
+            lastInserted = currJacobsthal;
+            prevJacobsthal = currJacobsthal + 1;
         }
     } 
 
     // Insert the remaining elements of smallChain into mainChain
-    for (size_t i = lastInserted + 1; i < smallChain.size(); ++i) {
+    for (size_t i = smallChain.size() - 1; i > lastInserted; i--) {
         binarySearchInsert(mainChain, smallChain[i]);
-    }*/
+    }
+
+    long unpairedElement = LONG_MAX;
+    for (size_t i = 0; i < pairs.size(); i++) {
+        if (pairs[i].first == pairs[i].second) {
+            unpairedElement = pairs[i].first;
+            break;
+        }
+    }
+    
     
     // Insert the unpaired element if it exists
     if (unpairedElement != LONG_MAX) {
