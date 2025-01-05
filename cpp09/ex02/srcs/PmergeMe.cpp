@@ -110,7 +110,7 @@ void    insertByJacobsthal(std::vector<int>& mainChain, std::vector<int>& smallC
     }
 
     // Insert the remaining elements of smallChain into mainChain
-    for (size_t i = lastInserted + 1; i < smallChain.size(); i++) {
+    for (size_t i = smallChain.size() - 1; i > lastInserted; i--) {
         binarySearchInsert(mainChain, smallChain[i]);
     } 
 }
@@ -142,16 +142,11 @@ std::vector<int>    mergeInsertSort(std::vector<int>& vect) {
         }
     }
 
-    /* // simple binary search insert
-    for (size_t i = 0; i < smallChain.size(); ++i) {
-        binarySearchInsert(mainChain, smallChain[i]);
-    } */
-
     if (smallChain.size() >= 3) {
         insertByJacobsthal(mainChain, smallChain);
     } else {
-        for (size_t i = 0; i < smallChain.size(); ++i) {
-            binarySearchInsert(mainChain, smallChain[i]);
+        for (size_t i = smallChain.size(); i > 0; i--) {
+            binarySearchInsert(mainChain, smallChain[i - 1]);
         }
     }
 
