@@ -81,10 +81,7 @@ std::vector<std::pair<int, int> > generatePairs(std::vector<int>& vect) {
             } else {
                 pairs.push_back(std::make_pair(vect[i + 1], vect[i]));
             }
-        } else {
-            // Handle unpaired element - same number for both elements
-            pairs.push_back(std::make_pair(vect[i], vect[i]));
-        }
+        } 
     }
     return pairs;
 }
@@ -123,12 +120,16 @@ std::vector<int>    mergeInsertSort(std::vector<int>& vect) {
    
     std::vector<std::pair<int, int> > pairs = generatePairs(vect);
 
+    // Handle unpaired element (if it exists)
+    int unpairedElement = 0;
+    bool unpaired = vect.size() % 2 != 0 ;
+    if (unpaired) {
+        unpairedElement = vect.back();
+    }
     // Create main chain and populate with sorted large pair numbers
     std::vector<int> mainChain;
     for (size_t i = 0; i < pairs.size(); ++i) {
-        if (pairs[i].first != pairs[i].second) {
             mainChain.push_back(pairs[i].second);  // Larger element
-        }  
     }
    
     // Sort the pairs by recursively sorting the larger elements
@@ -137,9 +138,7 @@ std::vector<int>    mergeInsertSort(std::vector<int>& vect) {
     // Create small number chain and populate with smaller pair numbers
     std::vector<int> smallChain;
     for (size_t i = 0; i < pairs.size(); ++i) {
-        if (pairs[i].first != pairs[i].second) {
             smallChain.push_back(pairs[i].first);  // Smaller element
-        }
     }
 
     if (smallChain.size() >= 3) {
@@ -149,18 +148,10 @@ std::vector<int>    mergeInsertSort(std::vector<int>& vect) {
             binarySearchInsert(mainChain, smallChain[i - 1]);
         }
     }
-
-    long unpairedElement = LONG_MAX;
-    for (size_t i = 0; i < pairs.size(); i++) {
-        if (pairs[i].first == pairs[i].second) {
-            unpairedElement = pairs[i].first;
-            break;
-        }
-    }
     
     // Insert the unpaired element if it exists
-    if (unpairedElement != LONG_MAX) {
-        binarySearchInsert(mainChain, static_cast<int>(unpairedElement));
+    if (unpaired) {
+        binarySearchInsert(mainChain, unpairedElement);
     }
     
     return mainChain;
