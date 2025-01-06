@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <vector>
+#include <deque>
 #include <string>
 #include <cstdlib> //strtol
 #include <climits>
@@ -12,19 +13,23 @@
 class PmergeMe {
     public:
         PmergeMe(void);
+        PmergeMe(int argc, char** argv);
         PmergeMe(const PmergeMe &copy);
         ~PmergeMe(void);
         PmergeMe & operator=(const PmergeMe &src);
 
-        void    inputToVector(int argc, char** argv);
         template <typename T>
         void    display(const T& container) const;
         void    sortVector();
+        void    sortDeque();
         std::vector<int>    getVector() const;
+        std::deque<int>    getDeque() const;
 
     private:
         std::vector<int> _velements;
+        std::deque<int> _delements;
         
+        void    parseInput(int argc, char** argv);
 };
 
 template <typename T>
