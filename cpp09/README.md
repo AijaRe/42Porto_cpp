@@ -1,4 +1,5 @@
 # C++ - Module 09
+
 ## STL (Standard Template Library)
 
 ## General rules
@@ -7,10 +8,10 @@
 - headerfile for each class, no function implementation in headerfile
 - using namespace <ns_name> and friend keywords is forbidden
 - It is mandatory to use the standard containers to perform each exercise in this module.
-Once a container is used you cannot use it for the rest of the module.
+  Once a container is used you cannot use it for the rest of the module.
 - all classes must be designed in the Orthodox Canonical Form (containting default constructor, copy constructor, copy assignment operator, destructor)
 
-Skills: 
+Skills:
 
 ## Resources
 
@@ -21,9 +22,7 @@ Skills:
 [Computing Tutor - Reverse Polish Notation](https://www.youtube.com/watch?v=HDwRlIc75w4)
 [Visualisation of the Ford-Johnson algorithm](https://dev.to/emuminov/human-explanation-and-step-by-step-visualisation-of-the-ford-johnson-algorithm-5g91)
 
-
 ### ex00 - Bitcoin Exchange
-
 
 You have to create a program which outputs the value of a certain amount of bitcoin
 on a certain date.
@@ -34,6 +33,7 @@ The program will take as input a second database, storing the different prices/d
 to evaluate.
 
 Your program must respect these rules:
+
 - The program name is btc.
 - Your program must take a file as argument.
 - Each line in this file must use the following format: "date | value".
@@ -46,6 +46,7 @@ Your program should display on the standard output the result of the value multi
 by the exchange rate according to the date indicated in your database.
 
 Input example:
+
 ```
 date | value
 2011-01-03 | 3
@@ -60,6 +61,7 @@ date | value
 ```
 
 ..should produce this output:
+
 ```
 2011-01-03 => 3 = 0.9
 2011-01-03 => 2 = 0.6
@@ -73,34 +75,34 @@ Error: too large a number
 ```
 
 #### Plan:
+
 1. Validade both files - check if files exist, can be opened and are not empty.
 2. Parse `data.csv` into map container (key: date, value: rate):
-	- validate the header
-	- split each line by comma: pass left side as key and right side as value to the map container 
-3. Process input file: 
-	- validate the header
-	- validate each line of the input file: validate date and the value
-	- look up exchange rate in map container and calculate the converted value
-	- print the results or error message.
-
+   - validate the header
+   - split each line by comma: pass left side as key and right side as value to the map container
+3. Process input file:
+   - validate the header
+   - validate each line of the input file: validate date and the value
+   - look up exchange rate in map container and calculate the converted value
+   - print the results or error message.
 
 ### ex01 - Reverse Polish Notation
 
-
 You must create a program with these constraints:
+
 - The program name is `RPN`.
 - Your program must take an inverted Polish mathematical expression as an argument.
 - The numbers used in this operation and passed as arguments will always be less
-than 10. The calculation itself but also the result do not take into account this rule.
+  than 10. The calculation itself but also the result do not take into account this rule.
 - Your program must process this expression and output the correct result on the
-standard output.
+  standard output.
 - If an error occurs during the execution of the program an error message should be
-displayed on the standard error.
+  displayed on the standard error.
 - Your program must be able to handle operations with these tokens: `"+ - / *"`.
 - You don’t need to manage the brackets or decimal numbers.
 
-
 Example of standard use:
+
 ```
 $> ./RPN "8 9 * 9 - 9 - 9 - 4 - 1 +"
 42
@@ -113,23 +115,23 @@ Error
 ```
 
 #### RPN structure:
-1. Place all operands(numbers) in a stack 
-2. When an operator appears, pop first 2 elements from the stack 
+
+1. Place all operands(numbers) in a stack
+2. When an operator appears, pop first 2 elements from the stack
 3. Apply the operator to the popped elements (second popped element - operator - first popped element) and place the result back on stack.
 4. After processing the entire input string, the stack should contain a single value aka result.
 
-
 ### ex02 - PmergeMe
 
-
 You must create a program with these constraints:
+
 - The name of the program is PmergeMe.
 - Your program must be able to use a positive integer sequence as argument.
 - Your program must use the merge-insert sort algorithm to sort the positive integer sequence.
 - If an error occurs during program execution, an error message should be displayed on the standard error.
 
 You need to use the Ford-Johnson algorithm.
-(source: [Art Of Computer Programming, Vol.3.](https://seriouscomputerist.atariverse.com/media/pdf/book/Art%20of%20Computer%20Programming%20-%20Volume%203%20(Sorting%20&%20Searching).pdf) Merge Insertion,
+(source: [Art Of Computer Programming, Vol.3.](<https://seriouscomputerist.atariverse.com/media/pdf/book/Art%20of%20Computer%20Programming%20-%20Volume%203%20(Sorting%20&%20Searching).pdf>) Merge Insertion,
 Page 184.)
 
 You must use at least two different containers in your code to
@@ -140,12 +142,14 @@ It is strongly advised to implement your algorithm for each container
 and thus to avoid using a generic function.
 
 ere are some additional guidelines on the information you should display line by line on the standard output:
+
 - On the first line you must display an explicit text followed by the unsorted positive integer sequence.
 - On the second line you must display an explicit text followed by the sorted positive integer sequence.
 - On the third line you must display an explicit text indicating the time used by your algorithm by specifying the first container used to sort the positive integer sequence.
 - On the last line you must display an explicit text indicating the time used by your algorithm by specifying the second container used to sort the positive integer sequence.
 
 Here is an example of a standard use:
+
 ```
 $> ./PmergeMe 3 5 9 7 4
 Before: 3 5 9 7 4
@@ -169,6 +173,22 @@ You have to indicate the time used to perform all your
 operations, both the sorting part and the data management part.
 
 #### Algorithm steps:
+
 1. Group elements into pairs.
 2. Sort the bigger numbers of each pair using merge insert -> create the main chain. Keep track of the pending numbers of each pair.
-3. Insert the smaller elements into the main chain one by one. Use Jacobsthl sequence (start with the 3rd smallest element and go backwards, next start with the 5th...) and binary search (get the min and max range, split in half and discard the half in which the number does not fit etc. until you find a place for the number).
+3. Insert the smaller elements into the main chain one by one. Use Jacobsthal sequence (start with the 3rd smallest element and go backwards, next start with the 5th...) and binary search (get the min and max range, split in half and discard the half in which the number does not fit etc. until you find a place for the number).
+
+--> All this can be achieved using one `recursive function`:
+
+- stop condition: when there is only one element left.
+- divide elements into pairs where the second element of the pair is always the largest number.
+- save the reference to the unpaired element if there is any.
+- create main chain = add largest elements of each pair.
+- recursively sort the main chain by creating pairs of the pairs and extracting their main chain of the main chain etc.
+- create the small number chain
+- instert small nunmber chain into the main chain, using binary insertion with Jacobthal's sequence (all this falls into place recursively, all pairs and pairs of the pairs etc. are maintained).
+- insert unpaired element if it exists.
+
+#### Container choice: vector and deque
+
+The Ford-Johnson algorithm relies heavily on accessing and manipulating elements at specific positions within the container (binary insertion by Jacobthal's sequence). Both std::vector and std::deque provide `random access iterators`, which means elements can be quickly `accessed by their index` in constant time (O(1)). This makes it easier and faster to split the sequence into pairs, merge them, and perform other necessary operations like binary insertion or sorting smaller sublists.
