@@ -62,15 +62,14 @@ int main (int argc, char** argv) {
 
 		// CLOCKS_PER_SEC - number of clock ticks per second 
 		// Dividing a count of clock ticks by this expression yields the number of seconds.
-		// 1000000 - number of microseconds in a second
-		double timeVecUs = static_cast<double>(endVec - startVec) * 1000000.0 / CLOCKS_PER_SEC;
-		double timeDeqUs = static_cast<double>(endDeq - startDeq) * 1000000.0 / CLOCKS_PER_SEC;
+		double timeVecSec = static_cast<double>(endVec - startVec) / CLOCKS_PER_SEC;
+		double timeDeqSec = static_cast<double>(endDeq - startDeq) / CLOCKS_PER_SEC;
 		std::cout 	<< "Time to process a range of " << argc - 1 
 					<< " elements with std::vector : " << std::fixed << std::setprecision(5) 
-					<< timeVecUs << " us" << std::endl;
+					<< timeVecSec << " s" << std::endl;
 		std::cout 	<< "Time to process a range of " << argc - 1
 					<< " elements with std::deque : " << std::fixed << std::setprecision(5) 
-					<< timeDeqUs << " us" << std::endl;
+					<< timeDeqSec << " s" << std::endl;
 
 		std::cout << "Checking if vector is sorted..." << std::endl;
 		checkIfSorted(sortMe.getVector());

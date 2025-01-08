@@ -178,7 +178,7 @@ operations, both the sorting part and the data management part.
 2. Sort the bigger numbers of each pair using merge insert -> create the main chain. Keep track of the pending numbers of each pair.
 3. Insert the smaller elements into the main chain one by one. Use Jacobsthal sequence (start with the 3rd smallest element and go backwards, next start with the 5th...) and binary search (get the min and max range, split in half and discard the half in which the number does not fit etc. until you find a place for the number).
 
---> All this can be achieved using one `recursive function` (since the docs describe `Merge insertion` algorith to start with sorting the main chain using `merg insertion` itself):
+--> All this can be achieved using one `recursive function` (since the docs describe `Merge insertion` algorithm to start with sorting the main chain using `merge insertion` itself):
 
 - stop condition: when there is only one element left.
 - divide elements into pairs where the second element of the pair is always the largest number.

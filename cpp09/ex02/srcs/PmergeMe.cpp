@@ -204,7 +204,7 @@ std::deque<int>    mergeInsertSortD(std::deque<int>& deq) {
     }
    
     // Sort the pairs by recursively sorting the larger elements
-    mergeInsertSortD(mainChain);
+    mainChain = mergeInsertSortD(mainChain);
 
     // Create small number chain and populate with smaller pair numbers
     std::deque<int> smallChain;
