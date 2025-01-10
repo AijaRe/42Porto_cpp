@@ -42,19 +42,23 @@ int main (int argc, char** argv) {
 
 	try {
 
-		PmergeMe sortMe(argc, argv);
+		PmergeMe sortMe;
 
 		std::clock_t startVec = std::clock(); //unit is "clock ticks"
+		sortMe.parseInputVec(argc, argv);
 		sortMe.sortVector();
 		std::clock_t endVec = std::clock();
+
 		std::cout << "Before: ";
 		displayInput(argc, argv);
 		std::cout << "After: ";
 		sortMe.display(sortMe.getVector());
 
 		std::clock_t startDeq = std::clock();
+		sortMe.parseInputDeq(argc, argv);
 		sortMe.sortDeque();
 		std::clock_t endDeq = std::clock();
+		
 		std::cout << "Before: ";
 		displayInput(argc, argv);
 		std::cout << "After: ";

@@ -13,11 +13,12 @@
 class PmergeMe {
     public:
         PmergeMe(void);
-        PmergeMe(int argc, char** argv);
         PmergeMe(const PmergeMe &copy);
         ~PmergeMe(void);
         PmergeMe & operator=(const PmergeMe &src);
 
+        void    parseInputVec(int argc, char** argv);
+        void    parseInputDeq(int argc, char** argv);
         template <typename T>
         void    display(const T& container) const;
         void    sortVector();
@@ -28,8 +29,6 @@ class PmergeMe {
     private:
         std::vector<int> _velements;
         std::deque<int> _delements;
-        
-        void    parseInput(int argc, char** argv);
 };
 
 template <typename T>

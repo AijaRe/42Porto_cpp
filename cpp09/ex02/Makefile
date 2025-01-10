@@ -6,14 +6,14 @@
 #    By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 19:16:50 by arepsa            #+#    #+#              #
-#    Updated: 2025/01/04 22:03:15 by arepsa           ###   ########.fr        #
+#    Updated: 2025/01/09 21:26:35 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 RM = rm -rf
 
-CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -Wno-unused -fsanitize=address
+CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -fsanitize=address
 
 #generate dependency file
 CPPFLAGS	= -MMD

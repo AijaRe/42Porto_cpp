@@ -4,11 +4,6 @@ PmergeMe::PmergeMe(void) {
     //std::cout << "PmergeMe default constructor called." << std::endl;
 }
 
-PmergeMe::PmergeMe(int argc, char** argv) {
-    //std::cout << "PmergeMe constructor called." << std::endl;
-    parseInput(argc, argv);
-}
-
 PmergeMe::PmergeMe(const PmergeMe &copy) : _velements(copy._velements), _delements(copy._delements) {
     //std::cout << "PmergeMe copy constructor called." << std::endl;
 }
@@ -34,7 +29,7 @@ std::deque<int> PmergeMe::getDeque() const {
     return _delements;
 }
 
-void PmergeMe::parseInput(int argc, char** argv) {
+void PmergeMe::parseInputVec(int argc, char** argv) {
      for (int i = 1; i < argc; i++) {
         char *end;
         long value = std::strtol(argv[i], &end, 10);
@@ -46,39 +41,22 @@ void PmergeMe::parseInput(int argc, char** argv) {
             throw std::invalid_argument("Duplicate number: " + std::string(argv[i]));
         }
         _velements.push_back(static_cast<int>(value));
+    }
+}
+
+void PmergeMe::parseInputDeq(int argc, char** argv) {
+     for (int i = 1; i < argc; i++) {
+        char *end;
+        long value = std::strtol(argv[i], &end, 10);
+        if (*end != '\0' || value > INT_MAX || value < 0) {
+            throw std::invalid_argument("Invalid number: " + std::string(argv[i]));
+        }
+        //reject duplicates
+        if (std::find(_delements.begin(), _delements.end(), static_cast<int>(value)) != _delements.end()) {
+            throw std::invalid_argument("Duplicate number: " + std::string(argv[i]));
+        }
         _delements.push_back(static_cast<int>(value));
     }
-}
-
-// Generate Jacobsthal's sequence starting from 3 up to a given size
-std::vector<long> generateJacobsthalSequence(int n) {
-    std::vector<long> jacobsthal;
-    
-    jacobsthal.push_back(1);
-    jacobsthal.push_back(3);
-    long nextNumber = 5;
-    for (size_t i = 3; nextNumber < n; i++) {
-        jacobsthal.push_back(nextNumber);
-        nextNumber = 2 * jacobsthal[i - 2] + jacobsthal[i - 1];
-    }
-    jacobsthal.erase(jacobsthal.begin());
-    return jacobsthal;
-}
-
-//insert element into a vector/deque using binary search
-template <typename T>
-void    binarySearchInsert(T& cont, int element) {
-    size_t left = 0;
-    size_t right = cont.size();
-    while (left < right) {
-        size_t mid = left + (right - left) / 2;
-        if (element < cont[mid]) {
-            right = mid;
-        } else {
-            left = mid + 1;
-        }
-    }
-    cont.insert(cont.begin() + left, element);
 }
 
 // Generate pairs from a vector of integers
@@ -113,6 +91,37 @@ std::deque<std::pair<int, int> > generatePairsDeq(std::deque<int>& deq) {
     return pairs;
 }
 
+// Generate Jacobsthal's sequence starting from 3 up to a given size
+std::vector<long> generateJacobsthalSequence(int n) {
+    std::vector<long> jacobsthal;
+    
+    jacobsthal.push_back(1);
+    jacobsthal.push_back(3);
+    long nextNumber = 5;
+    for (size_t i = 3; nextNumber < n; i++) {
+        jacobsthal.push_back(nextNumber);
+        nextNumber = 2 * jacobsthal[i - 2] + jacobsthal[i - 1];
+    }
+    jacobsthal.erase(jacobsthal.begin());
+    return jacobsthal;
+}
+
+//insert element into a vector/deque using binary search
+template <typename T>
+void    binarySearchInsert(T& cont, int element, size_t maxI) {
+    size_t min = 0;
+    size_t max = std::min(maxI, cont.size());
+    while (min < max) {
+        size_t mid = min + (max - min) / 2;
+        if (element < cont[mid]) {
+            max = mid;
+        } else {
+            min = mid + 1;
+        }
+    }
+    cont.insert(cont.begin() + min, element);
+}
+
 template <typename T>
 void    insertByJacobsthal(T& mainChain, T& smallChain) {
     // Generate the Jacobsthal sequence for insertion 
@@ -121,23 +130,40 @@ void    insertByJacobsthal(T& mainChain, T& smallChain) {
 
     // Insert the elements of smallChain into mainChain
     // using Jacobsthal sequence binary search
-    size_t lastInserted = 0;
+    size_t lastInsert = 0;
+    size_t insertedElements = 0;
     int prevJacobsthal = 0;
     for (size_t i = 0; i < jacobsthal.size(); i++) {
-        size_t currJacobsthal = jacobsthal[i] - 1;
-        if (currJacobsthal < smallChain.size()) {
-            for (int j = currJacobsthal; j >= prevJacobsthal; j--) {
-                binarySearchInsert(mainChain, smallChain[j]);
+        size_t currJacobsthal = jacobsthal[i];
+        if (currJacobsthal <= smallChain.size()) {
+            for (int j = currJacobsthal - 1; j >= prevJacobsthal; j--) {
+                binarySearchInsert(mainChain, smallChain[j], insertedElements + currJacobsthal);
+                insertedElements++;
             }
-            prevJacobsthal = currJacobsthal + 1;
+            prevJacobsthal = currJacobsthal;
         }
-        lastInserted = currJacobsthal;
+        lastInsert = currJacobsthal + insertedElements;
     }
 
+    // Print main chain up to last inserted
+    std::cout << "Main chain after Jacobsthal up to last insert [" << lastInsert << "]: ";
+    for (size_t i = 0; i < lastInsert; i++) {  
+        std::cout << mainChain[i] << " ";
+    }
+    std::cout << std::endl;
+
     // Insert the remaining elements of smallChain into mainChain
-    for (size_t i = smallChain.size() - 1; i > lastInserted; i--) {
-        binarySearchInsert(mainChain, smallChain[i]);
+    for (size_t i = prevJacobsthal; i < smallChain.size(); i++) {
+        binarySearchInsert(mainChain, smallChain[i], lastInsert);
+        lastInsert++;
     } 
+
+    //print remaining elements of main chain
+    std::cout << "Main chain after Jacobsthal and remaining elements: ";
+    for (size_t i = lastInsert; i < mainChain.size(); i++) {  
+        std::cout << mainChain[i] << " ";
+    }
+    std::cout << std::endl;
 }
 
 std::vector<int>    mergeInsertSortV(std::vector<int>& vect) {
@@ -170,15 +196,21 @@ std::vector<int>    mergeInsertSortV(std::vector<int>& vect) {
 
     if (smallChain.size() >= 3) {
         insertByJacobsthal(mainChain, smallChain);
+        // Print main chain
+        std::cout << "Main chain after Jacobsthal: ";
+        for (size_t i = 0; i < mainChain.size(); i++) {  
+            std::cout << mainChain[i] << " ";
+        }
+        std::cout << std::endl;
     } else {
         for (size_t i = smallChain.size(); i > 0; i--) {
-            binarySearchInsert(mainChain, smallChain[i - 1]);
+            binarySearchInsert(mainChain, smallChain[i - 1], mainChain.size());
         }
     }
     
     // Insert the unpaired element if it exists
     if (unpaired) {
-        binarySearchInsert(mainChain, unpairedElement);
+        binarySearchInsert(mainChain, unpairedElement, mainChain.size());
     }
     
     return mainChain;
@@ -216,13 +248,13 @@ std::deque<int>    mergeInsertSortD(std::deque<int>& deq) {
         insertByJacobsthal(mainChain, smallChain);
     } else {
         for (size_t i = smallChain.size(); i > 0; i--) {
-            binarySearchInsert(mainChain, smallChain[i - 1]);
+            binarySearchInsert(mainChain, smallChain[i - 1], mainChain.size());
         }
     }
     
     // Insert the unpaired element if it exists
     if (unpaired) {
-        binarySearchInsert(mainChain, unpairedElement);
+        binarySearchInsert(mainChain, unpairedElement, mainChain.size());
     }
     
     return mainChain;
