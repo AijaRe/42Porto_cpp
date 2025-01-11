@@ -54,7 +54,7 @@ int main (int argc, char** argv) {
 		std::cout << "After: ";
 		sortMe.display(sortMe.getVector());
 
-		std::clock_t startDeq = std::clock();
+		/* std::clock_t startDeq = std::clock();
 		sortMe.parseInputDeq(argc, argv);
 		sortMe.sortDeque();
 		std::clock_t endDeq = std::clock();
@@ -62,23 +62,23 @@ int main (int argc, char** argv) {
 		std::cout << "Before: ";
 		displayInput(argc, argv);
 		std::cout << "After: ";
-		sortMe.display(sortMe.getDeque());
+		sortMe.display(sortMe.getDeque()); */
 
 		// CLOCKS_PER_SEC - number of clock ticks per second 
 		// Dividing a count of clock ticks by this expression yields the number of seconds.
 		double timeVecSec = static_cast<double>(endVec - startVec) / CLOCKS_PER_SEC;
-		double timeDeqSec = static_cast<double>(endDeq - startDeq) / CLOCKS_PER_SEC;
+		//double timeDeqSec = static_cast<double>(endDeq - startDeq) / CLOCKS_PER_SEC;
 		std::cout 	<< "Time to process a range of " << argc - 1 
 					<< " elements with std::vector : " << std::fixed << std::setprecision(5) 
 					<< timeVecSec << " s" << std::endl;
-		std::cout 	<< "Time to process a range of " << argc - 1
+		/* std::cout 	<< "Time to process a range of " << argc - 1
 					<< " elements with std::deque : " << std::fixed << std::setprecision(5) 
-					<< timeDeqSec << " s" << std::endl;
+					<< timeDeqSec << " s" << std::endl; */
 
 		std::cout << "Checking if vector is sorted..." << std::endl;
 		checkIfSorted(sortMe.getVector());
-		std::cout << "Checking if deque is sorted..." << std::endl;
-		checkIfSorted(sortMe.getDeque());
+		/* std::cout << "Checking if deque is sorted..." << std::endl;
+		checkIfSorted(sortMe.getDeque()); */
 
 	} catch (const std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
