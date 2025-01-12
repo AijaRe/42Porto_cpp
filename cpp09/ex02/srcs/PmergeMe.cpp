@@ -119,7 +119,7 @@ void    binarySearchInsert(T& cont, int element, size_t maxI) {
             min = mid + 1;
         }
     }
-    cont.insert(cont.begin() + min, element);
+    //cont.insert(cont.begin() + min, element);
 }
 
 template <typename T>
@@ -145,17 +145,25 @@ void    insertByJacobsthal(T& mainChain, T& smallChain) {
         lastInsert = currJacobsthal + insertedElements;
     }
 
+    std::cout << "Last insert: " << lastInsert << std::endl;
     // Insert the remaining elements of smallChain into mainChain
     for (size_t i = prevJacobsthal; i < smallChain.size(); i++) {
-        binarySearchInsert(mainChain, smallChain[i], lastInsert);
+        binarySearchInsert(mainChain, smallChain[i], lastInsert + 1);
         lastInsert++;
     } 
+
+    // Print the main chain after jacobsathal insertion
+    std::cout << "Main chain after Jacobsthal insertion: ";
+    for (size_t i = 0; i < mainChain.size(); i++) {  
+        std::cout << mainChain[i] << " ";
+    }
+    
 
 }
 
 // Sort a vector of integers by pairs, odd element smaller, even element larger
 // e.g., 2 23 11 4 -> 2 23 4 11
-void    sortVecPairs(std::vector<int>& vect) {
+void    swapVecPairs(std::vector<int>& vect) {
     for (size_t i = 0; i < vect.size() - 1; i+=2) {
         if (vect[i] > vect[i + 1]) {
             std::swap(vect[i], vect[i + 1]);
@@ -168,7 +176,7 @@ std::vector<int>    mergeInsertSortV(std::vector<int>& vect) {
         return vect; 
     }
    
-    sortVecPairs(vect);
+    swapVecPairs(vect);
 
     // Print sorted vector
     std::cout << "Sorted vector: ";
@@ -206,6 +214,7 @@ std::vector<int>    mergeInsertSortV(std::vector<int>& vect) {
     mainChain = mergeInsertSortV(mainChain);
 
     // Reorder the small chain based on the sorted main chain
+    // mainChain[i] corresponds to vect[j * 2 + 1]
     std::vector<size_t> reorderedSmallIdx;
     for (size_t i = 0; i < mainChain.size(); i++) {
         for (size_t j = 0; j < mainChain.size(); j++) {
