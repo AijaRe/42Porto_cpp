@@ -19,16 +19,29 @@ class PmergeMe {
 
         void    parseInputVec(int argc, char** argv);
         void    parseInputDeq(int argc, char** argv);
-        template <typename T>
-        void    display(const T& container) const;
+
         void    sortVector();
         void    sortDeque();
+
         std::vector<int>    getVector() const;
         std::deque<int>    getDeque() const;
+
+        template <typename T>
+        void    display(const T& container) const;
 
     private:
         std::vector<int> _velements;
         std::deque<int> _delements;
+
+        std::vector<long> generateJacobsthalSequence(int n);
+        template <typename T>
+        void binarySearchInsert(T& cont, int element, size_t maxI);
+        template <typename T>
+        void insertByJacobsthal(T& mainChain, T& smallChain);
+        template <typename T>
+        void swapPairs(T& cont);
+        template <typename T>
+        T mergeInsertionSort(T& cont);
 };
 
 template <typename T>

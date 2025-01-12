@@ -59,40 +59,8 @@ void PmergeMe::parseInputDeq(int argc, char** argv) {
     }
 }
 
-/* // Generate pairs from a vector of integers
-// where the first element is always smaller than the second
-std::vector<std::pair<int, int> > generatePairs(std::vector<int>& vect) {
-    std::vector<std::pair<int, int> > pairs;
-    for (size_t i = 0; i < vect.size(); i += 2) {
-        if (i + 1 < vect.size()) {
-            if (vect[i] < vect[i + 1]) {
-                pairs.push_back(std::make_pair(vect[i], vect[i + 1]));
-            } else {
-                pairs.push_back(std::make_pair(vect[i + 1], vect[i]));
-            }
-        } 
-    }
-    return pairs;
-}
-
-// Generate pairs from a deque of integers
-// where the first element is always smaller than the second
-std::deque<std::pair<int, int> > generatePairsDeq(std::deque<int>& deq) {
-    std::deque<std::pair<int, int> > pairs;
-    for (size_t i = 0; i < deq.size(); i += 2) {
-        if (i + 1 < deq.size()) {
-            if (deq[i] < deq[i + 1]) {
-                pairs.push_back(std::make_pair(deq[i], deq[i + 1]));
-            } else {
-                pairs.push_back(std::make_pair(deq[i + 1], deq[i]));
-            }
-        } 
-    }
-    return pairs;
-} */
-
 // Generate Jacobsthal's sequence starting from 3 up to a given size
-std::vector<long> generateJacobsthalSequence(int n) {
+std::vector<long> PmergeMe::generateJacobsthalSequence(int n) {
     std::vector<long> jacobsthal;
     
     jacobsthal.push_back(1);
@@ -108,7 +76,7 @@ std::vector<long> generateJacobsthalSequence(int n) {
 
 //insert element into a vector/deque using binary search
 template <typename T>
-void    binarySearchInsert(T& cont, int element, size_t maxI) {
+void    PmergeMe::binarySearchInsert(T& cont, int element, size_t maxI) {
     size_t min = 0;
     size_t max = std::min(maxI, cont.size());
     size_t mid = 0;
@@ -124,12 +92,11 @@ void    binarySearchInsert(T& cont, int element, size_t maxI) {
 }
 
 template <typename T>
-void    insertByJacobsthal(T& mainChain, T& smallChain) {
+void    PmergeMe::insertByJacobsthal(T& mainChain, T& smallChain) {
 
     // Generate the Jacobsthal sequence for insertion 
     // (based on the number of even-position (smallest) elements)
     std::vector<long> jacobsthal = generateJacobsthalSequence(smallChain.size());
-
 
     // Insert the first element of smallChain directly at the beginning of mainChain
     binarySearchInsert(mainChain, smallChain[0], 0);
@@ -157,48 +124,50 @@ void    insertByJacobsthal(T& mainChain, T& smallChain) {
 
 }
 
-// Sort a vector of integers by pairs, odd element smaller, even element larger
+// Sort a chain of integers by pairs, odd element smaller, even element larger
 // e.g., 2 23 11 4 -> 2 23 4 11
-void    swapPairs(std::vector<int>& vect) {
-    for (size_t i = 0; i < vect.size() - 1; i+=2) {
-        if (vect[i] > vect[i + 1]) {
-            std::swap(vect[i], vect[i + 1]);
+template <typename T>
+void    PmergeMe::swapPairs(T& cont) {
+    for (size_t i = 0; i < cont.size() - 1; i+=2) {
+        if (cont[i] > cont[i + 1]) {
+            std::swap(cont[i], cont[i + 1]);
         }
     }
 }
 
-std::vector<int>    mergeInsertSortV(std::vector<int>& vect) {
-    if (vect.size() <= 1) {
-        return vect; 
+template <typename T>
+T    PmergeMe::mergeInsertionSort(T& cont) {
+    if (cont.size() <= 1) {
+        return cont; 
     }
    
-    swapPairs(vect);
+    swapPairs(cont);
 
     // Create main chain and populate with sorted large pair numbers (even)
     // Create small chain and populate with smaller pair numbers (odd)
-    std::vector<int> mainChain, smallChain;
-    std::vector<size_t> smallIdx;
-    for (size_t i = 0; i < vect.size() - 1; i += 2) {
-        mainChain.push_back(vect[i + 1]);  // Larger element
-        smallChain.push_back(vect[i]);  // Smaller element
+    T mainChain, smallChain;
+    T smallIdx;
+    for (size_t i = 0; i < cont.size() - 1; i += 2) {
+        mainChain.push_back(cont[i + 1]);  // Larger element
+        smallChain.push_back(cont[i]);  // Smaller element
         smallIdx.push_back(smallChain.size() - 1);
     }
 
     // Handle unpaired element (if it exists)
     int unpairedElement = 0;
-    bool unpaired = vect.size() % 2 != 0 ;
+    bool unpaired = cont.size() % 2 != 0 ;
     if (unpaired) {
-        unpairedElement = vect.back();
+        unpairedElement = cont.back();
     }
 
     // Sort the pairs by recursively sorting the larger elements
-    mainChain = mergeInsertSortV(mainChain);
+    mainChain = mergeInsertionSort(mainChain);
 
     // Reorder the small chain based on the sorted main chain
-    std::vector<size_t> reorderedSmallIdx;
+    T reorderedSmallIdx;
     for (size_t i = 0; i < mainChain.size(); i++) {
         for (size_t j = 0; j < mainChain.size(); j++) {
-            if (mainChain[i] == vect[j * 2 + 1]) {
+            if (mainChain[i] == cont[j * 2 + 1]) {
                 reorderedSmallIdx.push_back(smallIdx[j]);
                 break;
             }
@@ -206,7 +175,7 @@ std::vector<int>    mergeInsertSortV(std::vector<int>& vect) {
     }
 
     // Reorder the small chain based on the new small index
-    std::vector<int> reorderedSmallChain(reorderedSmallIdx.size());
+    T reorderedSmallChain(reorderedSmallIdx.size());
     for (size_t i = 0; i < reorderedSmallIdx.size(); i++) {
         reorderedSmallChain[i] = smallChain[reorderedSmallIdx[i]];
     }
@@ -234,55 +203,11 @@ std::vector<int>    mergeInsertSortV(std::vector<int>& vect) {
     
     return mainChain;
 } 
-/* 
-std::deque<int>    mergeInsertSortD(std::deque<int>& deq) {
-    if (deq.size() <= 1) {
-        return deq; 
-    }
-   
-    std::deque<std::pair<int, int> > pairs = generatePairsDeq(deq);
 
-    // Handle unpaired element (if it exists)
-    int unpairedElement = 0;
-    bool unpaired = deq.size() % 2 != 0 ;
-    if (unpaired) {
-        unpairedElement = deq.back();
-    }
-    // Create main chain and populate with sorted large pair numbers
-    std::deque<int> mainChain;
-    for (size_t i = 0; i < pairs.size(); ++i) {
-            mainChain.push_back(pairs[i].second);  // Larger element
-    }
-   
-    // Sort the pairs by recursively sorting the larger elements
-    mainChain = mergeInsertSortD(mainChain);
-
-    // Create small number chain and populate with smaller pair numbers
-    std::deque<int> smallChain;
-    for (size_t i = 0; i < pairs.size(); ++i) {
-            smallChain.push_back(pairs[i].first);  // Smaller element
-    }
-
-    if (smallChain.size() >= 3) {
-        insertByJacobsthal(mainChain, smallChain);
-    } else {
-        for (size_t i = smallChain.size(); i > 0; i--) {
-            binarySearchInsert(mainChain, smallChain[i - 1], mainChain.size());
-        }
-    }
-    
-    // Insert the unpaired element if it exists
-    if (unpaired) {
-        binarySearchInsert(mainChain, unpairedElement, mainChain.size());
-    }
-    
-    return mainChain;
-}
- */
 void PmergeMe::sortVector() {
-    _velements = mergeInsertSortV(_velements);
+    _velements = mergeInsertionSort(_velements);
 }
 
-/* void PmergeMe::sortDeque() {
-    _delements = mergeInsertSortD(_delements);
-} */
+ void PmergeMe::sortDeque() {
+    _delements = mergeInsertionSort(_delements);
+}
