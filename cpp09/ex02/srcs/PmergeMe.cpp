@@ -109,47 +109,55 @@ std::vector<long> generateJacobsthalSequence(int n) {
 //insert element into a vector/deque using binary search
 template <typename T>
 void    binarySearchInsert(T& cont, int element, size_t maxI) {
+    std::cout << "Inserting " << element << " , maxIndex: " << maxI << "\n";
     size_t min = 0;
     size_t max = std::min(maxI, cont.size());
+    size_t mid = 0;
     while (min < max) {
-        size_t mid = min + (max - min) / 2;
+        mid = min + (max - min) / 2;
         if (element < cont[mid]) {
             max = mid;
         } else {
             min = mid + 1;
         }
     }
-    //cont.insert(cont.begin() + min, element);
+    cont.insert(cont.begin() + min, element);
+    std::cout << "Inserting " << element << " into range [" << min << ", " << max << ")\n";
+    std::cout << "Mid: " << mid << ", Value at mid: " << cont[mid] << "\n";
 }
 
 template <typename T>
 void    insertByJacobsthal(T& mainChain, T& smallChain) {
+
     // Generate the Jacobsthal sequence for insertion 
     // (based on the number of even-position (smallest) elements)
     std::vector<long> jacobsthal = generateJacobsthalSequence(smallChain.size());
 
+
+    // Insert the first element of smallChain directly at the beginning of mainChain
+    binarySearchInsert(mainChain, smallChain[0], 0);
+    size_t insertedElements = 1;
+    int prevJacobsthal = 1;
+
     // Insert the elements of smallChain into mainChain
     // using Jacobsthal sequence binary search
-    size_t lastInsert = 0;
-    size_t insertedElements = 0;
-    int prevJacobsthal = 0;
     for (size_t i = 0; i < jacobsthal.size(); i++) {
         size_t currJacobsthal = jacobsthal[i];
         if (currJacobsthal <= smallChain.size()) {
             for (int j = currJacobsthal - 1; j >= prevJacobsthal; j--) {
                 binarySearchInsert(mainChain, smallChain[j], insertedElements + currJacobsthal);
+                std::cout << "Inserting " << smallChain[j] << " at position " 
+                << (insertedElements + currJacobsthal) << "\n";
                 insertedElements++;
             }
             prevJacobsthal = currJacobsthal;
         }
-        lastInsert = currJacobsthal + insertedElements;
     }
 
-    std::cout << "Last insert: " << lastInsert << std::endl;
     // Insert the remaining elements of smallChain into mainChain
     for (size_t i = prevJacobsthal; i < smallChain.size(); i++) {
-        binarySearchInsert(mainChain, smallChain[i], lastInsert + 1);
-        lastInsert++;
+        binarySearchInsert(mainChain, smallChain[i], insertedElements + i);
+        insertedElements++;
     } 
 
     // Print the main chain after jacobsathal insertion
@@ -163,7 +171,7 @@ void    insertByJacobsthal(T& mainChain, T& smallChain) {
 
 // Sort a vector of integers by pairs, odd element smaller, even element larger
 // e.g., 2 23 11 4 -> 2 23 4 11
-void    swapVecPairs(std::vector<int>& vect) {
+void    swapPairs(std::vector<int>& vect) {
     for (size_t i = 0; i < vect.size() - 1; i+=2) {
         if (vect[i] > vect[i + 1]) {
             std::swap(vect[i], vect[i + 1]);
@@ -176,7 +184,7 @@ std::vector<int>    mergeInsertSortV(std::vector<int>& vect) {
         return vect; 
     }
    
-    swapVecPairs(vect);
+    swapPairs(vect);
 
     // Print sorted vector
     std::cout << "Sorted vector: ";
@@ -214,7 +222,6 @@ std::vector<int>    mergeInsertSortV(std::vector<int>& vect) {
     mainChain = mergeInsertSortV(mainChain);
 
     // Reorder the small chain based on the sorted main chain
-    // mainChain[i] corresponds to vect[j * 2 + 1]
     std::vector<size_t> reorderedSmallIdx;
     for (size_t i = 0; i < mainChain.size(); i++) {
         for (size_t j = 0; j < mainChain.size(); j++) {
@@ -236,8 +243,8 @@ std::vector<int>    mergeInsertSortV(std::vector<int>& vect) {
         insertByJacobsthal(mainChain, smallChain);
         std::cout << std::endl;
     } else {
-        for (size_t i = smallChain.size(); i > 0; i--) {
-            binarySearchInsert(mainChain, smallChain[i - 1], mainChain.size());
+        for (size_t i = 0; i < smallChain.size(); i++) {
+            binarySearchInsert(mainChain, smallChain[i], mainChain.size());
         }
     }
 

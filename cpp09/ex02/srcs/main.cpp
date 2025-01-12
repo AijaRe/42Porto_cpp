@@ -27,11 +27,20 @@ void	checkIfSorted(const T& container) {
 	typename T::const_iterator it;
 	for (it = container.begin(); it != container.end() - 1; it++) {
 		if (*it > *(it + 1)) {
-			std::cerr << "Error: Number are not sorted." << std::endl;
+			std::cerr << "--->Error: Number are not sorted." << std::endl;
 			return;
 		}
 	}
-	std::cout << "Numbers are sorted." << std::endl;
+	std::cout << "--->Numbers are sorted." << std::endl;
+}
+
+template <typename T>
+void	checkIfCorrectCount(const T& container, int count) {
+	if (container.size() != static_cast<size_t>(count)) {
+		std::cerr << "--->Error: Incorrect number of elements." << std::endl;
+		return;
+	}
+	std::cout << "--->Correct number of elements." << std::endl;
 }
 
 int main (int argc, char** argv) {
@@ -77,6 +86,7 @@ int main (int argc, char** argv) {
 
 		std::cout << "Checking if vector is sorted..." << std::endl;
 		checkIfSorted(sortMe.getVector());
+		checkIfCorrectCount(sortMe.getVector(), argc - 1);
 		/* std::cout << "Checking if deque is sorted..." << std::endl;
 		checkIfSorted(sortMe.getDeque()); */
 
