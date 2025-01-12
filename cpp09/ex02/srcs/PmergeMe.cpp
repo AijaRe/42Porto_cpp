@@ -109,7 +109,6 @@ std::vector<long> generateJacobsthalSequence(int n) {
 //insert element into a vector/deque using binary search
 template <typename T>
 void    binarySearchInsert(T& cont, int element, size_t maxI) {
-    std::cout << "Inserting " << element << " , maxIndex: " << maxI << "\n";
     size_t min = 0;
     size_t max = std::min(maxI, cont.size());
     size_t mid = 0;
@@ -122,8 +121,6 @@ void    binarySearchInsert(T& cont, int element, size_t maxI) {
         }
     }
     cont.insert(cont.begin() + min, element);
-    std::cout << "Inserting " << element << " into range [" << min << ", " << max << ")\n";
-    std::cout << "Mid: " << mid << ", Value at mid: " << cont[mid] << "\n";
 }
 
 template <typename T>
@@ -146,8 +143,6 @@ void    insertByJacobsthal(T& mainChain, T& smallChain) {
         if (currJacobsthal <= smallChain.size()) {
             for (int j = currJacobsthal - 1; j >= prevJacobsthal; j--) {
                 binarySearchInsert(mainChain, smallChain[j], insertedElements + currJacobsthal);
-                std::cout << "Inserting " << smallChain[j] << " at position " 
-                << (insertedElements + currJacobsthal) << "\n";
                 insertedElements++;
             }
             prevJacobsthal = currJacobsthal;
@@ -159,13 +154,6 @@ void    insertByJacobsthal(T& mainChain, T& smallChain) {
         binarySearchInsert(mainChain, smallChain[i], insertedElements + i);
         insertedElements++;
     } 
-
-    // Print the main chain after jacobsathal insertion
-    std::cout << "Main chain after Jacobsthal insertion: ";
-    for (size_t i = 0; i < mainChain.size(); i++) {  
-        std::cout << mainChain[i] << " ";
-    }
-    
 
 }
 
@@ -186,13 +174,6 @@ std::vector<int>    mergeInsertSortV(std::vector<int>& vect) {
    
     swapPairs(vect);
 
-    // Print sorted vector
-    std::cout << "Sorted vector: ";
-    for (size_t i = 0; i < vect.size(); i++) {  
-        std::cout << vect[i] << " ";
-    }
-    std::cout << std::endl;
-
     // Create main chain and populate with sorted large pair numbers (even)
     // Create small chain and populate with smaller pair numbers (odd)
     std::vector<int> mainChain, smallChain;
@@ -203,18 +184,10 @@ std::vector<int>    mergeInsertSortV(std::vector<int>& vect) {
         smallIdx.push_back(smallChain.size() - 1);
     }
 
-    // Print main chain
-    std::cout << "Main chain: ";
-    for (size_t i = 0; i < mainChain.size(); i++) {  
-        std::cout << mainChain[i] << " ";
-    }
-    std::cout << std::endl;
-
     // Handle unpaired element (if it exists)
     int unpairedElement = 0;
     bool unpaired = vect.size() % 2 != 0 ;
     if (unpaired) {
-        std::cout << "Unpaired element: " << vect.back() << std::endl;
         unpairedElement = vect.back();
     }
 
@@ -239,21 +212,14 @@ std::vector<int>    mergeInsertSortV(std::vector<int>& vect) {
     }
     smallChain = reorderedSmallChain;
 
-    if (smallChain.size() >= 3) {
-        insertByJacobsthal(mainChain, smallChain);
-        std::cout << std::endl;
-    } else {
-        for (size_t i = 0; i < smallChain.size(); i++) {
-            binarySearchInsert(mainChain, smallChain[i], mainChain.size());
-        }
-    }
+    insertByJacobsthal(mainChain, smallChain);
 
     // Insert the unpaired element if it exists
     if (unpaired) {
         binarySearchInsert(mainChain, unpairedElement, mainChain.size());
     }
 
-    // print final main chain
+    /*  // print final main chain
     std::cout << "Final main chain: ";
     for (size_t i = 0; i < mainChain.size(); i++) {  
         std::cout << mainChain[i] << " ";
@@ -264,7 +230,7 @@ std::vector<int>    mergeInsertSortV(std::vector<int>& vect) {
     for (size_t i = 0; i < smallChain.size(); i++) {  
         std::cout << smallChain[i] << " ";
     }
-    std::cout << std::endl;
+    std::cout << std::endl; */
     
     return mainChain;
 } 
