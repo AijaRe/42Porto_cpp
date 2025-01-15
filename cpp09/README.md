@@ -183,11 +183,11 @@ operations, both the sorting part and the data management part.
 - stop condition: when there is only one element left.
 - divide elements into pairs where the second element of the pair is always the largest number.
 - save the reference to the unpaired element if there is any.
-- create main chain = add largest elements of each pair.
-- create the small number chain = add smallest element of each pair.
+- create/track main chain = add largest elements of each pair.
+- create/track the small number chain = add smallest element of each pair.
 - recursively sort the main chain by creating pairs of the pairs and extracting their main chain of the main chain etc.
 - keep track of the small number chain to follow the main chain indexing.
-- instert small nunmber chain into the main chain, using binary insertion with Jacobthal's sequence (all this falls into place recursively, all pairs and pairs of the pairs etc. are maintained).
+- instert small nunmber chain into the main chain, using binary insertion with Jacobthal's sequence (all this falls into place recursively if all pairs and pairs of the pairs etc. are maintained).
 - insert unpaired element if it exists.
 
 ![Ford Johnson example diagram](https://github.com/AijaRe/42Porto_cpp/blob/main/cpp09/cpp09-ex02-diagram.jpg)
