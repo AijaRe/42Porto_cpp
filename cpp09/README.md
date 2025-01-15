@@ -176,7 +176,7 @@ operations, both the sorting part and the data management part.
 
 1. Group elements into pairs.
 2. Sort the bigger numbers of each pair using merge insert -> create the main chain. Keep track of the pending numbers of each pair.
-3. Insert the smaller elements into the main chain one by one. Use Jacobsthal sequence (start with the 3rd smallest element and go backwards, next start with the 5th...) and binary search (get the min and max range, split in half and discard the half in which the number does not fit etc. until you find a place for the number).
+3. Insert the smaller elements into the main chain one by one. Use Jacobsthal sequence (start with the 3rd smallest element and go backwards, next start with the 5th...) and binary search (get the min and max range, split in half and discard the half in which the number does not fit etc. until you find a place for the number). First element of the small chain is always already in place since it is smaller than the first sorted main chain element.
 
 --> All this can be achieved using one `recursive function` (since the docs describe `Merge insertion` algorithm to start with sorting the main chain using `merge insertion` itself):
 
@@ -184,11 +184,15 @@ operations, both the sorting part and the data management part.
 - divide elements into pairs where the second element of the pair is always the largest number.
 - save the reference to the unpaired element if there is any.
 - create main chain = add largest elements of each pair.
+- create the small number chain = add smallest element of each pair.
 - recursively sort the main chain by creating pairs of the pairs and extracting their main chain of the main chain etc.
-- create the small number chain
+- keep track of the small number chain to follow the main chain indexing.
 - instert small nunmber chain into the main chain, using binary insertion with Jacobthal's sequence (all this falls into place recursively, all pairs and pairs of the pairs etc. are maintained).
 - insert unpaired element if it exists.
+
+![Ford Johnson example diagram](https://github.com/AijaRe/42Porto_cpp/blob/main/cpp09/cpp09-ex02-diagram.jpg)
 
 #### Container choice: vector and deque
 
 The Ford-Johnson algorithm relies heavily on accessing and manipulating elements at specific positions within the container (binary insertion by Jacobthal's sequence). Both std::vector and std::deque provide `random access iterators`, which means elements can be quickly `accessed by their index` in constant time (O(1)). This makes it easier and faster to split the sequence into pairs, merge them, and perform other necessary operations like binary insertion or sorting smaller sublists.
+
