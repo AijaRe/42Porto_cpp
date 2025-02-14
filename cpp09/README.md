@@ -11,7 +11,7 @@
   Once a container is used you cannot use it for the rest of the module.
 - all classes must be designed in the Orthodox Canonical Form (containting default constructor, copy constructor, copy assignment operator, destructor)
 
-Skills:
+Skills: containers, file parsing, string parsing and validation, algorithm implementation, error handling, time complexity considerations
 
 ## Resources
 

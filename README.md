@@ -20,7 +20,7 @@ CPP07 - Templates
 
 CPP08 - Templated containers, iterators, algorithms
 
-CPP09 - Work In Progress...
+CPP09 - STL (containers, algorithms)
 
 
 ## Resources
