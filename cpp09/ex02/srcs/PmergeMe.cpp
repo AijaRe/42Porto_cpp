@@ -128,7 +128,7 @@ void    PmergeMe::insertByJacobsthal(T& mainChain, T& smallChain) {
 // e.g., 2 23 11 4 -> 2 23 4 11
 template <typename T>
 void    PmergeMe::swapPairs(T& cont) {
-    for (size_t i = 0; i < cont.size() - 1; i+=2) {
+    for (size_t i = 0; i < cont.size() - 1; i += 2) {
         if (cont[i] > cont[i + 1]) {
             std::swap(cont[i], cont[i + 1]);
         }
@@ -163,7 +163,7 @@ T    PmergeMe::mergeInsertionSort(T& cont) {
     // Sort the pairs by recursively sorting the larger elements
     mainChain = mergeInsertionSort(mainChain);
 
-    // Reorder the small chain based on the sorted main chain
+    // Reorder the small chain index based on the sorted main chain
     T reorderedSmallIdx;
     for (size_t i = 0; i < mainChain.size(); i++) {
         for (size_t j = 0; j < mainChain.size(); j++) {
