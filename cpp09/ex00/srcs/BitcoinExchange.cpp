@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:34 by arepsa            #+#    #+#             */
-/*   Updated: 2024/12/01 20:08:02 by arepsa           ###   ########.fr       */
+/*   Updated: 2025/02/15 12:09:36 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ bool	BitcoinExchange::createAndValidateValue(const std::string& valueStr, double
 			std::cerr << "Error: not a positive number. " << std::endl;
 			return false;
 		}
-		else if (value > static_cast<double>(INT_MAX)) {
+		else if (value > 1000) {
 			std::cerr << "Error: too large a number. " << std::endl;
 			return false;
 		}
