@@ -16,11 +16,17 @@ Skills: containers, file parsing, string parsing and validation, algorithm imple
 ## Resources
 
 [Cplusplus algorithms](https://cplusplus.com/reference/algorithm/)
+
 [Cplusplus containers](https://cplusplus.com/reference/stl/)
+
 [Cplusplus time struct / mktime](https://cplusplus.com/reference/ctime/)
+
 [CodeBeauty C++ STL playlist](https://www.youtube.com/playlist?list=PL43pGnjiVwgR9BloyT0OgsMo8d_hylBv0)
+
 [Computing Tutor - Reverse Polish Notation](https://www.youtube.com/watch?v=HDwRlIc75w4)
+
 [Visualisation of the Ford-Johnson algorithm](https://dev.to/emuminov/human-explanation-and-step-by-step-visualisation-of-the-ford-johnson-algorithm-5g91)
+
 
 ### ex00 - Bitcoin Exchange
 
