@@ -31,9 +31,12 @@ std::deque<int> PmergeMe::getDeque() const {
 
 void PmergeMe::parseInputVec(int argc, char** argv) {
      for (int i = 1; i < argc; i++) {
+        if (std::string(argv[i]).empty()) {
+            throw std::invalid_argument("Empty number.");
+        }
         char *end;
         long value = std::strtol(argv[i], &end, 10);
-        if (*end != '\0' || value > INT_MAX || value < 0) {
+        if (*end != '\0' || value > INT_MAX || value <= 0) {
             throw std::invalid_argument("Invalid number: " + std::string(argv[i]));
         }
         //reject duplicates
@@ -46,9 +49,12 @@ void PmergeMe::parseInputVec(int argc, char** argv) {
 
 void PmergeMe::parseInputDeq(int argc, char** argv) {
      for (int i = 1; i < argc; i++) {
+        if (std::string(argv[i]).empty()) {
+            throw std::invalid_argument("Empty number.");
+        }
         char *end;
         long value = std::strtol(argv[i], &end, 10);
-        if (*end != '\0' || value > INT_MAX || value < 0) {
+        if (*end != '\0' || value > INT_MAX || value <= 0) {
             throw std::invalid_argument("Invalid number: " + std::string(argv[i]));
         }
         //reject duplicates
