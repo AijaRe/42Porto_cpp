@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:37 by arepsa            #+#    #+#             */
-/*   Updated: 2025/02/14 19:38:35 by arepsa           ###   ########.fr       */
+/*   Updated: 2025/02/15 13:49:51 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <map>
 #include <string>
 #include <ctime>
+#include <iomanip> //setprecision
 
 class BitcoinExchange {
 	public:

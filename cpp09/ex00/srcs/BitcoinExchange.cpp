@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+        */
+/*   By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 19:46:34 by arepsa            #+#    #+#             */
-/*   Updated: 2024/12/01 20:08:02 by arepsa           ###   ########.fr       */
+/*   Updated: 2025/02/15 13:49:22 by arepsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ bool	BitcoinExchange::createAndValidateValue(const std::string& valueStr, double
 			std::cerr << "Error: not a positive number. " << std::endl;
 			return false;
 		}
-		else if (value > static_cast<double>(INT_MAX)) {
+		else if (value >= 1000) {
 			std::cerr << "Error: too large a number. " << std::endl;
 			return false;
 		}
@@ -138,6 +138,7 @@ void	BitcoinExchange::convertValue(const std::string& date, const double& value)
 			 return ;
 		}
         double convertedValue = value * rate;
+		std::cout << std::fixed << std::setprecision(2);
         std::cout << date << " => " << value << " = " << convertedValue << std::endl;
     } else {
         std::cerr << "Error: date too old => " << date << " / Dates start at 2009-01-02" << std::endl;

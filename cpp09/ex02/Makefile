@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arepsa <arepsa@student.42porto.com>        +#+  +:+       +#+         #
+#    By: arepsa <arepsa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 19:16:50 by arepsa            #+#    #+#              #
-#    Updated: 2025/01/11 12:33:29 by arepsa           ###   ########.fr        #
+#    Updated: 2025/02/15 09:46:58 by arepsa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 RM = rm -rf
 
-CXXFLAGS 	= -Wall -Werror -Wextra -pedantic-errors -fsanitize=address
+CXXFLAGS 	= -Wall -Werror -Wextra -std=c++98 -pedantic-errors -fsanitize=address
 
 #generate dependency file
 CPPFLAGS	= -MMD
