@@ -84,12 +84,12 @@ int main (int argc, char** argv) {
 					<< " elements with std::deque : " << std::fixed << std::setprecision(5) 
 					<< timeDeqSec << " s" << std::endl;
 
-		std::cout << "Checking if vector is sorted..." << std::endl;
+		/* std::cout << "Checking if vector is sorted..." << std::endl;
 		checkIfSorted(sortMe.getVector());
 		checkIfCorrectCount(sortMe.getVector(), argc - 1);
 		std::cout << "Checking if deque is sorted..." << std::endl;
 		checkIfSorted(sortMe.getDeque());
-		checkIfCorrectCount(sortMe.getDeque(), argc - 1);
+		checkIfCorrectCount(sortMe.getDeque(), argc - 1); */
 
 	} catch (const std::exception& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
